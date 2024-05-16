@@ -9,3 +9,38 @@ Description: More about what it does (maybe more than one line)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+Imports:
+    argparse,
+    cli,
+    future,
+    purrr,
+    DropletUtils,
+    SingleCellExperiment,
+    SummarizedExperiment,
+    dplyr,
+    grDevices,
+    magrittr,
+    stats,
+    Matrix,
+    stringr,
+    english,
+    tools,
+    ggplot2,
+    rmarkdown,
+    R.utils,
+    qs,
+    biomaRt (>= 2.54.0),
+    utils,
+    assertthat,
+    bib2df,
+    ggpubr,
+    paletteer,
+    DoubletFinder,
+    Seurat,
+    future.apply,
+    sctransform,
+    scater (>= 1.26.1)
+Remotes:
+    chris-mcginnis-ucsf/DoubletFinder,
+    ropensci/bib2df
+RoxygenNote: 7.3.1
