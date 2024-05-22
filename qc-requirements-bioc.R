@@ -1,7 +1,9 @@
 bioc_pkgs<-c(
   'DropletUtils',
   'SingleCellExperiment',
-  'SummarizedExperiment'
+  'SummarizedExperiment',
+  'biomaRt',
+  'scater'
 )
 
 requireNamespace("BiocManager")

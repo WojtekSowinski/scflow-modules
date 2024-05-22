@@ -6,11 +6,10 @@ Author: Who wrote it
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
-    argparse,
     cli,
     future,
     purrr,
@@ -27,6 +26,7 @@ Imports:
     tools,
     ggplot2,
     rmarkdown,
+    rlang,
     R.utils,
     qs,
     biomaRt (>= 2.54.0),
@@ -39,7 +39,8 @@ Imports:
     Seurat,
     future.apply,
     sctransform,
-    scater (>= 1.26.1)
+    scater (>= 1.26.1),
+    tidyr
 Remotes:
     chris-mcginnis-ucsf/DoubletFinder,
     ropensci/bib2df

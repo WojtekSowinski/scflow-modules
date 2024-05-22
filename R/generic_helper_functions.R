@@ -66,6 +66,7 @@
 #' Useful to remove large objects before writing to disk with qs or rds
 #'
 #' @family helper
+#' @importFrom rlang quo_get_env quo_set_env
 #'
 #' @keywords internal
 .clean_quosure_env <- function(quo,

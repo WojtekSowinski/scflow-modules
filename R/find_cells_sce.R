@@ -20,6 +20,7 @@
 #' @import cli
 #' @importFrom Matrix rowSums colSums
 #' @importFrom DropletUtils emptyDrops
+#' @importFrom tidyr drop_na
 #'
 #' @export
 find_cells <- function(sce,
