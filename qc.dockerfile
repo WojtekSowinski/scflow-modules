@@ -88,5 +88,9 @@ RUN Rscript -e "devtools::check(vignettes = FALSE)"
 RUN Rscript -e "remotes::install_local()"
 RUN rm -rf *
 
+RUN --mount=type=cache,target=/tmp/downloaded_packages \
+install2.r -e -t source \
+        argparse
+
 FROM scratch AS release
 COPY --from=build / /
