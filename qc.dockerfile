@@ -38,8 +38,10 @@ RUN pip install stratocumulus \
 
 RUN --mount=type=cache,target=/tmp/downloaded_packages \
 install2.r -e -t source \
+        argparse \
         BiocManager \
         cli \
+        devtools \
         future \
         future.apply \
         purrr \
@@ -60,16 +62,16 @@ install2.r -e -t source \
         ggpubr \
         paletteer \
         Seurat \
-        sctransform
+        knitr \
+        sctransform \
+        DT \
+        plotly
 
 ## Install Bioconductor packages
 COPY qc-requirements-bioc.R .
 RUN --mount=type=cache,target=/tmp/downloaded_packages \
 Rscript -e 'requireNamespace("BiocManager"); BiocManager::install(ask=F);' \
 && Rscript qc-requirements-bioc.R
-
-RUN --mount=type=cache,target=/tmp/downloaded_packages \
-install2.r -e -t source devtools
 
 ## Install from GH the following
 RUN --mount=type=cache,target=/tmp/downloaded_packages \
@@ -87,10 +89,6 @@ RUN Rscript -e "devtools::check(vignettes = FALSE)"
 # Install R package from source
 RUN Rscript -e "remotes::install_local()"
 RUN rm -rf *
-
-RUN --mount=type=cache,target=/tmp/downloaded_packages \
-install2.r -e -t source \
-        argparse
 
 FROM scratch AS release
 COPY --from=build / /

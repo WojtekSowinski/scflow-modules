@@ -525,7 +525,7 @@ annotate_sce <- function(sce,
   dt <- dplyr::as_tibble(data.frame(
     total_features = sce$total_features_by_counts)) %>%
     #filter(total_features <= features_cutoff) %>%
-    filter(total_features >= 10)
+    dplyr::filter(total_features >= 10)
 
   p <- ggplot2::ggplot(dt) +
     geom_histogram(aes(x = total_features), bins = 100) +

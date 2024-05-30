@@ -28,7 +28,13 @@ report_qc_sce <- function(sce,
     "Generating QC report for SingleCellExperiment", line = 2),
     "\r\n")
 
+  cli::cli_text(report_folder_path)
+  cli::cli_text(class(report_folder_path))
   metadata_tmp_path <- file.path(report_folder_path, "metadata.rds")
+  cli::cli_text(metadata_tmp_path)
+  cli::cli_text(nchar(report_folder_path))
+  cli::cli_text(nchar(metadata_tmp_path))
+  cli::cli_text(nchar(paste(report_folder_path, "metadata.rds", sep='/')))
 
   sce@metadata$qc_plots <- lapply(
     sce@metadata$qc_plots,
@@ -59,7 +65,7 @@ report_qc_sce <- function(sce,
     output_file = report_file,
     knit_root_dir = report_folder_path,
     intermediates_dir = report_folder_path,
-    quiet = TRUE
+    quiet = FALSE
   )
 
   cli::cli_text(c(

@@ -9,6 +9,7 @@ Description: More about what it does (maybe more than one line)
 License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true
+Language: en-US
 Imports:
     cli (>= 3.4.1),
     future (>= 1.29.0),
@@ -35,12 +36,15 @@ Imports:
     bib2df,
     ggpubr (>= 0.5.0),
     paletteer (>= 1.5.0),
+    plotly,
+    DT (>= 0.26),
     DoubletFinder (>= 2.0.3),
     Seurat (>= 4.3.0),
     future.apply (>= 1.10.0),
     sctransform,
     scater (>= 1.26.1),
-    tidyr (>= 1.2.1)
+    tidyr (>= 1.2.1),
+    knitr
 Remotes:
     chris-mcginnis-ucsf/DoubletFinder,
     ropensci/bib2df
