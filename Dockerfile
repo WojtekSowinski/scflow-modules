@@ -79,12 +79,8 @@ installGithub.r \
 chris-mcginnis-ucsf/DoubletFinder \
 ropensci/bib2df
 
-## Install scFlow package
-# Copy description
-WORKDIR scFlow
-ADD . .
-
 # Run R CMD check, install package from source - will fail with any errors or warnings
+WORKDIR scflowqc
 RUN --mount=type=bind,target=.,source=. \
 Rscript -e "devtools::check(vignettes = FALSE)" \
 && Rscript -e "remotes::install_local()"
