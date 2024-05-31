@@ -6,8 +6,8 @@ FROM rocker/rstudio:4.3 AS build
 ## Add packages dependencies
 RUN --mount=type=cache,target=/var/cache/apt \
 apt-get update \
-	&& apt-get install -y --no-install-recommends apt-utils \
 	&& apt-get install -y --no-install-recommends \
+        apt-utils \
         cmake \
         libcurl4-openssl-dev \
         libglpk-dev \
@@ -25,15 +25,15 @@ apt-get update \
         qpdf \
 	&& rm -rf /var/lib/apt/lists/*
 
-RUN pip install stratocumulus \
+RUN --mount=type=cache,target=/root/.cache/pip \
+pip install stratocumulus \
 && curl https://sdk.cloud.google.com > install.sh \
 && bash install.sh --disable-prompts \
 && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" \
 -o "awscliv2.zip" \
 && unzip awscliv2.zip \
 && ./aws/install \
-&& rm -rf awscliv2.zip \
-&& rm -rf /tmp/*
+&& rm -rf awscliv2.zip install.sh /tmp/*
 
 
 RUN --mount=type=cache,target=/tmp/downloaded_packages \
@@ -84,11 +84,10 @@ ropensci/bib2df
 WORKDIR scFlow
 ADD . .
 
-# Run R CMD check - will fail with any errors or warnings
-RUN Rscript -e "devtools::check(vignettes = FALSE)"
-# Install R package from source
-RUN Rscript -e "remotes::install_local()"
-RUN rm -rf *
+# Run R CMD check, install package from source - will fail with any errors or warnings
+RUN --mount=type=bind,target=.,source=. \
+Rscript -e "devtools::check(vignettes = FALSE)" \
+&& Rscript -e "remotes::install_local()"
 
 FROM scratch AS release
 COPY --from=build / /
