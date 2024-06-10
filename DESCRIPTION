@@ -1,6 +1,6 @@
 Package: scflowqc
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Single Sample Quality Control for ScFlow
 Version: 0.1.0
 Author: Who wrote it
 Maintainer: The package maintainer <yourself@somewhere.net>
@@ -36,14 +36,15 @@ Imports:
     bib2df,
     ggpubr (>= 0.5.0),
     paletteer (>= 1.5.0),
-    plotly,
-    DT (>= 0.26),
     DoubletFinder (>= 2.0.3),
     Seurat (>= 4.3.0),
     future.apply (>= 1.10.0),
     sctransform,
     scater (>= 1.26.1),
     tidyr (>= 1.2.1),
+Depends:
+    plotly,
+    DT (>= 0.26),
     knitr
 Remotes:
     chris-mcginnis-ucsf/DoubletFinder,

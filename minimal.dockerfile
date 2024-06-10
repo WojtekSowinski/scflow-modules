@@ -33,18 +33,8 @@ apt-get update \
         zlib1g-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
-# RUN --mount=type=cache,target=/root/.cache/pip \
-# pip install stratocumulus \
-# && curl https://sdk.cloud.google.com > install.sh \
-# && bash install.sh --disable-prompts \
-# && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" \
-# -o "awscliv2.zip" \
-# && unzip awscliv2.zip \
-# && ./aws/install \
-# && rm -rf awscliv2.zip install.sh /tmp/*
-
 RUN --mount=type=cache,target=/tmp/downloaded_packages \
-install2.r -e -t source \
+install2.r -e -n -1 \
         argparse \
         BiocManager \
         cli \
@@ -76,10 +66,15 @@ install2.r -e -t source \
         plotly
 
 ## Install Bioconductor packages
-COPY qc-requirements-bioc.R .
 RUN --mount=type=cache,target=/tmp/downloaded_packages \
-Rscript -e 'requireNamespace("BiocManager"); BiocManager::install(ask=F);' \
-&& Rscript qc-requirements-bioc.R
+Rscript -e 'requireNamespace("BiocManager"); \
+BiocManager::install(c( \
+  "DropletUtils", \
+  "SingleCellExperiment", \
+  "SummarizedExperiment", \
+  "biomaRt", \
+  "scater" \
+), ask=F, update=F)'
 
 ## Install from GH the following
 RUN --mount=type=cache,target=/tmp/downloaded_packages \
@@ -91,6 +86,21 @@ WORKDIR scflowqc
 RUN --mount=type=bind,target=.,source=. \
 Rscript -e "devtools::check(vignettes = FALSE)" \
 && Rscript -e "remotes::install_local()"
+
+RUN apt-get -y purge cmake make qpdf pip r-base-dev \
+&& apt-get -y autoremove \
+&& apt-get -y autoclean
+
+FROM build AS cloud
+RUN --mount=type=cache,target=/root/.cache/pip \
+pip install stratocumulus \
+&& curl https://sdk.cloud.google.com > install.sh \
+&& bash install.sh --disable-prompts \
+&& curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" \
+-o "awscliv2.zip" \
+&& unzip awscliv2.zip \
+&& ./aws/install \
+&& rm -rf awscliv2.zip install.sh /tmp/*
 
 FROM scratch as squash
 COPY --from=build / /

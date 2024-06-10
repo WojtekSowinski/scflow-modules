@@ -1,3 +1,7 @@
-minimal.dockerfile
-Dockerfile
+.Rproj.user
+.Rhistory
+.RData
 .dockerignore
+.gitignore
+Dockerfile
+minimal.dockerfile
