@@ -41,7 +41,7 @@ Imports:
     future.apply (>= 1.10.0),
     sctransform,
     scater (>= 1.26.1),
-    tidyr (>= 1.2.1),
+    tidyr (>= 1.2.1)
 Depends:
     plotly,
     DT (>= 0.26),

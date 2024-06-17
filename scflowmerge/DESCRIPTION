@@ -1,0 +1,57 @@
+Package: scflowmerge
+Type: Package
+Title: Merge multiple SingleCellExperiments
+Version: 0.1.0
+Author: Who wrote it
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL-3 | file LICENSE
+Encoding: UTF-8
+LazyData: true
+Language: en-US
+Imports:
+    argparse,
+    assertthat,
+    biomaRt,
+    cli,
+    dplyr,
+    edgeR,
+    english,
+    formattable,
+    future,
+    ggdendro,
+    ggplot2,
+    ggpubr,
+    grDevices,
+    htmltools,
+    magrittr,
+    Matrix,
+    monocle3,
+    paletteer,
+    purrr,
+    qs,
+    R.utils,
+    rlang,
+    rmarkdown,
+    Rtsne,
+    scales,
+    scater,
+    SingleCellExperiment,
+    stats,
+    stringr,
+    SummarizedExperiment,
+    threejs,
+    tidyr,
+    tidyselect,
+    tools,
+    utils,
+    uwot
+Depends:
+    plotly,
+    DT (>= 0.26),
+    knitr
+Remotes:
+    jlmelville/uwot,
+    cole-trapnell-lab/monocle3
+RoxygenNote: 7.3.1

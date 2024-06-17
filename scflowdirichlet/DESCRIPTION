@@ -1,0 +1,46 @@
+Package: scflowdirichlet
+Type: Package
+Title: Dirichlet Modelling for ScFlow
+Version: 0.1.0
+Author: Who wrote it
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL-3 | file LICENSE
+Encoding: UTF-8
+LazyData: true
+Language: en-US
+Imports:
+    assertthat,
+    cli,
+    DirichletReg,
+    dplyr,
+    future,
+    ggplot2,
+    ggpubr,
+    limma,
+    magrittr,
+    MAST,
+    Matrix,
+    methods,
+    paletteer,
+    preprocessCore,
+    purrr,
+    qs,
+    R.utils,
+    rmarkdown,
+    scater,
+    sctransform,
+    SingleCellExperiment,
+    stats,
+    SummarizedExperiment,
+    tibble,
+    tidyr,
+    tools
+Depends:
+    DT,
+    htmltools,
+    knitr,
+    plotly,
+    utils
+RoxygenNote: 7.3.1

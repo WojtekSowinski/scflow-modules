@@ -1,0 +1,40 @@
+Package: scflowmapcelltypes
+Type: Package
+Title: Cell Type Mapping for ScFlow
+Version: 0.1.0
+Author: Who wrote it
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL-3 | file LICENSE
+Encoding: UTF-8
+LazyData: true
+Language: en-US
+Imports:
+    assertthat,
+    cli,
+    dplyr,
+    EWCE,
+    future,
+    ggplot2,
+    grDevices,
+    leaflet,
+    magrittr,
+    Matrix,
+    paletteer,
+    plotly,
+    plyr,
+    purrr,
+    qs,
+    R.utils,
+    rlang,
+    SingleCellExperiment,
+    stats,
+    SummarizedExperiment,
+    threejs,
+    tidyr,
+    tools,
+    utils
+Remotes:
+    NathanSkene/EWCE
+RoxygenNote: 7.3.1

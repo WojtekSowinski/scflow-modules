@@ -1,0 +1,46 @@
+Package: scflowfinalize
+Type: Package
+Title: Finalize SCE with manually revised celltypes
+Version: 0.1.0
+Author: Who wrote it
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: GPL-3 | file LICENSE
+Encoding: UTF-8
+LazyData: true
+Language: en-US
+Imports:
+    assertthat,
+    cli,
+    dplyr,
+    forcats,
+    formattable,
+    future,
+    ggplot2,
+    ggpubr,
+    ggridges,
+    grDevices,
+    magrittr,
+    Matrix,
+    monocle3,
+    paletteer,
+    purrr,
+    qs,
+    R.utils,
+    rlang,
+    rmarkdown,
+    SingleCellExperiment,
+    stats,
+    SummarizedExperiment,
+    tools,
+    utils
+Depends:
+    htmltools,
+    Hmisc,
+    DT,
+    knitr,
+    plotly
+Remotes:
+    cole-trapnell-lab/monocle3
+RoxygenNote: 7.3.1
