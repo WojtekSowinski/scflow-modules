@@ -7,10 +7,10 @@ output:
     toc: false
     fig_caption: true
     keep_md: false
-    css: !expr system.file("rmarkdown/css/style.css", package = "scFlow")
+    css: !expr system.file("rmarkdown/css/style.css", package = "scflowipa")
     includes:
       in_header: header.html
-      after_body: !expr system.file("rmarkdown/html/footer.html", package = "scFlow")
+      after_body: !expr system.file("rmarkdown/html/footer.html", package = "scflowipa")
 params:
   metadata_path: false
 ---
@@ -59,4 +59,4 @@ metadata <- readRDS(params$metadata_path)
 
 
 
-<br>scFlow v`r utils::packageVersion("scFlow")` -- `r Sys.time()`
+<br>scFlow v`r utils::packageVersion("scflowipa")` -- `r Sys.time()`

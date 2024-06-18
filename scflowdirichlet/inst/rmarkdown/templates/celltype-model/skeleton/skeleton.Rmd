@@ -7,10 +7,10 @@ output:
     toc: false
     fig_caption: true
     keep_md: false
-    css: !expr system.file("rmarkdown/css/style.css", package = "scFlow")
+    css: !expr system.file("rmarkdown/css/style.css", package = "scflowdirichlet")
     includes:
       in_header: header.html
-      after_body: !expr system.file("rmarkdown/html/footer.html", package = "scFlow")
+      after_body: !expr system.file("rmarkdown/html/footer.html", package = "scflowdirichlet")
 params:
   results_path: false
 ---
@@ -84,4 +84,4 @@ numeric_cols <- names(results$unique_id_plots_by_celltype)
 DT::datatable(DR_data, rownames = TRUE, options = list(pageLength = nrow(DR_data), scrollX=T, columnDefs = list(list(className = 'dt-left', targets = "_all"))), escape = FALSE) %>% DT::formatRound(columns = numeric_cols, digits = 3)
 ```
 
-<br>scFlow v`r utils::packageVersion("scFlow")` -- `r Sys.time()`
+<br>scFlow v`r utils::packageVersion("scflowdirichlet")` -- `r Sys.time()`

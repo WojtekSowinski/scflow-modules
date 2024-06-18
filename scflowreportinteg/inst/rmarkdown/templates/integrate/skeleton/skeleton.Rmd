@@ -7,10 +7,10 @@ output:
     toc: false
     fig_caption: true
     keep_md: false
-    css: !expr system.file("rmarkdown/css/style.css", package = "scFlow")
+    css: !expr system.file("rmarkdown/css/style.css", package = "scflowintegrate")
     includes:
       in_header: header.html
-      after_body: !expr system.file("rmarkdown/html/footer.html", package = "scFlow")
+      after_body: !expr system.file("rmarkdown/html/footer.html", package = "scflowintegrate")
 params:
   metadata_path: false
   categorical_covariates: true
@@ -91,4 +91,4 @@ paste(out, collapse='\n')
 ```{r conditional_clustering_block, child='clustering.Rmd', eval = !is.null(metadata$cluster_params)}
 ```
 
-<br>scFlow v`r utils::packageVersion("scFlow")` -- `r Sys.time()`
+<br>scFlow v`r utils::packageVersion("scflowintegrate")` -- `r Sys.time()`

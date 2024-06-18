@@ -69,7 +69,7 @@ report_de <- function(res,
   rmarkdown::render(
     system.file(
       "rmarkdown/templates/differential-expression/skeleton/skeleton.Rmd",
-      package = "scFlow"
+      package = "scflowdge"
     ),
     params = list(
       metadata_path = metadata_tmp_path

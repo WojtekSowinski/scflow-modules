@@ -39,7 +39,7 @@ report_integrated_sce <- function(sce,
   rmarkdown::render(
     system.file(
       "rmarkdown/templates/integrate/skeleton/skeleton.Rmd",
-      package = "scFlow"),
+      package = "scflowreportinteg"),
     params = list(
       metadata_path = metadata_tmp_path,
       categorical_covariates = categorical_covariates

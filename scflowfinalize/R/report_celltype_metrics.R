@@ -50,7 +50,7 @@ report_celltype_metrics <- function(sce,
     # "inst/rmarkdown/templates/quality-control/skeleton/skeleton.Rmd")
     system.file(
       "rmarkdown/templates/celltype-metrics/skeleton/skeleton.Rmd",
-      package = "scFlow"),
+      package = "scflowfinalize"),
     params = list(
       metadata_path = metadata_tmp_path
     ),

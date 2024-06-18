@@ -7,10 +7,10 @@ output:
     toc: false
     fig_caption: true
     keep_md: false
-    css: !expr system.file("rmarkdown/css/style.css", package = "scFlow")
+    css: !expr system.file("rmarkdown/css/style.css", package = "scflowfinalize")
     includes:
       in_header: header.html
-      after_body: !expr system.file("rmarkdown/html/footer.html", package = "scFlow")
+      after_body: !expr system.file("rmarkdown/html/footer.html", package = "scflowfinalize")
 params:
   metadata_path: false
 ---
@@ -168,4 +168,4 @@ for(metric_var in names(metadata$celltype_annotations$metric_plots)) {
 
 `r paste(out, collapse='\n')`
 
-<br>scFlow v`r utils::packageVersion("scFlow")` -- `r Sys.time()`
+<br>scFlow v`r utils::packageVersion("scflowfinalize")` -- `r Sys.time()`

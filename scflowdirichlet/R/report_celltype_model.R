@@ -40,7 +40,7 @@ report_celltype_model <- function(results,
     #file.path(getwd(), "skeleton.Rmd"),
     system.file(
       "rmarkdown/templates/celltype-model/skeleton/skeleton.Rmd",
-      package = "scFlow"),
+      package = "scflowdirichlet"),
     params = list(
       results_path = results_tmp_path
     ),

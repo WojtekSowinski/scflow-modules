@@ -59,14 +59,14 @@ model_celltype_freqs <- function(sce,
                                                dependent_var,
                                                paste(confounding_vars, collapse = " + ")))
     cli::cli_alert(
-      "Fitting model: {.var {scFlow:::.formula_to_char(model_formula)}}"
+      "Fitting model: {.var {scflowdirichlet:::.formula_to_char(model_formula)}}"
     )
 
   } else {
 
   model_formula <- stats::as.formula(sprintf("counts ~ %s", dependent_var))
   cli::cli_alert(
-    "Fitting model: {.var {scFlow:::.formula_to_char(model_formula)}}"
+    "Fitting model: {.var {scflowdirichlet:::.formula_to_char(model_formula)}}"
   )
 
   }

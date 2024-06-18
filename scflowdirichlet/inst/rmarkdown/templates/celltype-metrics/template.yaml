@@ -1,4 +1,0 @@
-name: Merged Quality Control
-description: >
-   scflow - quality control report for a merged SingleCellExperiment
-create_dir: FALSE
