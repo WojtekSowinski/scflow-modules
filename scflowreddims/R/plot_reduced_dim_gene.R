@@ -24,6 +24,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom grDevices colorRampPalette
 #' @importFrom SummarizedExperiment rowData colData
+#' @importFrom rlang new_environment
 #'
 #' @export
 plot_reduced_dim_gene <- function(sce,

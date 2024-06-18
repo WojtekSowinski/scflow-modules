@@ -9,66 +9,90 @@ group "default" {
         "finalize",
         "dge",
         "ipa",
-        "dirichlet",
+        "dirichlet"
     ]
 }
+target "base" {
+    target = "base_dependencies"
+    tags = ["my_scflow/base_deps"]
+}
 target "qc" {
-    dockerfile = "../split.dockerfile"
-    tags = ["my_scflow/split:qc"]
+    tags = ["my_scflow/qc"]
     target = "qc"
     context = "./scflowqc"
+    contexts = {
+        base_dependencies = "target:base"
+    }
 }
 target "merge" {
-    dockerfile = "../split.dockerfile"
-    tags = ["my_scflow/split:merge"]
+    tags = ["my_scflow/merge"]
     target = "merge"
-    context = "./scflowqc"
+    context = "./scflowmerge"
+    contexts = {
+        base_dependencies = "target:base"
+    }
 }
 target "integrate" {
-    dockerfile = "../split.dockerfile"
-    tags = ["my_scflow/split:integrate"]
+    tags = ["my_scflow/integrate"]
     target = "integrate"
-    context = "./scflowqc"
+    context = "./scflowintegrate"
+    contexts = {
+        base_dependencies = "target:base"
+    }
 }
 target "reddims" {
-    dockerfile = "../split.dockerfile"
-    tags = ["my_scflow/split:reddims"]
+    tags = ["my_scflow/reddims"]
     target = "reddims"
-    context = "./scflowqc"
+    context = "./scflowreddims"
+    contexts = {
+        base_dependencies = "target:base"
+    }
 }
 target "report_integ" {
-    dockerfile = "../split.dockerfile"
-    tags = ["my_scflow/split:report_integ"]
+    tags = ["my_scflow/report_integ"]
     target = "report_integ"
-    context = "./scflowqc"
+    context = "./scflowreportinteg"
+    contexts = {
+        base_dependencies = "target:base"
+    }
 }
 target "map_celltypes" {
-    dockerfile = "../split.dockerfile"
-    tags = ["my_scflow/split:map_celltypes"]
+    tags = ["my_scflow/map_celltypes"]
     target = "map_celltypes"
-    context = "./scflowqc"
+    context = "./scflowmapcelltypes"
+    contexts = {
+        base_dependencies = "target:base"
+    }
 }
 target "finalize" {
-    dockerfile = "../split.dockerfile"
-    tags = ["my_scflow/split:finalize"]
+    tags = ["my_scflow/finalize"]
     target = "finalize"
-    context = "./scflowqc"
+    context = "./scflowfinalize"
+    contexts = {
+        base_dependencies = "target:base"
+    }
 }
 target "dge" {
-    dockerfile = "../split.dockerfile"
-    tags = ["my_scflow/split:dge"]
+    tags = ["my_scflow/dge"]
     target = "dge"
-    context = "./scflowqc"
+    context = "./scflowdge"
+    contexts = {
+        base_dependencies = "target:base"
+    }
 }
 target "ipa" {
-    dockerfile = "../split.dockerfile"
-    tags = ["my_scflow/split:ipa"]
+    tags = ["my_scflow/ipa"]
     target = "ipa"
-    context = "./scflowIPA"
+    context = "./scflowipa"
+    contexts = {
+        base_dependencies = "target:base"
+    }
 }
 target "dirichlet" {
-    dockerfile = "../split.dockerfile"
-    tags = ["my_scflow/split:dirichlet"]
+    tags = ["my_scflow/dirichlet"]
     target = "dirichlet"
-    context = "./scflowqc"
+    context = "./scflowdirichlet"
+    contexts = {
+        base_dependencies = "target:base"
+    }
 }

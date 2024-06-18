@@ -26,8 +26,11 @@ Imports:
     plotly,
     threejs,
     uwot,
-    yaml,
     Matrix,
+    ggplot2,
+    magrittr,
+    paletteer,
+    rlang,
     utils
 Remotes:
     jlmelville/uwot,

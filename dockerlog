@@ -1,0 +1,2833 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load local bake definitions
+#1 reading docker-bake.hcl 2.06kB / 2.06kB done
+#1 DONE 0.0s
+
+#2 [base internal] load build definition from Dockerfile
+#2 DONE 0.0s
+
+#2 [base internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.91kB done
+#2 DONE 0.0s
+
+#3 [base internal] load metadata for docker.io/rocker/rstudio:4.3
+#3 DONE 0.0s
+
+#4 [base internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [finalize internal] load build definition from Dockerfile
+#5 transferring dockerfile: 876B done
+#5 DONE 0.0s
+
+#6 [finalize internal] load .dockerignore
+#6 transferring context: 2B done
+#6 DONE 0.0s
+
+#7 [finalize base_dependencies 1/7] FROM docker.io/rocker/rstudio:4.3
+#7 DONE 0.0s
+
+#8 [finalize internal] load build context
+#8 transferring context: 127.29kB 0.0s done
+#8 DONE 0.1s
+
+#9 [finalize finalize 1/8] RUN --mount=type=cache,sharing=locked,target=/var/cache/apt apt-get install -y --no-install-recommends libglpk-dev libxml2-dev
+#9 CACHED
+
+#10 [base base_dependencies 2/7] RUN rm -f /etc/apt/apt.conf.d/docker-clean
+#10 CACHED
+
+#11 [base base_dependencies 5/7] RUN --mount=type=cache,target=/tmp/downloaded_packages install2.r -e -n -1 -s         argparse         assertthat         BiocManager         cli         devtools         dplyr         DT         future         ggplot2         grDevices         knitr         magrittr         Matrix         paletteer         purrr         qs         R.utils         RCurl         rlang         rmarkdown         stats         tools         utils
+#11 CACHED
+
+#12 [base base_dependencies 3/7] RUN --mount=type=cache,target=/var/cache/apt     apt-get update 	&& apt-get install -y --no-install-recommends         curl         cmake         libcurl4-openssl-dev         libicu-dev         libssl-dev         make         pandoc         pip         python3         unzip         zlib1g-dev
+#12 CACHED
+
+#13 [base base_dependencies 4/7] RUN --mount=type=cache,target=/root/.cache/pip pip install stratocumulus && curl https://sdk.cloud.google.com > install.sh && bash install.sh --disable-prompts && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ./aws/install && rm -rf awscliv2.zip install.sh /tmp/*
+#13 CACHED
+
+#14 [base base_dependencies 6/7] RUN --mount=type=cache,target=/tmp/downloaded_packages Rscript -e 'requireNamespace("BiocManager"); BiocManager::install(c(   "SingleCellExperiment",   "SummarizedExperiment" ), ask=F, update=F)'
+#14 CACHED
+
+#15 [base base_dependencies 7/7] RUN --mount=type=cache,target=/tmp/downloaded_packages installGithub.r ropensci/plotly
+#15 CACHED
+
+#16 [base] exporting to image
+#16 exporting layers done
+#16 writing image sha256:710a1d7601e691061524881459bb61dfcea0c2d05e9d59cf358987da7b466b2f done
+#16 naming to docker.io/my_scflow/base_deps done
+#16 DONE 0.0s
+
+#17 [finalize finalize 2/8] RUN --mount=type=cache,sharing=locked,target=/tmp/downloaded_packages install2.r -e -n -1 -s ggpubr htmltools formattable forcats ggridges igraph Hmisc
+#17 4.455 also installing the dependencies ‘numDeriv’, ‘SparseM’, ‘MatrixModels’, ‘minqa’, ‘nloptr’, ‘RcppEigen’, ‘backports’, ‘carData’, ‘pbkrtest’, ‘quantreg’, ‘lme4’, ‘broom’, ‘corrplot’, ‘car’, ‘checkmate’, ‘ggrepel’, ‘ggsci’, ‘cowplot’, ‘ggsignif’, ‘gridExtra’, ‘polynom’, ‘rstatix’, ‘htmlTable’, ‘viridis’, ‘Formula’
+#17 4.455 
+#17 4.465 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/numDeriv_2016.8-1.1.tar.gz'
+#17 5.832 Content type 'binary/octet-stream' length 113093 bytes (110 KB)
+#17 5.832 ==================================================
+#17 5.891 downloaded 110 KB
+#17 5.891 
+#17 5.900 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/SparseM_1.81.tar.gz'
+#17 8.120 Content type 'binary/octet-stream' length 1041456 bytes (1017 KB)
+#17 8.120 ==================================================
+#17 8.481 downloaded 1017 KB
+#17 8.481 
+#17 8.492 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/MatrixModels_0.5-3.tar.gz'
+#17 9.845 Content type 'binary/octet-stream' length 425280 bytes (415 KB)
+#17 9.845 ==================================================
+#17 10.20 downloaded 415 KB
+#17 10.20 
+#17 10.21 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/minqa_1.2.6.tar.gz'
+#17 11.75 Content type 'binary/octet-stream' length 118147 bytes (115 KB)
+#17 11.75 ==================================================
+#17 11.89 downloaded 115 KB
+#17 11.89 
+#17 11.90 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/nloptr_2.0.3.tar.gz'
+#17 13.20 Content type 'binary/octet-stream' length 710144 bytes (693 KB)
+#17 13.20 ==================================================
+#17 13.52 downloaded 693 KB
+#17 13.52 
+#17 13.53 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/RcppEigen_0.3.4.0.0.tar.gz'
+#17 14.97 Content type 'binary/octet-stream' length 1842582 bytes (1.8 MB)
+#17 14.97 ==================================================
+#17 15.47 downloaded 1.8 MB
+#17 15.47 
+#17 15.48 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/backports_1.4.1.tar.gz'
+#17 16.77 Content type 'binary/octet-stream' length 95020 bytes (92 KB)
+#17 16.77 ==================================================
+#17 16.93 downloaded 92 KB
+#17 16.93 
+#17 16.94 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/carData_3.0-5.tar.gz'
+#17 18.64 Content type 'binary/octet-stream' length 1820730 bytes (1.7 MB)
+#17 18.64 ==================================================
+#17 19.83 downloaded 1.7 MB
+#17 19.83 
+#17 19.84 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/pbkrtest_0.5.2.tar.gz'
+#17 21.16 Content type 'binary/octet-stream' length 186585 bytes (182 KB)
+#17 21.16 ==================================================
+#17 21.35 downloaded 182 KB
+#17 21.35 
+#17 21.35 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/quantreg_5.97.tar.gz'
+#17 28.09 Content type 'binary/octet-stream' length 1549618 bytes (1.5 MB)
+#17 28.09 ==================================================
+#17 28.44 downloaded 1.5 MB
+#17 28.44 
+#17 28.45 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/lme4_1.1-35.3.tar.gz'
+#17 29.81 Content type 'binary/octet-stream' length 4238906 bytes (4.0 MB)
+#17 29.85 ==================================================
+#17 31.11 downloaded 4.0 MB
+#17 31.11 
+#17 31.13 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/broom_1.0.5.tar.gz'
+#17 32.52 Content type 'binary/octet-stream' length 1851908 bytes (1.8 MB)
+#17 32.53 ==================================================
+#17 32.93 downloaded 1.8 MB
+#17 32.93 
+#17 32.94 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/corrplot_0.92.tar.gz'
+#17 34.59 Content type 'binary/octet-stream' length 3842385 bytes (3.7 MB)
+#17 34.62 ==================================================
+#17 35.36 downloaded 3.7 MB
+#17 35.36 
+#17 35.37 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/car_3.1-2.tar.gz'
+#17 42.03 Content type 'binary/octet-stream' length 1705983 bytes (1.6 MB)
+#17 42.03 ==================================================
+#17 42.63 downloaded 1.6 MB
+#17 42.63 
+#17 42.64 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/checkmate_2.3.1.tar.gz'
+#17 44.07 Content type 'binary/octet-stream' length 716409 bytes (699 KB)
+#17 44.07 ==================================================
+#17 44.32 downloaded 699 KB
+#17 44.32 
+#17 44.34 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/ggrepel_0.9.5.tar.gz'
+#17 46.04 Content type 'binary/octet-stream' length 273030 bytes (266 KB)
+#17 46.04 ==================================================
+#17 46.16 downloaded 266 KB
+#17 46.16 
+#17 46.17 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/ggsci_3.0.3.tar.gz'
+#17 47.72 Content type 'binary/octet-stream' length 2355865 bytes (2.2 MB)
+#17 47.75 ==================================================
+#17 48.46 downloaded 2.2 MB
+#17 48.46 
+#17 48.47 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/cowplot_1.1.3.tar.gz'
+#17 50.15 Content type 'binary/octet-stream' length 1375369 bytes (1.3 MB)
+#17 50.15 ==================================================
+#17 50.69 downloaded 1.3 MB
+#17 50.69 
+#17 50.70 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/ggsignif_0.6.4.tar.gz'
+#17 52.22 Content type 'binary/octet-stream' length 601431 bytes (587 KB)
+#17 52.22 ==================================================
+#17 52.46 downloaded 587 KB
+#17 52.46 
+#17 52.47 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/gridExtra_2.3.tar.gz'
+#17 53.95 Content type 'binary/octet-stream' length 1106992 bytes (1.1 MB)
+#17 53.95 ==================================================
+#17 54.30 downloaded 1.1 MB
+#17 54.30 
+#17 54.31 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/polynom_1.4-1.tar.gz'
+#17 55.87 Content type 'binary/octet-stream' length 404660 bytes (395 KB)
+#17 55.87 ==================================================
+#17 56.00 downloaded 395 KB
+#17 56.00 
+#17 56.00 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/rstatix_0.7.2.tar.gz'
+#17 57.66 Content type 'binary/octet-stream' length 605258 bytes (591 KB)
+#17 57.66 ==================================================
+#17 57.89 downloaded 591 KB
+#17 57.89 
+#17 57.90 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/htmlTable_2.4.2.tar.gz'
+#17 59.25 Content type 'binary/octet-stream' length 410249 bytes (400 KB)
+#17 59.25 ==================================================
+#17 59.41 downloaded 400 KB
+#17 59.41 
+#17 59.42 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/viridis_0.6.5.tar.gz'
+#17 60.80 Content type 'binary/octet-stream' length 3012033 bytes (2.9 MB)
+#17 60.83 ==================================================
+#17 61.59 downloaded 2.9 MB
+#17 61.59 
+#17 61.60 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/Formula_1.2-5.tar.gz'
+#17 62.99 Content type 'binary/octet-stream' length 158389 bytes (154 KB)
+#17 62.99 ==================================================
+#17 63.05 downloaded 154 KB
+#17 63.05 
+#17 63.06 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/ggpubr_0.6.0.tar.gz'
+#17 64.58 Content type 'binary/octet-stream' length 2085480 bytes (2.0 MB)
+#17 64.59 ==================================================
+#17 65.29 downloaded 2.0 MB
+#17 65.29 
+#17 65.30 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/formattable_0.2.1.tar.gz'
+#17 66.59 Content type 'binary/octet-stream' length 169042 bytes (165 KB)
+#17 66.59 ==================================================
+#17 66.77 downloaded 165 KB
+#17 66.77 
+#17 66.78 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/forcats_1.0.0.tar.gz'
+#17 68.08 Content type 'binary/octet-stream' length 421625 bytes (411 KB)
+#17 68.08 ==================================================
+#17 68.19 downloaded 411 KB
+#17 68.19 
+#17 68.20 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/ggridges_0.5.6.tar.gz'
+#17 69.61 Content type 'binary/octet-stream' length 2255648 bytes (2.2 MB)
+#17 69.61 ==================================================
+#17 71.04 downloaded 2.2 MB
+#17 71.04 
+#17 71.06 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/igraph_2.0.3.tar.gz'
+#17 72.41 Content type 'binary/octet-stream' length 5441930 bytes (5.2 MB)
+#17 72.46 ==================================================
+#17 73.75 downloaded 5.2 MB
+#17 73.75 
+#17 73.76 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/Hmisc_5.1-2.tar.gz'
+#17 75.12 Content type 'binary/octet-stream' length 3519323 bytes (3.4 MB)
+#17 75.15 ==================================================
+#17 76.10 downloaded 3.4 MB
+#17 76.10 
+#17 76.97 begin installing package ‘numDeriv’
+#17 76.97 begin installing package ‘SparseM’
+#17 76.97 begin installing package ‘MatrixModels’
+#17 76.98 begin installing package ‘nloptr’
+#17 76.98 begin installing package ‘RcppEigen’
+#17 76.98 begin installing package ‘backports’
+#17 76.98 begin installing package ‘minqa’
+#17 76.98 begin installing package ‘carData’
+#17 78.35 * installing *binary* package ‘numDeriv’ ...
+#17 78.35 * DONE (numDeriv)
+#17 78.36 begin installing package ‘corrplot’
+#17 78.36 * installing *binary* package ‘backports’ ...
+#17 78.36 * DONE (backports)
+#17 78.36 begin installing package ‘ggrepel’
+#17 78.44 * installing *binary* package ‘MatrixModels’ ...
+#17 78.44 * DONE (MatrixModels)
+#17 78.44 begin installing package ‘ggsci’
+#17 78.77 * installing *binary* package ‘minqa’ ...
+#17 78.77 * DONE (minqa)
+#17 78.78 begin installing package ‘cowplot’
+#17 79.03 * installing *binary* package ‘nloptr’ ...
+#17 79.03 * DONE (nloptr)
+#17 79.03 begin installing package ‘ggsignif’
+#17 79.24 * installing *binary* package ‘carData’ ...
+#17 79.24 * DONE (carData)
+#17 79.25 begin installing package ‘gridExtra’
+#17 79.29 * installing *binary* package ‘SparseM’ ...
+#17 79.29 * DONE (SparseM)
+#17 79.30 begin installing package ‘polynom’
+#17 80.31 * installing *binary* package ‘ggrepel’ ...
+#17 80.31 * DONE (ggrepel)
+#17 80.31 begin installing package ‘Formula’
+#17 80.57 * installing *binary* package ‘ggsignif’ ...
+#17 80.57 * DONE (ggsignif)
+#17 80.57 begin installing package ‘formattable’
+#17 81.08 * installing *binary* package ‘gridExtra’ ...
+#17 81.08 * DONE (gridExtra)
+#17 81.08 begin installing package ‘forcats’
+#17 81.11 * installing *binary* package ‘cowplot’ ...
+#17 81.11 * DONE (cowplot)
+#17 81.12 begin installing package ‘ggridges’
+#17 81.13 * installing *binary* package ‘polynom’ ...
+#17 81.13 * DONE (polynom)
+#17 81.13 begin installing package ‘igraph’
+#17 81.15 * installing *binary* package ‘corrplot’ ...
+#17 81.15 * DONE (corrplot)
+#17 81.15 begin installing package ‘quantreg’
+#17 81.45 * installing *binary* package ‘ggsci’ ...
+#17 81.45 * DONE (ggsci)
+#17 81.46 begin installing package ‘broom’
+#17 82.01 * installing *binary* package ‘Formula’ ...
+#17 82.01 * DONE (Formula)
+#17 82.01 begin installing package ‘checkmate’
+#17 82.42 * installing *binary* package ‘formattable’ ...
+#17 82.42 * DONE (formattable)
+#17 82.42 begin installing package ‘viridis’
+#17 83.21 * installing *binary* package ‘forcats’ ...
+#17 83.21 * DONE (forcats)
+#17 83.23 * installing *binary* package ‘checkmate’ ...
+#17 83.23 * DONE (checkmate)
+#17 83.24 begin installing package ‘htmlTable’
+#17 83.40 * installing *binary* package ‘quantreg’ ...
+#17 83.40 * DONE (quantreg)
+#17 83.68 * installing *binary* package ‘ggridges’ ...
+#17 83.68 * DONE (ggridges)
+#17 83.76 * installing *binary* package ‘broom’ ...
+#17 83.76 * DONE (broom)
+#17 83.78 * installing *binary* package ‘RcppEigen’ ...
+#17 83.78 * DONE (RcppEigen)
+#17 83.78 begin installing package ‘lme4’
+#17 84.15 * installing *binary* package ‘htmlTable’ ...
+#17 84.15 * DONE (htmlTable)
+#17 84.43 * installing *binary* package ‘viridis’ ...
+#17 84.43 * DONE (viridis)
+#17 84.43 begin installing package ‘Hmisc’
+#17 84.43 * installing *binary* package ‘igraph’ ...
+#17 84.43 * DONE (igraph)
+#17 85.42 * installing *binary* package ‘lme4’ ...
+#17 85.42 * DONE (lme4)
+#17 85.42 begin installing package ‘pbkrtest’
+#17 85.78 * installing *binary* package ‘Hmisc’ ...
+#17 85.78 * DONE (Hmisc)
+#17 86.16 * installing *binary* package ‘pbkrtest’ ...
+#17 86.16 * DONE (pbkrtest)
+#17 86.16 begin installing package ‘car’
+#17 86.84 * installing *binary* package ‘car’ ...
+#17 86.84 * DONE (car)
+#17 86.84 begin installing package ‘rstatix’
+#17 87.60 * installing *binary* package ‘rstatix’ ...
+#17 87.60 * DONE (rstatix)
+#17 87.60 begin installing package ‘ggpubr’
+#17 88.50 * installing *binary* package ‘ggpubr’ ...
+#17 88.50 * DONE (ggpubr)
+#17 88.51 
+#17 88.51 The downloaded source packages are in
+#17 88.51 	‘/tmp/downloaded_packages’
+#17 DONE 88.8s
+
+#18 [finalize finalize 3/8] RUN --mount=type=cache,sharing=locked,target=/tmp/downloaded_packages Rscript -e 'requireNamespace("BiocManager"); BiocManager::install(c( "batchelor" ), ask=F)'
+#18 1.167 Loading required namespace: BiocManager
+#18 1.889 'getOption("repos")' replaces Bioconductor standard repositories, see
+#18 1.889 'help("repositories", package = "BiocManager")' for details.
+#18 1.889 Replacement repositories:
+#18 1.889     CRAN: https://p3m.dev/cran/__linux__/jammy/2024-04-23
+#18 16.99 Bioconductor version 3.18 (BiocManager 1.30.22), R 4.3.3 (2024-02-29)
+#18 16.99 Installing package(s) 'batchelor'
+#18 17.88 also installing the dependencies ‘formatR’, ‘lambda.r’, ‘futile.options’, ‘RcppHNSW’, ‘irlba’, ‘rsvd’, ‘sparseMatrixStats’, ‘futile.logger’, ‘snow’, ‘BiocNeighbors’, ‘BiocSingular’, ‘DelayedMatrixStats’, ‘BiocParallel’, ‘scuttle’, ‘ResidualMatrix’, ‘ScaledMatrix’, ‘beachmat’
+#18 17.88 
+#18 17.89 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/formatR_1.14.tar.gz'
+#18 19.27 Content type 'binary/octet-stream' length 150706 bytes (147 KB)
+#18 19.27 ==================================================
+#18 19.32 downloaded 147 KB
+#18 19.32 
+#18 19.33 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/lambda.r_1.2.4.tar.gz'
+#18 20.70 Content type 'binary/octet-stream' length 109515 bytes (106 KB)
+#18 20.70 ==================================================
+#18 20.75 downloaded 106 KB
+#18 20.75 
+#18 20.76 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/futile.options_1.0.1.tar.gz'
+#18 22.12 Content type 'binary/octet-stream' length 18111 bytes (17 KB)
+#18 22.12 ==================================================
+#18 22.12 downloaded 17 KB
+#18 22.12 
+#18 22.13 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/RcppHNSW_0.6.0.tar.gz'
+#18 23.63 Content type 'binary/octet-stream' length 207180 bytes (202 KB)
+#18 23.63 ==================================================
+#18 23.74 downloaded 202 KB
+#18 23.74 
+#18 23.74 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/irlba_2.3.5.1.tar.gz'
+#18 25.29 Content type 'binary/octet-stream' length 290599 bytes (283 KB)
+#18 25.29 ==================================================
+#18 25.40 downloaded 283 KB
+#18 25.40 
+#18 25.41 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/rsvd_1.0.5.tar.gz'
+#18 26.94 Content type 'binary/octet-stream' length 3582950 bytes (3.4 MB)
+#18 26.98 ==================================================
+#18 27.84 downloaded 3.4 MB
+#18 27.84 
+#18 27.85 trying URL 'https://bioconductor.org/packages/3.18/bioc/src/contrib/sparseMatrixStats_1.14.0.tar.gz'
+#18 29.13 Content type 'application/gzip' length 703089 bytes (686 KB)
+#18 29.13 ==================================================
+#18 29.62 downloaded 686 KB
+#18 29.62 
+#18 29.63 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/futile.logger_1.4.3.tar.gz'
+#18 31.12 Content type 'binary/octet-stream' length 98263 bytes (95 KB)
+#18 31.12 ==================================================
+#18 31.15 downloaded 95 KB
+#18 31.15 
+#18 31.16 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/snow_0.4-4.tar.gz'
+#18 32.54 Content type 'binary/octet-stream' length 95638 bytes (93 KB)
+#18 32.54 ==================================================
+#18 32.67 downloaded 93 KB
+#18 32.67 
+#18 32.68 trying URL 'https://bioconductor.org/packages/3.18/bioc/src/contrib/BiocNeighbors_1.20.2.tar.gz'
+#18 33.80 Content type 'application/gzip' length 1039738 bytes (1015 KB)
+#18 33.87 ==================================================
+#18 34.40 downloaded 1015 KB
+#18 34.40 
+#18 34.41 trying URL 'https://bioconductor.org/packages/3.18/bioc/src/contrib/BiocSingular_1.18.0.tar.gz'
+#18 35.48 Content type 'application/gzip' length 616448 bytes (602 KB)
+#18 35.59 ==================================================
+#18 36.08 downloaded 602 KB
+#18 36.08 
+#18 36.09 trying URL 'https://bioconductor.org/packages/3.18/bioc/src/contrib/DelayedMatrixStats_1.24.0.tar.gz'
+#18 37.15 Content type 'application/gzip' length 271120 bytes (264 KB)
+#18 37.24 ==================================================
+#18 37.57 downloaded 264 KB
+#18 37.57 
+#18 37.58 trying URL 'https://bioconductor.org/packages/3.18/bioc/src/contrib/BiocParallel_1.36.0.tar.gz'
+#18 38.75 Content type 'application/gzip' length 997117 bytes (973 KB)
+#18 38.89 ==================================================
+#18 39.54 downloaded 973 KB
+#18 39.54 
+#18 39.55 trying URL 'https://bioconductor.org/packages/3.18/bioc/src/contrib/scuttle_1.12.0.tar.gz'
+#18 40.65 Content type 'application/gzip' length 1029515 bytes (1005 KB)
+#18 40.79 ==================================================
+#18 41.29 downloaded 1005 KB
+#18 41.29 
+#18 41.30 trying URL 'https://bioconductor.org/packages/3.18/bioc/src/contrib/ResidualMatrix_1.12.0.tar.gz'
+#18 42.46 Content type 'application/gzip' length 340952 bytes (332 KB)
+#18 42.46 ==================================================
+#18 42.84 downloaded 332 KB
+#18 42.84 
+#18 42.85 trying URL 'https://bioconductor.org/packages/3.18/bioc/src/contrib/ScaledMatrix_1.10.0.tar.gz'
+#18 43.91 Content type 'application/gzip' length 313034 bytes (305 KB)
+#18 43.91 ==================================================
+#18 44.28 downloaded 305 KB
+#18 44.28 
+#18 44.29 trying URL 'https://bioconductor.org/packages/3.18/bioc/src/contrib/beachmat_2.18.1.tar.gz'
+#18 45.54 Content type 'application/gzip' length 512143 bytes (500 KB)
+#18 45.54 ==================================================
+#18 45.93 downloaded 500 KB
+#18 45.93 
+#18 45.94 trying URL 'https://bioconductor.org/packages/3.18/bioc/src/contrib/batchelor_1.18.1.tar.gz'
+#18 47.15 Content type 'application/gzip' length 2026240 bytes (1.9 MB)
+#18 47.23 ==================================================
+#18 48.70 downloaded 1.9 MB
+#18 48.70 
+#18 49.51 * installing *binary* package ‘formatR’ ...
+#18 49.53 * DONE (formatR)
+#18 50.16 * installing *binary* package ‘futile.options’ ...
+#18 50.17 * DONE (futile.options)
+#18 50.88 * installing *binary* package ‘RcppHNSW’ ...
+#18 50.89 * DONE (RcppHNSW)
+#18 51.64 * installing *binary* package ‘irlba’ ...
+#18 51.65 * DONE (irlba)
+#18 52.61 * installing *binary* package ‘rsvd’ ...
+#18 52.63 * DONE (rsvd)
+#18 53.55 * installing *source* package ‘sparseMatrixStats’ ...
+#18 53.55 ** using staged installation
+#18 53.59 ** libs
+#18 53.65 using C++ compiler: ‘g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+#18 53.65 using C++11
+#18 53.65 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
+#18 65.72 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c SparseMatrixView.cpp -o SparseMatrixView.o
+#18 73.99 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c methods.cpp -o methods.o
+#18 94.51 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c row_methods.cpp -o row_methods.o
+#18 102.8 g++ -std=gnu++11 -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o sparseMatrixStats.so RcppExports.o SparseMatrixView.o methods.o row_methods.o -L/usr/local/lib/R/lib -lR
+#18 103.2 installing to /usr/local/lib/R/site-library/00LOCK-sparseMatrixStats/00new/sparseMatrixStats/libs
+#18 103.2 ** R
+#18 103.2 ** inst
+#18 103.2 ** byte-compile and prepare package for lazy loading
+#18 109.3 ** help
+#18 109.7 *** installing help indices
+#18 109.9 *** copying figures
+#18 109.9 ** building package indices
+#18 110.6 ** installing vignettes
+#18 110.6 ** testing if installed package can be loaded from temporary location
+#18 113.8 ** checking absolute paths in shared objects and dynamic libraries
+#18 113.9 ** testing if installed package can be loaded from final location
+#18 117.3 ** testing if installed package keeps a record of temporary installation path
+#18 117.3 * DONE (sparseMatrixStats)
+#18 118.0 * installing *binary* package ‘snow’ ...
+#18 118.0 * DONE (snow)
+#18 118.8 * installing *source* package ‘ResidualMatrix’ ...
+#18 118.8 ** using staged installation
+#18 118.9 ** R
+#18 118.9 ** inst
+#18 118.9 ** byte-compile and prepare package for lazy loading
+#18 136.4 ** help
+#18 136.4 *** installing help indices
+#18 136.5 ** building package indices
+#18 137.1 ** installing vignettes
+#18 137.1 ** testing if installed package can be loaded from temporary location
+#18 146.3 ** testing if installed package can be loaded from final location
+#18 155.8 ** testing if installed package keeps a record of temporary installation path
+#18 155.8 * DONE (ResidualMatrix)
+#18 156.6 * installing *source* package ‘ScaledMatrix’ ...
+#18 156.6 ** using staged installation
+#18 156.6 ** R
+#18 156.6 ** inst
+#18 156.6 ** byte-compile and prepare package for lazy loading
+#18 174.4 ** help
+#18 174.4 *** installing help indices
+#18 174.5 ** building package indices
+#18 175.1 ** installing vignettes
+#18 175.1 ** testing if installed package can be loaded from temporary location
+#18 184.1 ** testing if installed package can be loaded from final location
+#18 193.4 ** testing if installed package keeps a record of temporary installation path
+#18 193.4 * DONE (ScaledMatrix)
+#18 194.7 * installing *source* package ‘beachmat’ ...
+#18 194.7 ** using staged installation
+#18 194.8 ** libs
+#18 194.8 using C++ compiler: ‘g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+#18 194.8 using C++17
+#18 194.8 g++ -std=gnu++17 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
+#18 206.7 g++ -std=gnu++17 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c delayed_isometric_binary.cpp -o delayed_isometric_binary.o
+#18 316.0 g++ -std=gnu++17 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c delayed_isometric_math.cpp -o delayed_isometric_math.o
+#18 402.1 g++ -std=gnu++17 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c delayed_isometric_unary.cpp -o delayed_isometric_unary.o
+#18 622.2 g++ -std=gnu++17 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c delayed_other.cpp -o delayed_other.o
+#18 668.7 g++ -std=gnu++17 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c dense_matrix.cpp -o dense_matrix.o
+#18 680.2 g++ -std=gnu++17 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c fragment_sparse_rows.cpp -o fragment_sparse_rows.o
+#18 687.8 g++ -std=gnu++17 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c sparse_matrix.cpp -o sparse_matrix.o
+#18 721.0 g++ -std=gnu++17 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c tatami_utils.cpp -o tatami_utils.o
+#18 735.2 g++ -std=gnu++17 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c unknown_matrix.cpp -o unknown_matrix.o
+#18 792.9 g++ -std=gnu++17 -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o beachmat.so RcppExports.o delayed_isometric_binary.o delayed_isometric_math.o delayed_isometric_unary.o delayed_other.o dense_matrix.o fragment_sparse_rows.o sparse_matrix.o tatami_utils.o unknown_matrix.o -L/usr/local/lib/R/lib -lR
+#18 797.3 installing to /usr/local/lib/R/site-library/00LOCK-beachmat/00new/beachmat/libs
+#18 797.5 ** R
+#18 797.6 ** inst
+#18 797.8 ** byte-compile and prepare package for lazy loading
+#18 807.9 ** help
+#18 808.2 *** installing help indices
+#18 808.6 ** building package indices
+#18 809.2 ** installing vignettes
+#18 809.3 ** testing if installed package can be loaded from temporary location
+#18 818.2 ** checking absolute paths in shared objects and dynamic libraries
+#18 818.9 ** testing if installed package can be loaded from final location
+#18 827.5 ** testing if installed package keeps a record of temporary installation path
+#18 827.5 * DONE (beachmat)
+#18 828.2 * installing *binary* package ‘lambda.r’ ...
+#18 828.2 * DONE (lambda.r)
+#18 828.8 * installing *source* package ‘DelayedMatrixStats’ ...
+#18 828.8 ** using staged installation
+#18 828.8 ** R
+#18 828.8 ** inst
+#18 828.8 ** byte-compile and prepare package for lazy loading
+#18 843.5 ** help
+#18 843.6 *** installing help indices
+#18 843.7 ** building package indices
+#18 844.2 ** installing vignettes
+#18 844.2 ** testing if installed package can be loaded from temporary location
+#18 849.6 ** testing if installed package can be loaded from final location
+#18 855.0 ** testing if installed package keeps a record of temporary installation path
+#18 855.0 * DONE (DelayedMatrixStats)
+#18 855.5 * installing *binary* package ‘futile.logger’ ...
+#18 855.5 * DONE (futile.logger)
+#18 856.1 * installing *source* package ‘BiocParallel’ ...
+#18 856.1 ** using staged installation
+#18 856.6 checking whether the C++ compiler works... yes
+#18 856.8 checking for C++ compiler default output file name... a.out
+#18 856.8 checking for suffix of executables... 
+#18 856.8 checking whether we are cross compiling... no
+#18 856.9 checking for suffix of object files... o
+#18 856.9 checking whether the compiler supports GNU C++... yes
+#18 857.0 checking whether g++ -std=gnu++17 accepts -g... yes
+#18 857.0 checking for g++ -std=gnu++17 option to enable C++11 features... none needed
+#18 857.1 checking for library containing shm_open... none required
+#18 857.2 checking for stdio.h... yes
+#18 857.2 checking for stdlib.h... yes
+#18 857.3 checking for string.h... yes
+#18 857.3 checking for inttypes.h... yes
+#18 857.4 checking for stdint.h... yes
+#18 857.4 checking for strings.h... yes
+#18 857.5 checking for sys/stat.h... yes
+#18 857.5 checking for sys/types.h... yes
+#18 857.6 checking for unistd.h... yes
+#18 857.6 checking for sys/mman.h... yes
+#18 857.7 configure: creating ./config.status
+#18 857.8 config.status: creating src/Makevars
+#18 857.9 ** libs
+#18 857.9 using C++ compiler: ‘g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+#18 857.9 using C++11
+#18 857.9 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/BH/include' -I'/usr/local/lib/R/site-library/cpp11/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c cpp11.cpp -o cpp11.o
+#18 859.1 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/BH/include' -I'/usr/local/lib/R/site-library/cpp11/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c ipcmutex.cpp -o ipcmutex.o
+#18 864.9 g++ -std=gnu++11 -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o BiocParallel.so cpp11.o ipcmutex.o -L/usr/local/lib/R/lib -lR
+#18 865.1 installing to /usr/local/lib/R/site-library/00LOCK-BiocParallel/00new/BiocParallel/libs
+#18 865.1 ** R
+#18 865.1 ** inst
+#18 865.1 ** byte-compile and prepare package for lazy loading
+#18 870.7 ** help
+#18 870.9 *** installing help indices
+#18 871.1 ** building package indices
+#18 871.6 ** installing vignettes
+#18 871.6 ** testing if installed package can be loaded from temporary location
+#18 872.1 ** checking absolute paths in shared objects and dynamic libraries
+#18 872.1 ** testing if installed package can be loaded from final location
+#18 872.7 ** testing if installed package keeps a record of temporary installation path
+#18 872.7 * DONE (BiocParallel)
+#18 873.4 * installing *source* package ‘BiocNeighbors’ ...
+#18 873.5 ** using staged installation
+#18 873.5 ** libs
+#18 873.5 using C++ compiler: ‘g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+#18 873.5 using C++11
+#18 873.5 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
+#18 879.6 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c annoy.cpp -o annoy.o
+#18 885.0 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c build_annoy.cpp -o build_annoy.o
+#18 890.9 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c build_hnsw.cpp -o build_hnsw.o
+#18 897.6 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c build_vptree.cpp -o build_vptree.o
+#18 901.6 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c distances.cpp -o distances.o
+#18 904.7 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c exhaustive.cpp -o exhaustive.o
+#18 909.5 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c find_annoy.cpp -o find_annoy.o
+#18 914.7 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c find_exhaustive.cpp -o find_exhaustive.o
+#18 918.9 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c find_hnsw.cpp -o find_hnsw.o
+#18 924.1 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c find_kmknn.cpp -o find_kmknn.o
+#18 927.5 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c find_mutual_nns.cpp -o find_mutual_nns.o
+#18 930.2 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c find_vptree.cpp -o find_vptree.o
+#18 933.9 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c hnsw.cpp -o hnsw.o
+#18 939.1 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c kmknn.cpp -o kmknn.o
+#18 943.1 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c query_annoy.cpp -o query_annoy.o
+#18 947.1 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c query_exhaustive.cpp -o query_exhaustive.o
+#18 950.5 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c query_hnsw.cpp -o query_hnsw.o
+#18 955.1 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c query_kmknn.cpp -o query_kmknn.o
+#18 958.5 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c query_vptree.cpp -o query_vptree.o
+#18 962.0 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c utils.cpp -o utils.o
+#18 964.1 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/RcppHNSW/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c vptree.cpp -o vptree.o
+#18 967.9 g++ -std=gnu++11 -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o BiocNeighbors.so RcppExports.o annoy.o build_annoy.o build_hnsw.o build_vptree.o distances.o exhaustive.o find_annoy.o find_exhaustive.o find_hnsw.o find_kmknn.o find_mutual_nns.o find_vptree.o hnsw.o kmknn.o query_annoy.o query_exhaustive.o query_hnsw.o query_kmknn.o query_vptree.o utils.o vptree.o -L/usr/local/lib/R/lib -lR
+#18 968.2 installing to /usr/local/lib/R/site-library/00LOCK-BiocNeighbors/00new/BiocNeighbors/libs
+#18 968.2 ** R
+#18 968.2 ** inst
+#18 968.2 ** byte-compile and prepare package for lazy loading
+#18 971.1 ** help
+#18 971.2 *** installing help indices
+#18 971.3 ** building package indices
+#18 971.6 ** installing vignettes
+#18 971.7 ** testing if installed package can be loaded from temporary location
+#18 973.4 ** checking absolute paths in shared objects and dynamic libraries
+#18 973.5 ** testing if installed package can be loaded from final location
+#18 975.3 ** testing if installed package keeps a record of temporary installation path
+#18 975.3 * DONE (BiocNeighbors)
+#18 975.8 * installing *source* package ‘BiocSingular’ ...
+#18 975.8 ** using staged installation
+#18 975.8 ** libs
+#18 975.8 using C++ compiler: ‘g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+#18 975.8 using C++17
+#18 975.8 g++ -std=gnu++17 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/beachmat/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
+#18 979.0 g++ -std=gnu++17 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/beachmat/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c compute_scale.cpp -o compute_scale.o
+#18 984.9 g++ -std=gnu++17 -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o BiocSingular.so RcppExports.o compute_scale.o -L/usr/local/lib/R/lib -lR
+#18 985.0 installing to /usr/local/lib/R/site-library/00LOCK-BiocSingular/00new/BiocSingular/libs
+#18 985.0 ** R
+#18 985.0 ** inst
+#18 985.0 ** byte-compile and prepare package for lazy loading
+#18 989.8 ** help
+#18 989.8 *** installing help indices
+#18 989.8 ** building package indices
+#18 990.2 ** installing vignettes
+#18 990.2 ** testing if installed package can be loaded from temporary location
+#18 993.9 ** checking absolute paths in shared objects and dynamic libraries
+#18 993.9 ** testing if installed package can be loaded from final location
+#18 997.6 ** testing if installed package keeps a record of temporary installation path
+#18 997.6 * DONE (BiocSingular)
+#18 998.1 * installing *source* package ‘scuttle’ ...
+#18 998.1 ** using staged installation
+#18 998.1 ** libs
+#18 998.2 using C++ compiler: ‘g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+#18 998.2 using C++11
+#18 998.2 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/beachmat/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
+#18 1001.4 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/beachmat/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c cumulative_prop.cpp -o cumulative_prop.o
+#18 1007.2 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/beachmat/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c downsample_counts.cpp -o downsample_counts.o
+#18 1013.2 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/beachmat/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c fit_linear_model.cpp -o fit_linear_model.o
+#18 1018.9 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/beachmat/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c pool_size_factors.cpp -o pool_size_factors.o
+#18 1025.6 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/beachmat/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c sparse_summarize.cpp -o sparse_summarize.o
+#18 1028.2 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/beachmat/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c sum_counts.cpp -o sum_counts.o
+#18 1033.7 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG -I../inst/include/ -I'/usr/local/lib/R/site-library/Rcpp/include' -I'/usr/local/lib/R/site-library/beachmat/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c utils.cpp -o utils.o
+#18 1036.1 g++ -std=gnu++11 -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o scuttle.so RcppExports.o cumulative_prop.o downsample_counts.o fit_linear_model.o pool_size_factors.o sparse_summarize.o sum_counts.o utils.o -llapack -lblas -lgfortran -lm -lquadmath -L/usr/local/lib/R/lib -lR
+#18 1036.2 installing to /usr/local/lib/R/site-library/00LOCK-scuttle/00new/scuttle/libs
+#18 1036.2 ** R
+#18 1036.2 ** inst
+#18 1036.2 ** byte-compile and prepare package for lazy loading
+#18 1042.8 ** help
+#18 1042.9 *** installing help indices
+#18 1042.9 ** building package indices
+#18 1043.2 ** installing vignettes
+#18 1043.2 ** testing if installed package can be loaded from temporary location
+#18 1048.3 ** checking absolute paths in shared objects and dynamic libraries
+#18 1048.4 ** testing if installed package can be loaded from final location
+#18 1053.8 ** testing if installed package keeps a record of temporary installation path
+#18 1053.8 * DONE (scuttle)
+#18 1054.4 * installing *source* package ‘batchelor’ ...
+#18 1054.4 ** using staged installation
+#18 1054.4 ** libs
+#18 1054.4 using C++ compiler: ‘g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+#18 1054.4 using C++11
+#18 1054.4 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
+#18 1057.1 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c adjust_shift_variance.cpp -o adjust_shift_variance.o
+#18 1059.5 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c find_mutual_nns.cpp -o find_mutual_nns.o
+#18 1061.8 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c smooth_gaussian_kernel.cpp -o smooth_gaussian_kernel.o
+#18 1064.1 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c utils.cpp -o utils.o
+#18 1066.0 g++ -std=gnu++11 -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o batchelor.so RcppExports.o adjust_shift_variance.o find_mutual_nns.o smooth_gaussian_kernel.o utils.o -L/usr/local/lib/R/lib -lR
+#18 1066.1 installing to /usr/local/lib/R/site-library/00LOCK-batchelor/00new/batchelor/libs
+#18 1066.1 ** R
+#18 1066.1 ** inst
+#18 1066.1 ** byte-compile and prepare package for lazy loading
+#18 1073.5 ** help
+#18 1073.6 *** installing help indices
+#18 1073.7 ** building package indices
+#18 1074.1 ** installing vignettes
+#18 1074.1 ** testing if installed package can be loaded from temporary location
+#18 1080.2 ** checking absolute paths in shared objects and dynamic libraries
+#18 1080.2 ** testing if installed package can be loaded from final location
+#18 1086.3 ** testing if installed package keeps a record of temporary installation path
+#18 1086.3 * DONE (batchelor)
+#18 1086.4 
+#18 1086.4 The downloaded source packages are in
+#18 1086.4 	‘/tmp/RtmpTCNRFN/downloaded_packages’
+#18 1088.7 Old packages: 'boot', 'codetools', 'lattice'
+#18 1089.0 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/boot_1.3-30.tar.gz'
+#18 1090.2 Content type 'binary/octet-stream' length 628084 bytes (613 KB)
+#18 1090.2 ==================================================
+#18 1090.4 downloaded 613 KB
+#18 1090.4 
+#18 1090.4 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/codetools_0.2-20.tar.gz'
+#18 1091.8 Content type 'binary/octet-stream' length 88775 bytes (86 KB)
+#18 1091.8 ==================================================
+#18 1091.8 downloaded 86 KB
+#18 1091.8 
+#18 1091.8 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/lattice_0.22-6.tar.gz'
+#18 1093.0 Content type 'binary/octet-stream' length 1358310 bytes (1.3 MB)
+#18 1093.0 ==================================================
+#18 1093.3 downloaded 1.3 MB
+#18 1093.3 
+#18 1093.6 * installing *binary* package ‘boot’ ...
+#18 1093.7 * DONE (boot)
+#18 1094.0 * installing *binary* package ‘codetools’ ...
+#18 1094.0 * DONE (codetools)
+#18 1094.4 * installing *binary* package ‘lattice’ ...
+#18 1094.4 * DONE (lattice)
+#18 1094.4 
+#18 1094.4 The downloaded source packages are in
+#18 1094.4 	‘/tmp/RtmpTCNRFN/downloaded_packages’
+#18 1094.4 Updating HTML index of packages in '.Library'
+#18 1094.4 Making 'packages.html' ... done
+#18 DONE 1094.6s
+
+#19 [finalize finalize 4/8] RUN --mount=type=cache,sharing=locked,target=/tmp/downloaded_packages installGithub.r cole-trapnell-lab/monocle3
+#19 1.243 Downloading GitHub repo cole-trapnell-lab/monocle3@HEAD
+#19 15.86 sitmo        (NA -> 2.0.2  ) [CRAN]
+#19 15.86 DBI          (NA -> 1.2.2  ) [CRAN]
+#19 15.86 proxy        (NA -> 0.4-27 ) [CRAN]
+#19 15.86 wk           (NA -> 0.9.1  ) [CRAN]
+#19 15.86 e1071        (NA -> 1.7-14 ) [CRAN]
+#19 15.86 units        (NA -> 0.8-5  ) [CRAN]
+#19 15.86 s2           (NA -> 1.1.6  ) [CRAN]
+#19 15.86 classInt     (NA -> 0.4-10 ) [CRAN]
+#19 15.86 sp           (NA -> 2.1-3  ) [CRAN]
+#19 15.86 warp         (NA -> 0.2.1  ) [CRAN]
+#19 15.86 Rhdf5lib     (NA -> 1.22.1 ) [CRAN]
+#19 15.86 rhdf5filters (NA -> 1.12.1 ) [CRAN]
+#19 15.86 vipor        (NA -> 0.4.7  ) [CRAN]
+#19 15.86 beeswarm     (NA -> 0.4.0  ) [CRAN]
+#19 15.86 RcppProgress (NA -> 0.4.2  ) [CRAN]
+#19 15.86 dqrng        (NA -> 0.3.2  ) [CRAN]
+#19 15.86 RSpectra     (NA -> 0.16-1 ) [CRAN]
+#19 15.86 RcppAnnoy    (NA -> 0.0.22 ) [CRAN]
+#19 15.86 FNN          (NA -> 1.1.4  ) [CRAN]
+#19 15.86 biglm        (NA -> 0.9-2.1) [CRAN]
+#19 15.86 deldir       (NA -> 2.0-4  ) [CRAN]
+#19 15.86 sf           (NA -> 1.0-16 ) [CRAN]
+#19 15.86 spData       (NA -> 2.3.0  ) [CRAN]
+#19 15.86 slider       (NA -> 0.3.1  ) [CRAN]
+#19 15.86 furrr        (NA -> 0.3.1  ) [CRAN]
+#19 15.86 plyr         (NA -> 1.8.9  ) [CRAN]
+#19 15.86 zoo          (NA -> 1.8-12 ) [CRAN]
+#19 15.86 rhdf5        (NA -> 2.44.0 ) [CRAN]
+#19 15.86 png          (NA -> 0.1-8  ) [CRAN]
+#19 15.86 ggbeeswarm   (NA -> 0.7.2  ) [CRAN]
+#19 15.86 Cairo        (NA -> 1.6-2  ) [CRAN]
+#19 15.86 uwot         (NA -> 0.2.2  ) [CRAN]
+#19 15.86 speedglm     (NA -> 0.3-5  ) [CRAN]
+#19 15.86 spdep        (NA -> 1.3-3  ) [CRAN]
+#19 15.86 slam         (NA -> 0.1-50 ) [CRAN]
+#19 15.86 Rtsne        (NA -> 0.17   ) [CRAN]
+#19 15.86 RhpcBLASctl  (NA -> 0.23-42) [CRAN]
+#19 15.86 rsample      (NA -> 1.2.1  ) [CRAN]
+#19 15.86 reshape2     (NA -> 1.4.4  ) [CRAN]
+#19 15.86 RANN         (NA -> 2.6.1  ) [CRAN]
+#19 15.86 pscl         (NA -> 1.5.9  ) [CRAN]
+#19 15.86 pheatmap     (NA -> 1.0.12 ) [CRAN]
+#19 15.86 pbmcapply    (NA -> 1.5.1  ) [CRAN]
+#19 15.86 pbapply      (NA -> 1.7-2  ) [CRAN]
+#19 15.86 lmtest       (NA -> 0.9-40 ) [CRAN]
+#19 15.86 limma        (NA -> 3.56.2 ) [CRAN]
+#19 15.86 leidenbase   (NA -> 0.1.27 ) [CRAN]
+#19 15.86 HDF5Array    (NA -> 1.28.1 ) [CRAN]
+#19 15.86 Skipping 24 packages ahead of CRAN: S4Arrays, IRanges, S4Vectors, MatrixGenerics, BiocGenerics, GenomeInfoDbData, zlibbioc, XVector, GenomeInfoDb, DelayedArray, Biobase, sparseMatrixStats, beachmat, DelayedMatrixStats, SummarizedExperiment, GenomicRanges, BiocParallel, SingleCellExperiment, ScaledMatrix, ResidualMatrix, scuttle, BiocSingular, BiocNeighbors, batchelor
+#19 15.86 grr          (NA -> 0.9.5  ) [CRAN]
+#19 15.86 ggrastr      (NA -> 1.0.2  ) [CRAN]
+#19 15.86 Installing 50 packages: sitmo, DBI, proxy, wk, e1071, units, s2, classInt, sp, warp, Rhdf5lib, rhdf5filters, vipor, beeswarm, RcppProgress, dqrng, RSpectra, RcppAnnoy, FNN, biglm, deldir, sf, spData, slider, furrr, plyr, zoo, rhdf5, png, ggbeeswarm, Cairo, uwot, speedglm, spdep, slam, Rtsne, RhpcBLASctl, rsample, reshape2, RANN, pscl, pheatmap, pbmcapply, pbapply, lmtest, limma, leidenbase, HDF5Array, grr, ggrastr
+#19 15.86 Installing packages into ‘/usr/local/lib/R/site-library’
+#19 15.86 (as ‘lib’ is unspecified)
+#19 16.16 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/sitmo_2.0.2.tar.gz'
+#19 17.41 Content type 'binary/octet-stream' length 169266 bytes (165 KB)
+#19 17.41 ==================================================
+#19 17.46 downloaded 165 KB
+#19 17.46 
+#19 17.47 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/DBI_1.2.2.tar.gz'
+#19 18.83 Content type 'binary/octet-stream' length 890852 bytes (869 KB)
+#19 18.83 ==================================================
+#19 19.03 downloaded 869 KB
+#19 19.03 
+#19 19.04 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/proxy_0.4-27.tar.gz'
+#19 20.24 Content type 'binary/octet-stream' length 174072 bytes (169 KB)
+#19 20.24 ==================================================
+#19 20.31 downloaded 169 KB
+#19 20.31 
+#19 20.31 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/wk_0.9.1.tar.gz'
+#19 21.60 Content type 'binary/octet-stream' length 1720628 bytes (1.6 MB)
+#19 21.62 ==================================================
+#19 21.91 downloaded 1.6 MB
+#19 21.91 
+#19 21.92 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/e1071_1.7-14.tar.gz'
+#19 23.26 Content type 'binary/octet-stream' length 589705 bytes (575 KB)
+#19 23.26 ==================================================
+#19 23.46 downloaded 575 KB
+#19 23.46 
+#19 23.47 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/units_0.8-5.tar.gz'
+#19 24.72 Content type 'binary/octet-stream' length 354952 bytes (346 KB)
+#19 24.72 ==================================================
+#19 24.79 downloaded 346 KB
+#19 24.79 
+#19 24.79 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/s2_1.1.6.tar.gz'
+#19 26.01 Content type 'binary/octet-stream' length 2168409 bytes (2.1 MB)
+#19 26.03 ==================================================
+#19 26.40 downloaded 2.1 MB
+#19 26.40 
+#19 26.41 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/classInt_0.4-10.tar.gz'
+#19 27.75 Content type 'binary/octet-stream' length 497588 bytes (485 KB)
+#19 27.75 ==================================================
+#19 27.89 downloaded 485 KB
+#19 27.89 
+#19 27.90 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/sp_2.1-3.tar.gz'
+#19 29.19 Content type 'binary/octet-stream' length 2089299 bytes (2.0 MB)
+#19 29.22 ==================================================
+#19 29.59 downloaded 2.0 MB
+#19 29.59 
+#19 29.61 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/warp_0.2.1.tar.gz'
+#19 30.77 Content type 'binary/octet-stream' length 62332 bytes (60 KB)
+#19 30.77 ==================================================
+#19 30.79 downloaded 60 KB
+#19 30.79 
+#19 30.81 trying URL 'https://bioconductor.org/packages/3.17/bioc/src/contrib/Rhdf5lib_1.22.1.tar.gz'
+#19 32.02 Content type 'application/gzip' length 12083420 bytes (11.5 MB)
+#19 33.72 ==================================================
+#19 43.44 downloaded 11.5 MB
+#19 43.44 
+#19 43.45 trying URL 'https://bioconductor.org/packages/3.17/bioc/src/contrib/rhdf5filters_1.12.1.tar.gz'
+#19 44.44 Content type 'application/gzip' length 1174259 bytes (1.1 MB)
+#19 44.53 ==================================================
+#19 45.05 downloaded 1.1 MB
+#19 45.05 
+#19 45.05 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/vipor_0.4.7.tar.gz'
+#19 46.27 Content type 'binary/octet-stream' length 4583320 bytes (4.4 MB)
+#19 46.32 ==================================================
+#19 47.35 downloaded 4.4 MB
+#19 47.35 
+#19 47.36 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/beeswarm_0.4.0.tar.gz'
+#19 48.60 Content type 'binary/octet-stream' length 77211 bytes (75 KB)
+#19 48.60 ==================================================
+#19 48.66 downloaded 75 KB
+#19 48.66 
+#19 48.66 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/RcppProgress_0.4.2.tar.gz'
+#19 49.82 Content type 'binary/octet-stream' length 19762 bytes (19 KB)
+#19 49.82 ==================================================
+#19 49.82 downloaded 19 KB
+#19 49.82 
+#19 49.83 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/dqrng_0.3.2.tar.gz'
+#19 51.04 Content type 'binary/octet-stream' length 166331 bytes (162 KB)
+#19 51.04 ==================================================
+#19 51.10 downloaded 162 KB
+#19 51.10 
+#19 51.10 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/RSpectra_0.16-1.tar.gz'
+#19 52.48 Content type 'binary/octet-stream' length 511184 bytes (499 KB)
+#19 52.48 ==================================================
+#19 52.67 downloaded 499 KB
+#19 52.67 
+#19 52.67 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/RcppAnnoy_0.0.22.tar.gz'
+#19 53.89 Content type 'binary/octet-stream' length 264307 bytes (258 KB)
+#19 53.89 ==================================================
+#19 54.07 downloaded 258 KB
+#19 54.07 
+#19 54.07 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/FNN_1.1.4.tar.gz'
+#19 55.43 Content type 'binary/octet-stream' length 125990 bytes (123 KB)
+#19 55.43 ==================================================
+#19 55.48 downloaded 123 KB
+#19 55.48 
+#19 55.48 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/biglm_0.9-2.1.tar.gz'
+#19 56.72 Content type 'binary/octet-stream' length 65839 bytes (64 KB)
+#19 56.72 ==================================================
+#19 56.74 downloaded 64 KB
+#19 56.74 
+#19 56.75 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/deldir_2.0-4.tar.gz'
+#19 58.04 Content type 'binary/octet-stream' length 272256 bytes (265 KB)
+#19 58.04 ==================================================
+#19 58.11 downloaded 265 KB
+#19 58.11 
+#19 58.12 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/sf_1.0-16.tar.gz'
+#19 59.41 Content type 'binary/octet-stream' length 3557771 bytes (3.4 MB)
+#19 59.45 ==================================================
+#19 60.14 downloaded 3.4 MB
+#19 60.14 
+#19 60.15 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/spData_2.3.0.tar.gz'
+#19 61.70 Content type 'binary/octet-stream' length 4027791 bytes (3.8 MB)
+#19 61.72 ==================================================
+#19 62.42 downloaded 3.8 MB
+#19 62.42 
+#19 62.43 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/slider_0.3.1.tar.gz'
+#19 63.58 Content type 'binary/octet-stream' length 297410 bytes (290 KB)
+#19 63.58 ==================================================
+#19 63.68 downloaded 290 KB
+#19 63.68 
+#19 63.69 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/furrr_0.3.1.tar.gz'
+#19 64.90 Content type 'binary/octet-stream' length 1017574 bytes (993 KB)
+#19 64.91 ==================================================
+#19 65.18 downloaded 993 KB
+#19 65.18 
+#19 65.18 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/plyr_1.8.9.tar.gz'
+#19 66.40 Content type 'binary/octet-stream' length 819050 bytes (799 KB)
+#19 66.40 ==================================================
+#19 66.60 downloaded 799 KB
+#19 66.60 
+#19 66.61 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/zoo_1.8-12.tar.gz'
+#19 67.72 Content type 'binary/octet-stream' length 1015488 bytes (991 KB)
+#19 67.72 ==================================================
+#19 67.97 downloaded 991 KB
+#19 67.97 
+#19 67.98 trying URL 'https://bioconductor.org/packages/3.17/bioc/src/contrib/rhdf5_2.44.0.tar.gz'
+#19 69.04 Content type 'application/gzip' length 1249545 bytes (1.2 MB)
+#19 69.07 ==================================================
+#19 69.65 downloaded 1.2 MB
+#19 69.65 
+#19 69.65 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/png_0.1-8.tar.gz'
+#19 70.85 Content type 'binary/octet-stream' length 40025 bytes (39 KB)
+#19 70.85 ==================================================
+#19 70.85 downloaded 39 KB
+#19 70.85 
+#19 70.86 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/ggbeeswarm_0.7.2.tar.gz'
+#19 72.11 Content type 'binary/octet-stream' length 1754648 bytes (1.7 MB)
+#19 72.13 ==================================================
+#19 72.49 downloaded 1.7 MB
+#19 72.49 
+#19 72.49 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/Cairo_1.6-2.tar.gz'
+#19 73.66 Content type 'binary/octet-stream' length 82593 bytes (80 KB)
+#19 73.66 ==================================================
+#19 73.70 downloaded 80 KB
+#19 73.70 
+#19 73.70 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/uwot_0.2.2.tar.gz'
+#19 74.92 Content type 'binary/octet-stream' length 968815 bytes (946 KB)
+#19 74.92 ==================================================
+#19 75.11 downloaded 946 KB
+#19 75.11 
+#19 75.11 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/speedglm_0.3-5.tar.gz'
+#19 76.32 Content type 'binary/octet-stream' length 189097 bytes (184 KB)
+#19 76.32 ==================================================
+#19 76.39 downloaded 184 KB
+#19 76.39 
+#19 76.40 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/spdep_1.3-3.tar.gz'
+#19 77.80 Content type 'binary/octet-stream' length 4601903 bytes (4.4 MB)
+#19 77.92 ==================================================
+#19 79.50 downloaded 4.4 MB
+#19 79.50 
+#19 79.51 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/slam_0.1-50.tar.gz'
+#19 80.78 Content type 'binary/octet-stream' length 184464 bytes (180 KB)
+#19 80.78 ==================================================
+#19 80.95 downloaded 180 KB
+#19 80.95 
+#19 80.95 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/Rtsne_0.17.tar.gz'
+#19 82.20 Content type 'binary/octet-stream' length 111980 bytes (109 KB)
+#19 82.20 ==================================================
+#19 82.24 downloaded 109 KB
+#19 82.24 
+#19 82.25 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/RhpcBLASctl_0.23-42.tar.gz'
+#19 83.71 Content type 'binary/octet-stream' length 14423 bytes (14 KB)
+#19 83.71 ==================================================
+#19 83.71 downloaded 14 KB
+#19 83.71 
+#19 83.71 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/rsample_1.2.1.tar.gz'
+#19 90.03 Content type 'binary/octet-stream' length 523344 bytes (511 KB)
+#19 90.03 ==================================================
+#19 90.17 downloaded 511 KB
+#19 90.17 
+#19 90.18 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/reshape2_1.4.4.tar.gz'
+#19 91.52 Content type 'binary/octet-stream' length 115281 bytes (112 KB)
+#19 91.52 ==================================================
+#19 91.56 downloaded 112 KB
+#19 91.56 
+#19 91.57 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/RANN_2.6.1.tar.gz'
+#19 92.99 Content type 'binary/octet-stream' length 41388 bytes (40 KB)
+#19 92.99 ==================================================
+#19 93.01 downloaded 40 KB
+#19 93.01 
+#19 93.01 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/pscl_1.5.9.tar.gz'
+#19 95.81 Content type 'binary/octet-stream' length 3394709 bytes (3.2 MB)
+#19 95.85 ==================================================
+#19 96.68 downloaded 3.2 MB
+#19 96.68 
+#19 96.69 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/pheatmap_1.0.12.tar.gz'
+#19 98.07 Content type 'binary/octet-stream' length 76685 bytes (74 KB)
+#19 98.07 ==================================================
+#19 98.13 downloaded 74 KB
+#19 98.13 
+#19 98.14 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/pbmcapply_1.5.1.tar.gz'
+#19 99.55 Content type 'binary/octet-stream' length 39753 bytes (38 KB)
+#19 99.55 ==================================================
+#19 99.58 downloaded 38 KB
+#19 99.58 
+#19 99.59 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/pbapply_1.7-2.tar.gz'
+#19 100.9 Content type 'binary/octet-stream' length 98663 bytes (96 KB)
+#19 100.9 ==================================================
+#19 100.9 downloaded 96 KB
+#19 100.9 
+#19 100.9 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/lmtest_0.9-40.tar.gz'
+#19 102.2 Content type 'binary/octet-stream' length 398739 bytes (389 KB)
+#19 102.2 ==================================================
+#19 102.4 downloaded 389 KB
+#19 102.4 
+#19 102.4 trying URL 'https://bioconductor.org/packages/3.17/bioc/src/contrib/limma_3.56.2.tar.gz'
+#19 103.4 Content type 'application/gzip' length 1515291 bytes (1.4 MB)
+#19 103.5 ==================================================
+#19 104.1 downloaded 1.4 MB
+#19 104.1 
+#19 104.1 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/leidenbase_0.1.27.tar.gz'
+#19 105.4 Content type 'binary/octet-stream' length 1322370 bytes (1.3 MB)
+#19 105.4 ==================================================
+#19 105.7 downloaded 1.3 MB
+#19 105.7 
+#19 105.7 trying URL 'https://bioconductor.org/packages/3.17/bioc/src/contrib/HDF5Array_1.28.1.tar.gz'
+#19 106.6 Content type 'application/gzip' length 8097342 bytes (7.7 MB)
+#19 107.0 ==================================================
+#19 108.9 downloaded 7.7 MB
+#19 108.9 
+#19 108.9 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/grr_0.9.5.tar.gz'
+#19 110.2 Content type 'binary/octet-stream' length 42997 bytes (41 KB)
+#19 110.2 ==================================================
+#19 110.2 downloaded 41 KB
+#19 110.2 
+#19 110.2 trying URL 'https://p3m.dev/cran/__linux__/jammy/2024-04-23/src/contrib/ggrastr_1.0.2.tar.gz'
+#19 111.4 Content type 'binary/octet-stream' length 2672611 bytes (2.5 MB)
+#19 111.5 ==================================================
+#19 112.0 downloaded 2.5 MB
+#19 112.0 
+#19 112.2 * installing *binary* package ‘sitmo’ ...
+#19 112.3 * DONE (sitmo)
+#19 112.5 * installing *binary* package ‘DBI’ ...
+#19 112.6 * DONE (DBI)
+#19 112.8 * installing *binary* package ‘proxy’ ...
+#19 112.8 * DONE (proxy)
+#19 113.1 * installing *binary* package ‘wk’ ...
+#19 113.1 * DONE (wk)
+#19 113.4 * installing *binary* package ‘units’ ...
+#19 113.4 * DONE (units)
+#19 113.8 * installing *binary* package ‘sp’ ...
+#19 113.8 * DONE (sp)
+#19 114.0 * installing *binary* package ‘warp’ ...
+#19 114.0 * DONE (warp)
+#19 114.6 * installing *source* package ‘Rhdf5lib’ ...
+#19 114.6 ** using staged installation
+#19 115.2 checking for gcc... gcc
+#19 115.3 checking whether the C compiler works... yes
+#19 115.3 checking for C compiler default output file name... a.out
+#19 115.3 checking for suffix of executables... 
+#19 115.4 checking whether we are cross compiling... no
+#19 115.4 checking for suffix of object files... o
+#19 115.4 checking whether the compiler supports GNU C... yes
+#19 115.5 checking whether gcc accepts -g... yes
+#19 115.5 checking for gcc option to enable C11 features... none needed
+#19 115.5 checking whether the compiler supports GNU C++... yes
+#19 115.5 checking whether g++ -std=gnu++17 accepts -g... yes
+#19 115.6 checking for g++ -std=gnu++17 option to enable C++11 features... none needed
+#19 115.8 COMPILER = gcc
+#19 115.8 checking whether C compiler accepts -w... yes
+#19 115.9 checking whether to use -Wl,-rpath setting... yes
+#19 115.9 checking for stdio.h... yes
+#19 115.9 checking for stdlib.h... yes
+#19 115.9 checking for string.h... yes
+#19 116.0 checking for inttypes.h... yes
+#19 116.0 checking for stdint.h... yes
+#19 116.0 checking for strings.h... yes
+#19 116.0 checking for sys/stat.h... yes
+#19 116.0 checking for sys/types.h... yes
+#19 116.0 checking for unistd.h... yes
+#19 116.1 checking for zlib.h... yes
+#19 116.1 checking for szlib.h... no
+#19 116.1 checking for libaec.h... no
+#19 116.2 checking for curl/curl.h... yes
+#19 116.2 checking for openssl/evp.h... yes
+#19 116.2 checking for openssl/hmac.h... yes
+#19 116.3 checking for openssl/sha.h... yes
+#19 116.3 checking for curl_global_init in -lcurl... yes
+#19 116.4 checking for EVP_sha256 in -lcrypto... yes
+#19 116.4 S3_VFD=--enable-ros3-vfd
+#19 116.4 configure: creating ./config.status
+#19 116.5 config.status: creating src/Makevars
+#19 116.6 ** libs
+#19 116.6 using C compiler: ‘gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+#19 116.6 gunzip -dc hdf5small_cxx_hl_1.10.7.tar.gz | tar xf -;
+#19 116.7 cd hdf5/libaec-1.0.4/build; \
+#19 116.7 ../configure --with-pic --enable-shared=no --prefix=/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip --libdir=/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib \
+#19 116.7 CC='gcc' CXX='g++ -std=gnu++17' \
+#19 116.7 CPPFLAGS='-I/usr/local/include' \
+#19 116.7 CFLAGS='-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic' \
+#19 116.7 AR='ar' RANLIB='ranlib'; \
+#19 116.7 make; \
+#19 116.7 make install
+#19 116.8 checking build system type... x86_64-pc-linux-gnu
+#19 116.9 checking host system type... x86_64-pc-linux-gnu
+#19 116.9 checking how to print strings... printf
+#19 116.9 checking for gcc... gcc
+#19 116.9 checking whether the C compiler works... yes
+#19 117.0 checking for C compiler default output file name... a.out
+#19 117.0 checking for suffix of executables... 
+#19 117.0 checking whether we are cross compiling... no
+#19 117.1 checking for suffix of object files... o
+#19 117.1 checking whether we are using the GNU C compiler... yes
+#19 117.1 checking whether gcc accepts -g... yes
+#19 117.1 checking for gcc option to accept ISO C89... none needed
+#19 117.1 checking whether gcc understands -c and -o together... yes
+#19 117.2 checking for a sed that does not truncate output... /usr/bin/sed
+#19 117.2 checking for grep that handles long lines and -e... /usr/bin/grep
+#19 117.2 checking for egrep... /usr/bin/grep -E
+#19 117.2 checking for fgrep... /usr/bin/grep -F
+#19 117.2 checking for ld used by gcc... /usr/bin/ld
+#19 117.2 checking if the linker (/usr/bin/ld) is GNU ld... yes
+#19 117.2 checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+#19 117.2 checking the name lister (/usr/bin/nm -B) interface... BSD nm
+#19 117.2 checking whether ln -s works... yes
+#19 117.2 checking the maximum length of command line arguments... 1572864
+#19 117.2 checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+#19 117.2 checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+#19 117.2 checking for /usr/bin/ld option to reload object files... -r
+#19 117.2 checking for objdump... objdump
+#19 117.2 checking how to recognize dependent libraries... pass_all
+#19 117.2 checking for dlltool... no
+#19 117.2 checking how to associate runtime and link libraries... printf %s\n
+#19 117.2 checking for archiver @FILE support... @
+#19 117.2 checking for strip... strip
+#19 117.2 checking for ranlib... ranlib
+#19 117.2 checking for gawk... no
+#19 117.2 checking for mawk... mawk
+#19 117.2 checking command to parse /usr/bin/nm -B output from gcc object... ok
+#19 117.3 checking for sysroot... no
+#19 117.3 checking for a working dd... /usr/bin/dd
+#19 117.3 checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+#19 117.3 checking for mt... no
+#19 117.3 checking if : is a manifest tool... no
+#19 117.3 checking how to run the C preprocessor... gcc -E
+#19 117.4 checking for ANSI C header files... yes
+#19 117.5 checking for sys/types.h... yes
+#19 117.5 checking for sys/stat.h... yes
+#19 117.5 checking for stdlib.h... yes
+#19 117.5 checking for string.h... yes
+#19 117.6 checking for memory.h... yes
+#19 117.6 checking for strings.h... yes
+#19 117.6 checking for inttypes.h... yes
+#19 117.6 checking for stdint.h... yes
+#19 117.7 checking for unistd.h... yes
+#19 117.7 checking for dlfcn.h... yes
+#19 117.7 checking for objdir... .libs
+#19 117.8 checking if gcc supports -fno-rtti -fno-exceptions... yes
+#19 117.8 checking for gcc option to produce PIC... -fPIC -DPIC
+#19 117.8 checking if gcc PIC flag -fPIC -DPIC works... yes
+#19 117.8 checking if gcc static flag -static works... yes
+#19 117.9 checking if gcc supports -c -o file.o... yes
+#19 118.0 checking if gcc supports -c -o file.o... (cached) yes
+#19 118.0 checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+#19 118.0 checking dynamic linker characteristics... GNU/Linux ld.so
+#19 118.0 checking how to hardcode library paths into programs... immediate
+#19 118.0 checking whether stripping libraries is possible... yes
+#19 118.0 checking if libtool supports shared libraries... yes
+#19 118.0 checking whether to build shared libraries... no
+#19 118.0 checking whether to build static libraries... yes
+#19 118.0 checking whether the -Werror option is usable... yes
+#19 118.0 checking for simple visibility declarations... yes
+#19 118.1 checking for a BSD-compatible install... /usr/bin/install -c
+#19 118.1 checking whether build environment is sane... yes
+#19 118.1 checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+#19 118.1 checking whether make sets $(MAKE)... yes
+#19 118.1 checking whether make supports the include directive... yes (GNU style)
+#19 118.1 checking whether make supports nested variables... yes
+#19 118.1 checking dependency style of gcc... gcc3
+#19 118.1 checking whether to enable maintainer-specific portions of Makefiles... yes
+#19 118.1 checking for gcc option to accept ISO C99... none needed
+#19 118.2 checking for ANSI C header files... (cached) yes
+#19 118.2 checking whether byte ordering is bigendian... no
+#19 118.2 checking for inline... inline
+#19 118.2 checking for int64_t... yes
+#19 118.3 checking for size_t... yes
+#19 118.3 checking for uint32_t... yes
+#19 118.4 checking for uint64_t... yes
+#19 118.4 checking for uint8_t... yes
+#19 118.4 checking for inline... (cached) inline
+#19 118.4 checking for C/C++ restrict keyword... __restrict
+#19 118.4 checking for memset... yes
+#19 118.5 checking for strstr... yes
+#19 118.5 checking for snprintf... yes
+#19 118.6 checking whether __builtin_clzll is declared... yes
+#19 118.6 checking that generated files are newer than configure... done
+#19 119.1 configure: creating ./config.status
+#19 119.7 config.status: creating Makefile
+#19 119.8 config.status: creating src/Makefile
+#19 119.8 config.status: creating config/config.h
+#19 119.8 config.status: executing libtool commands
+#19 119.8 config.status: executing depfiles commands
+#19 119.9 make[1]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build'
+#19 119.9 Making all in src
+#19 119.9 make[2]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/src'
+#19 119.9 gcc -DHAVE_CONFIG_H -I. -I../../src -I../config  -DBUILDING_LIBAEC -I/usr/local/include -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic -MT aec.o -MD -MP -MF .deps/aec.Tpo -c -o aec.o ../../src/aec.c
+#19 120.0 mv -f .deps/aec.Tpo .deps/aec.Po
+#19 120.0 /bin/bash ../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I../../src -I../config  -DBUILDING_LIBAEC -I/usr/local/include -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic -MT encode.lo -MD -MP -MF .deps/encode.Tpo -c -o encode.lo ../../src/encode.c
+#19 120.0 libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I../../src -I../config -DBUILDING_LIBAEC -I/usr/local/include -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic -MT encode.lo -MD -MP -MF .deps/encode.Tpo -c ../../src/encode.c  -fPIC -DPIC -o encode.o
+#19 120.2 mv -f .deps/encode.Tpo .deps/encode.Plo
+#19 120.2 /bin/bash ../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I../../src -I../config  -DBUILDING_LIBAEC -I/usr/local/include -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic -MT encode_accessors.lo -MD -MP -MF .deps/encode_accessors.Tpo -c -o encode_accessors.lo ../../src/encode_accessors.c
+#19 120.3 libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I../../src -I../config -DBUILDING_LIBAEC -I/usr/local/include -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic -MT encode_accessors.lo -MD -MP -MF .deps/encode_accessors.Tpo -c ../../src/encode_accessors.c  -fPIC -DPIC -o encode_accessors.o
+#19 120.3 mv -f .deps/encode_accessors.Tpo .deps/encode_accessors.Plo
+#19 120.3 /bin/bash ../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I../../src -I../config  -DBUILDING_LIBAEC -I/usr/local/include -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic -MT decode.lo -MD -MP -MF .deps/decode.Tpo -c -o decode.lo ../../src/decode.c
+#19 120.3 libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I../../src -I../config -DBUILDING_LIBAEC -I/usr/local/include -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic -MT decode.lo -MD -MP -MF .deps/decode.Tpo -c ../../src/decode.c  -fPIC -DPIC -o decode.o
+#19 120.7 mv -f .deps/decode.Tpo .deps/decode.Plo
+#19 120.7 /bin/bash ../libtool  --tag=CC   --mode=link gcc -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic -version-info 0:10:0 -no-undefined  -o libaec.la -rpath /tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib encode.lo encode_accessors.lo decode.lo  
+#19 120.7 libtool: link: ar cr .libs/libaec.a  encode.o encode_accessors.o decode.o
+#19 120.7 libtool: link: ranlib .libs/libaec.a
+#19 120.7 libtool: link: ( cd ".libs" && rm -f "libaec.la" && ln -s "../libaec.la" "libaec.la" )
+#19 120.7 /bin/bash ../libtool  --tag=CC   --mode=link gcc -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic   -o aec aec.o libaec.la 
+#19 120.8 libtool: link: gcc -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic -o aec aec.o  ./.libs/libaec.a
+#19 120.8 gcc -DHAVE_CONFIG_H -I. -I../../src -I../config  -DBUILDING_LIBAEC -I/usr/local/include -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic -MT utime.o -MD -MP -MF .deps/utime.Tpo -c -o utime.o ../../src/utime.c
+#19 120.8 mv -f .deps/utime.Tpo .deps/utime.Po
+#19 120.8 /bin/bash ../libtool  --tag=CC   --mode=link gcc -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic   -o utime utime.o  
+#19 120.9 libtool: link: gcc -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic -o utime utime.o 
+#19 120.9 /bin/bash ../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I../../src -I../config  -DBUILDING_LIBAEC -I/usr/local/include -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic -MT sz_compat.lo -MD -MP -MF .deps/sz_compat.Tpo -c -o sz_compat.lo ../../src/sz_compat.c
+#19 120.9 libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I../../src -I../config -DBUILDING_LIBAEC -I/usr/local/include -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic -MT sz_compat.lo -MD -MP -MF .deps/sz_compat.Tpo -c ../../src/sz_compat.c  -fPIC -DPIC -o sz_compat.o
+#19 121.0 mv -f .deps/sz_compat.Tpo .deps/sz_compat.Plo
+#19 121.0 /bin/bash ../libtool  --tag=CC   --mode=link gcc -fvisibility=hidden -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic -version-info 2:1:0 -no-undefined  -o libsz.la -rpath /tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib sz_compat.lo libaec.la 
+#19 121.0 libtool: link: ar cr .libs/libsz.a  sz_compat.o
+#19 121.0 libtool: link: ranlib .libs/libsz.a
+#19 121.1 libtool: link: ( cd ".libs" && rm -f "libsz.la" && ln -s "../libsz.la" "libsz.la" )
+#19 121.1 make[2]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/src'
+#19 121.1 make[2]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build'
+#19 121.1 make[2]: Nothing to be done for 'all-am'.
+#19 121.1 make[2]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build'
+#19 121.1 make[1]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build'
+#19 121.1 make[1]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build'
+#19 121.1 Making install in src
+#19 121.1 make[2]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/src'
+#19 121.1 make[3]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/src'
+#19 121.1  /usr/bin/mkdir -p '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib'
+#19 121.1  /bin/bash ../libtool   --mode=install /usr/bin/install -c   libaec.la libsz.la '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib'
+#19 121.1 libtool: install: /usr/bin/install -c .libs/libaec.lai /tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib/libaec.la
+#19 121.1 libtool: install: /usr/bin/install -c .libs/libsz.lai /tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib/libsz.la
+#19 121.1 libtool: install: /usr/bin/install -c .libs/libaec.a /tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib/libaec.a
+#19 121.1 libtool: install: chmod 644 /tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib/libaec.a
+#19 121.1 libtool: install: ranlib /tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib/libaec.a
+#19 121.1 libtool: install: /usr/bin/install -c .libs/libsz.a /tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib/libsz.a
+#19 121.1 libtool: install: chmod 644 /tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib/libsz.a
+#19 121.1 libtool: install: ranlib /tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib/libsz.a
+#19 121.1 libtool: finish: PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/sbin" ldconfig -n /tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib
+#19 121.1 ----------------------------------------------------------------------
+#19 121.1 Libraries have been installed in:
+#19 121.1    /tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib
+#19 121.1 
+#19 121.1 If you ever happen to want to link against installed libraries
+#19 121.1 in a given directory, LIBDIR, you must either use libtool, and
+#19 121.1 specify the full pathname of the library, or use the '-LLIBDIR'
+#19 121.1 flag during linking and do at least one of the following:
+#19 121.1    - add LIBDIR to the 'LD_LIBRARY_PATH' environment variable
+#19 121.1      during execution
+#19 121.1    - add LIBDIR to the 'LD_RUN_PATH' environment variable
+#19 121.1      during linking
+#19 121.1    - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
+#19 121.1    - have your system administrator add LIBDIR to '/etc/ld.so.conf'
+#19 121.1 
+#19 121.1 See any operating system documentation about shared libraries for
+#19 121.1 more information, such as the ld(1) and ld.so(8) manual pages.
+#19 121.1 ----------------------------------------------------------------------
+#19 121.1  /usr/bin/mkdir -p '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/bin'
+#19 121.2   /bin/bash ../libtool   --mode=install /usr/bin/install -c aec '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/bin'
+#19 121.2 libtool: install: /usr/bin/install -c aec /tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/bin/aec
+#19 121.2  /usr/bin/mkdir -p '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/include'
+#19 121.2  /usr/bin/install -c -m 644 ../../src/libaec.h ../../src/szlib.h '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/include'
+#19 121.2  /usr/bin/mkdir -p '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/share/man/man1'
+#19 121.2  /usr/bin/install -c -m 644 ../../src/aec.1 '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/share/man/man1'
+#19 121.2 make[3]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/src'
+#19 121.2 make[2]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/src'
+#19 121.2 make[2]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build'
+#19 121.2 make[3]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build'
+#19 121.2 make[3]: Nothing to be done for 'install-exec-am'.
+#19 121.2 make[3]: Nothing to be done for 'install-data-am'.
+#19 121.2 make[3]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build'
+#19 121.2 make[2]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build'
+#19 121.2 make[1]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build'
+#19 121.2 cd hdf5; \
+#19 121.2 ./configure --with-pic --enable-shared=no --enable-cxx --enable-hl \
+#19 121.2 --enable-tests=no --enable-tools=no \
+#19 121.2 --with-szlib=/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip --with-zlib=yes \
+#19 121.2 --enable-ros3-vfd \
+#19 121.2 --enable-sharedlib-rpath \
+#19 121.2 CC='gcc' CXX='g++ -std=gnu++17' \
+#19 121.2 CPPFLAGS='-I/usr/local/include' \
+#19 121.2 CFLAGS='-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic' \
+#19 121.2 CXXFLAGS='-w -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic' \
+#19 121.2 AR='ar' RANLIB='ranlib' \
+#19 121.2 LDFLAGS='-L/usr/local/lib'; \
+#19 121.2 make lib
+#19 121.3 checking for a BSD-compatible install... /usr/bin/install -c
+#19 121.3 checking whether build environment is sane... yes
+#19 121.3 checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+#19 121.3 checking for gawk... no
+#19 121.3 checking for mawk... mawk
+#19 121.3 checking whether make sets $(MAKE)... yes
+#19 121.3 checking whether make supports nested variables... yes
+#19 121.3 checking whether make supports nested variables... (cached) yes
+#19 121.3 checking whether to enable maintainer-specific portions of Makefiles... no
+#19 121.3 checking build system type... x86_64-unknown-linux-gnu
+#19 121.4 checking host system type... x86_64-unknown-linux-gnu
+#19 121.4 checking shell variables initial values... done
+#19 121.4 checking if basename works... yes
+#19 121.4 checking if xargs works... yes
+#19 121.4 checking for cached host... none
+#19 121.4 checking for config x86_64-unknown-linux-gnu... no
+#19 121.4 checking for config x86_64-unknown-linux-gnu... no
+#19 121.4 checking for config unknown-linux-gnu... no
+#19 121.4 checking for config unknown-linux-gnu... no
+#19 121.4 checking for config x86_64-linux-gnu... no
+#19 121.4 checking for config x86_64-linux-gnu... no
+#19 121.4 checking for config x86_64-unknown... no
+#19 121.4 checking for config linux-gnu... found
+#19 121.4 compiler 'gcc' is GNU gcc-11.4.0
+#19 121.5 compiler 'gfortran' is GNU gfortran-11.4.0
+#19 121.5 compiler 'g++ -std=gnu++17' is GNU g++-11.4.0
+#19 121.7 checking for config ./config/site-specific/host-buildkitsandbox... no
+#19 121.7 checking for clang sanitizer checks... checking build mode... production
+#19 121.7 checking for gcc... gcc
+#19 121.7 checking whether the C compiler works... yes
+#19 121.7 checking for C compiler default output file name... a.out
+#19 121.7 checking for suffix of executables... 
+#19 121.8 checking whether we are cross compiling... no
+#19 121.8 checking for suffix of object files... o
+#19 121.8 checking whether we are using the GNU C compiler... yes
+#19 121.8 checking whether gcc accepts -g... yes
+#19 121.8 checking for gcc option to accept ISO C89... none needed
+#19 121.9 checking whether gcc understands -c and -o together... yes
+#19 121.9 checking whether make supports the include directive... yes (GNU style)
+#19 121.9 checking dependency style of gcc... gcc3
+#19 122.0 checking if unsupported combinations of configure options are allowed... no
+#19 122.0 checking how to run the C preprocessor... gcc -E
+#19 122.0 checking for grep that handles long lines and -e... /usr/bin/grep
+#19 122.0 checking for egrep... /usr/bin/grep -E
+#19 122.0 checking for ANSI C header files... yes
+#19 122.2 checking for sys/types.h... yes
+#19 122.2 checking for sys/stat.h... yes
+#19 122.2 checking for stdlib.h... yes
+#19 122.2 checking for string.h... yes
+#19 122.3 checking for memory.h... yes
+#19 122.3 checking for strings.h... yes
+#19 122.3 checking for inttypes.h... yes
+#19 122.3 checking for stdint.h... yes
+#19 122.4 checking for unistd.h... yes
+#19 122.4 checking for off_t... yes
+#19 122.4 checking for size_t... yes
+#19 122.5 checking for ssize_t... yes
+#19 122.5 checking for ptrdiff_t... yes
+#19 122.6 checking whether byte ordering is bigendian... no
+#19 122.6 checking size of char... 1
+#19 122.7 checking size of short... 2
+#19 122.7 checking size of int... 4
+#19 122.8 checking size of unsigned... 4
+#19 122.8 checking size of long... 8
+#19 122.9 checking size of long long... 8
+#19 122.9 checking size of __int64... 0
+#19 123.0 checking size of float... 4
+#19 123.0 checking size of double... 8
+#19 123.1 checking size of long double... 16
+#19 123.1 checking size of __float128... 16
+#19 123.2 checking size of _Quad... 0
+#19 123.2 checking quadmath.h usability... yes
+#19 123.2 checking quadmath.h presence... yes
+#19 123.2 checking for quadmath.h... yes
+#19 123.2 checking maximum decimal precision for C... 33
+#19 123.3 checking if Fortran interface enabled... no
+#19 123.3 checking whether we are using the GNU C++ compiler... yes
+#19 123.3 checking whether g++ -std=gnu++17 accepts -g... yes
+#19 123.4 checking dependency style of g++ -std=gnu++17... gcc3
+#19 123.4 checking how to run the C++ preprocessor... g++ -std=gnu++17 -E
+#19 123.5 checking if c++ interface enabled... yes
+#19 123.5 checking if g++ -std=gnu++17 needs old style header files in includes... no
+#19 123.7 checking if g++ -std=gnu++17 can handle namespaces... yes
+#19 123.8 checking if g++ -std=gnu++17 can handle static cast... yes
+#19 123.8 checking if g++ -std=gnu++17 has offsetof extension... yes
+#19 123.8 checking if the high-level library is enabled... yes
+#19 123.8 checking whether make sets $(MAKE)... (cached) yes
+#19 123.9 checking for tr... /usr/bin/tr
+#19 123.9 checking if srcdir= and time commands work together... no
+#19 123.9 checking if Java JNI interface enabled... no
+#19 123.9 checking if building tests is disabled... Building HDF5 tests is disabled
+#19 123.9 checking if building tools is disabled... Building HDF5 tools is disabled
+#19 123.9 checking how to print strings... printf
+#19 123.9 checking for a sed that does not truncate output... /usr/bin/sed
+#19 123.9 checking for fgrep... /usr/bin/grep -F
+#19 123.9 checking for ld used by gcc... /usr/bin/ld
+#19 123.9 checking if the linker (/usr/bin/ld) is GNU ld... yes
+#19 123.9 checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+#19 123.9 checking the name lister (/usr/bin/nm -B) interface... BSD nm
+#19 123.9 checking whether ln -s works... yes
+#19 123.9 checking the maximum length of command line arguments... 1572864
+#19 123.9 checking how to convert x86_64-unknown-linux-gnu file names to x86_64-unknown-linux-gnu format... func_convert_file_noop
+#19 123.9 checking how to convert x86_64-unknown-linux-gnu file names to toolchain format... func_convert_file_noop
+#19 123.9 checking for /usr/bin/ld option to reload object files... -r
+#19 123.9 checking for objdump... objdump
+#19 123.9 checking how to recognize dependent libraries... pass_all
+#19 123.9 checking for dlltool... no
+#19 123.9 checking how to associate runtime and link libraries... printf %s\n
+#19 123.9 checking for archiver @FILE support... @
+#19 123.9 checking for strip... strip
+#19 123.9 checking for ranlib... ranlib
+#19 123.9 checking command to parse /usr/bin/nm -B output from gcc object... ok
+#19 124.0 checking for sysroot... no
+#19 124.0 checking for a working dd... /usr/bin/dd
+#19 124.0 checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+#19 124.0 checking for mt... no
+#19 124.0 checking if : is a manifest tool... no
+#19 124.0 checking for dlfcn.h... yes
+#19 124.1 checking for objdir... .libs
+#19 124.1 checking if gcc supports -fno-rtti -fno-exceptions... yes
+#19 124.1 checking for gcc option to produce PIC... -fPIC -DPIC
+#19 124.1 checking if gcc PIC flag -fPIC -DPIC works... yes
+#19 124.1 checking if gcc static flag -static works... yes
+#19 124.2 checking if gcc supports -c -o file.o... yes
+#19 124.2 checking if gcc supports -c -o file.o... (cached) yes
+#19 124.2 checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+#19 124.2 checking dynamic linker characteristics... GNU/Linux ld.so
+#19 124.3 checking how to hardcode library paths into programs... immediate
+#19 124.3 checking for shl_load... no
+#19 124.3 checking for shl_load in -ldld... no
+#19 124.3 checking for dlopen... yes
+#19 124.4 checking whether a program can dlopen itself... yes
+#19 124.4 checking whether a statically linked program can dlopen itself... no
+#19 124.5 checking whether stripping libraries is possible... yes
+#19 124.5 checking if libtool supports shared libraries... yes
+#19 124.5 checking whether to build shared libraries... no
+#19 124.5 checking whether to build static libraries... yes
+#19 124.5 checking how to run the C++ preprocessor... g++ -std=gnu++17 -E
+#19 124.5 checking for ld used by g++ -std=gnu++17... /usr/bin/ld -m elf_x86_64
+#19 124.5 checking if the linker (/usr/bin/ld -m elf_x86_64) is GNU ld... yes
+#19 124.5 checking whether the g++ -std=gnu++17 linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+#19 124.6 checking for g++ -std=gnu++17 option to produce PIC... -fPIC -DPIC
+#19 124.6 checking if g++ -std=gnu++17 PIC flag -fPIC -DPIC works... yes
+#19 124.6 checking if g++ -std=gnu++17 static flag -static works... yes
+#19 124.7 checking if g++ -std=gnu++17 supports -c -o file.o... yes
+#19 124.7 checking if g++ -std=gnu++17 supports -c -o file.o... (cached) yes
+#19 124.7 checking whether the g++ -std=gnu++17 linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+#19 124.7 checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+#19 124.7 checking how to hardcode library paths into programs... immediate
+#19 124.7 checking if we should install only statically linked executables... no
+#19 124.7 checking if -Wl,-rpath should be used to link shared libs in nondefault directories... yes
+#19 124.7 checking for ceil in -lm... yes
+#19 124.8 checking for dlopen in -ldl... yes
+#19 124.8 checking for ANSI C header files... (cached) yes
+#19 124.8 checking whether time.h and sys/time.h may both be included... yes
+#19 124.8 checking sys/resource.h usability... yes
+#19 124.9 checking sys/resource.h presence... yes
+#19 124.9 checking for sys/resource.h... yes
+#19 124.9 checking sys/time.h usability... yes
+#19 124.9 checking sys/time.h presence... yes
+#19 124.9 checking for sys/time.h... yes
+#19 124.9 checking for unistd.h... (cached) yes
+#19 124.9 checking sys/ioctl.h usability... yes
+#19 125.0 checking sys/ioctl.h presence... yes
+#19 125.0 checking for sys/ioctl.h... yes
+#19 125.0 checking for sys/stat.h... (cached) yes
+#19 125.0 checking sys/socket.h usability... yes
+#19 125.0 checking sys/socket.h presence... yes
+#19 125.0 checking for sys/socket.h... yes
+#19 125.0 checking for sys/types.h... (cached) yes
+#19 125.0 checking sys/file.h usability... yes
+#19 125.1 checking sys/file.h presence... yes
+#19 125.1 checking for sys/file.h... yes
+#19 125.1 checking stddef.h usability... yes
+#19 125.1 checking stddef.h presence... yes
+#19 125.1 checking for stddef.h... yes
+#19 125.1 checking setjmp.h usability... yes
+#19 125.1 checking setjmp.h presence... yes
+#19 125.2 checking for setjmp.h... yes
+#19 125.2 checking features.h usability... yes
+#19 125.2 checking features.h presence... yes
+#19 125.2 checking for features.h... yes
+#19 125.2 checking dirent.h usability... yes
+#19 125.2 checking dirent.h presence... yes
+#19 125.2 checking for dirent.h... yes
+#19 125.2 checking for stdint.h... (cached) yes
+#19 125.2 checking stdbool.h usability... yes
+#19 125.3 checking stdbool.h presence... yes
+#19 125.3 checking for stdbool.h... yes
+#19 125.3 checking netdb.h usability... yes
+#19 125.3 checking netdb.h presence... yes
+#19 125.3 checking for netdb.h... yes
+#19 125.3 checking netinet/in.h usability... yes
+#19 125.3 checking netinet/in.h presence... yes
+#19 125.4 checking for netinet/in.h... yes
+#19 125.4 checking arpa/inet.h usability... yes
+#19 125.4 checking arpa/inet.h presence... yes
+#19 125.4 checking for arpa/inet.h... yes
+#19 125.4 checking io.h usability... no
+#19 125.4 checking io.h presence... no
+#19 125.5 checking for io.h... no
+#19 125.5 checking winsock2.h usability... no
+#19 125.5 checking winsock2.h presence... no
+#19 125.5 checking for winsock2.h... no
+#19 125.5 checking sys/timeb.h usability... yes
+#19 125.5 checking sys/timeb.h presence... yes
+#19 125.5 checking for sys/timeb.h... yes
+#19 125.5 checking for _FILE_OFFSET_BITS value needed for large files... no
+#19 125.6 checking size of int8_t... 1
+#19 125.6 checking size of uint8_t... 1
+#19 125.7 checking size of int_least8_t... 1
+#19 125.7 checking size of uint_least8_t... 1
+#19 125.8 checking size of int_fast8_t... 1
+#19 125.8 checking size of uint_fast8_t... 1
+#19 125.9 checking size of int16_t... 2
+#19 125.9 checking size of uint16_t... 2
+#19 126.0 checking size of int_least16_t... 2
+#19 126.0 checking size of uint_least16_t... 2
+#19 126.1 checking size of int_fast16_t... 8
+#19 126.1 checking size of uint_fast16_t... 8
+#19 126.2 checking size of int32_t... 4
+#19 126.2 checking size of uint32_t... 4
+#19 126.3 checking size of int_least32_t... 4
+#19 126.4 checking size of uint_least32_t... 4
+#19 126.4 checking size of int_fast32_t... 8
+#19 126.5 checking size of uint_fast32_t... 8
+#19 126.5 checking size of int64_t... 8
+#19 126.6 checking size of uint64_t... 8
+#19 126.6 checking size of int_least64_t... 8
+#19 126.7 checking size of uint_least64_t... 8
+#19 126.7 checking size of int_fast64_t... 8
+#19 126.8 checking size of uint_fast64_t... 8
+#19 126.8 checking size of size_t... 8
+#19 126.9 checking size of ssize_t... 8
+#19 126.9 checking size of ptrdiff_t... 8
+#19 127.0 checking size of off_t... 8
+#19 127.0 checking size of bool... 1
+#19 127.1 checking size of time_t... 8
+#19 127.2 checking if dev_t is scalar... yes
+#19 127.2 checking for dmalloc library... suppressed
+#19 127.2 checking zlib.h usability... yes
+#19 127.2 checking zlib.h presence... yes
+#19 127.2 checking for zlib.h... yes
+#19 127.2 checking for compress2 in -lz... yes
+#19 127.2 checking for compress2... yes
+#19 127.3 configure: testing for aec and szip
+#19 127.3 checking for aec_encode in -laec... yes
+#19 127.3 checking for SZ_BufftoBuffCompress in -lsz... yes
+#19 127.4 checking libaec.h usability... yes
+#19 127.4 checking libaec.h presence... yes
+#19 127.4 checking for libaec.h... yes
+#19 127.4 checking szlib.h usability... yes
+#19 127.4 checking szlib.h presence... yes
+#19 127.4 checking for szlib.h... yes
+#19 127.4 checking for szlib encoder... yes
+#19 127.5 checking for thread safe support... no
+#19 127.5 checking whether CLOCK_MONOTONIC is declared... yes
+#19 127.5 checking for tm_gmtoff in struct tm... yes
+#19 127.6 checking for global timezone variable... yes
+#19 127.6 checking for st_blocks in struct stat... no
+#19 127.6 checking for _getvideoconfig... no
+#19 127.6 checking for gettextinfo... no
+#19 127.7 checking for GetConsoleScreenBufferInfo... no
+#19 127.7 checking for getpwuid... yes
+#19 127.8 checking for _scrsize... no
+#19 127.8 checking for ioctl... yes
+#19 127.9 checking for struct videoconfig... no
+#19 127.9 checking for struct text_info... no
+#19 127.9 checking for TIOCGWINSZ... yes
+#19 127.9 checking for TIOCGETD... yes
+#19 127.9 checking for library containing clock_gettime... none required
+#19 128.0 checking for alarm... yes
+#19 128.0 checking for clock_gettime... yes
+#19 128.1 checking for difftime... yes
+#19 128.1 checking for fcntl... yes
+#19 128.2 checking for flock... yes
+#19 128.2 checking for fork... yes
+#19 128.2 checking for frexpf... yes
+#19 128.3 checking for frexpl... yes
+#19 128.3 checking for gethostname... yes
+#19 128.4 checking for getrusage... yes
+#19 128.4 checking for gettimeofday... yes
+#19 128.5 checking for lstat... yes
+#19 128.5 checking for rand_r... yes
+#19 128.5 checking for random... yes
+#19 128.6 checking for setsysinfo... no
+#19 128.6 checking for signal... yes
+#19 128.7 checking for longjmp... yes
+#19 128.7 checking for setjmp... yes
+#19 128.8 checking for siglongjmp... yes
+#19 128.8 checking for sigsetjmp... no
+#19 128.9 checking for sigprocmask... yes
+#19 128.9 checking for snprintf... yes
+#19 128.9 checking for srandom... yes
+#19 129.0 checking for strdup... yes
+#19 129.0 checking for symlink... yes
+#19 129.1 checking for system... yes
+#19 129.1 checking for strtoll... yes
+#19 129.2 checking for strtoull... yes
+#19 129.2 checking for tmpfile... yes
+#19 129.2 checking for asprintf... yes
+#19 129.3 checking for vasprintf... yes
+#19 129.3 checking for vsnprintf... yes
+#19 129.4 checking for waitpid... yes
+#19 129.4 checking for roundf... yes
+#19 129.5 checking for lroundf... yes
+#19 129.5 checking for llroundf... yes
+#19 129.6 checking for round... yes
+#19 129.6 checking for lround... yes
+#19 129.6 checking for llround... yes
+#19 129.7 checking for an ANSI C-conforming const... yes
+#19 129.7 checking if the compiler understands  __inline__... yes
+#19 129.7 checking if the compiler understands __inline... yes
+#19 129.7 checking if the compiler understands inline... yes
+#19 129.7 checking for __attribute__ extension... yes
+#19 129.8 checking for __func__ extension... yes
+#19 129.8 checking for __FUNCTION__ extension... yes
+#19 129.8 checking for C99 designated initialization support... yes
+#19 129.8 checking how to print long long... %ld and %lu
+#19 129.9 checking enable debugging symbols... no
+#19 129.9 checking enable asserts... no
+#19 129.9 checking enable developer warnings... no
+#19 129.9 checking profiling... no
+#19 129.9 checking optimization level... high
+#19 129.9 checking enable file locking... best-effort
+#19 129.9 checking for internal debug output... none
+#19 129.9 checking whether function stack tracking is enabled... no
+#19 129.9 checking for API tracing... no
+#19 129.9 checking whether a memory checking tool will be used... no
+#19 129.9 checking whether internal memory allocation sanity checking is used... no
+#19 129.9 checking for parallel support files... skipped
+#19 129.9 checking whether O_DIRECT is declared... yes
+#19 129.9 checking for posix_memalign... yes
+#19 130.0 checking if the direct I/O virtual file driver (VFD) is enabled... no
+#19 130.0 checking if the Mirror virtual file driver (VFD) is enabled... no
+#19 130.0 checking curl/curl.h usability... yes
+#19 130.0 checking curl/curl.h presence... yes
+#19 130.0 checking for curl/curl.h... yes
+#19 130.0 checking openssl/evp.h usability... yes
+#19 130.1 checking openssl/evp.h presence... yes
+#19 130.1 checking for openssl/evp.h... yes
+#19 130.1 checking openssl/hmac.h usability... yes
+#19 130.1 checking openssl/hmac.h presence... yes
+#19 130.2 checking for openssl/hmac.h... yes
+#19 130.2 checking openssl/sha.h usability... yes
+#19 130.2 checking openssl/sha.h presence... yes
+#19 130.2 checking for openssl/sha.h... yes
+#19 130.2 checking for curl_global_init in -lcurl... yes
+#19 130.3 checking for EVP_sha256 in -lcrypto... yes
+#19 130.3 checking if the Read-Only S3 virtual file driver (VFD) is enabled... yes
+#19 130.3 checking for libhdfs... suppressed
+#19 130.4 checking for custom examples path definition... ${prefix}/share/hdf5_examples
+#19 130.4 checking for custom plugin default path definition... /usr/local/hdf5/lib/plugin
+#19 130.4 checking whether exception handling functions is checked during data conversions... yes
+#19 130.4 checking whether data accuracy is guaranteed during data conversions... yes
+#19 130.4 checking if the machine has window style path name... no
+#19 130.4 checking if using special algorithm to convert long double to (unsigned) long values... no
+#19 130.4 checking if using special algorithm to convert (unsigned) long to long double values... no
+#19 130.5 checking if correctly converting long double to (unsigned) long long values... yes
+#19 130.5 checking if correctly converting (unsigned) long long to long double values... yes
+#19 130.6 checking if the system is IBM ppc64le and cannot correctly convert some long double values... no
+#19 130.7 checking additional programs should be built... no
+#19 130.7 checking if deprecated public symbols are available... yes
+#19 130.7 checking which version of public symbols to use by default... v110
+#19 130.7 checking whether to perform strict file format checks... no
+#19 130.7 checking for pread... yes
+#19 130.7 checking for pwrite... yes
+#19 130.8 checking whether to use pread/pwrite instead of read/write in certain VFDs... yes
+#19 130.8 checking whether to have library information embedded in the executables... yes
+#19 130.8 checking if alignment restrictions are strictly enforced... no
+#19 130.8 configure: creating ./config.lt
+#19 132.1 config.lt: creating libtool
+#19 132.2 checking that generated files are newer than configure... done
+#19 132.2 configure: creating ./config.status
+#19 133.5 config.status: creating src/libhdf5.settings
+#19 133.5 config.status: creating Makefile
+#19 133.5 config.status: creating src/Makefile
+#19 133.5 config.status: creating utils/Makefile
+#19 133.5 config.status: creating utils/mirror_vfd/Makefile
+#19 133.6 config.status: creating bin/h5cc
+#19 133.6 config.status: creating bin/Makefile
+#19 133.6 config.status: creating c++/Makefile
+#19 133.6 config.status: creating c++/src/Makefile
+#19 133.6 config.status: creating c++/src/h5c++
+#19 133.6 config.status: creating hl/Makefile
+#19 133.7 config.status: creating hl/src/Makefile
+#19 133.7 config.status: creating hl/c++/Makefile
+#19 133.7 config.status: creating hl/c++/src/Makefile
+#19 133.8 config.status: creating src/H5config.h
+#19 133.8 config.status: executing pubconf commands
+#19 133.8 creating src/H5pubconf.h
+#19 133.8 Post process src/libhdf5.settings
+#19 133.8 config.status: executing depfiles commands
+#19 136.2 config.status: executing libtool commands
+#19 136.2 config.status: executing .classes commands
+#19 136.2 	    SUMMARY OF THE HDF5 CONFIGURATION
+#19 136.2 	    =================================
+#19 136.2 
+#19 136.2 General Information:
+#19 136.2 -------------------
+#19 136.2                    HDF5 Version: 1.10.7
+#19 136.2                   Configured on: Mon Jun 17 21:31:40 UTC 2024
+#19 136.2                   Configured by: root@buildkitsandbox
+#19 136.2                     Host system: x86_64-unknown-linux-gnu
+#19 136.2               Uname information: Linux buildkitsandbox 6.9.3-arch1-1 #1 SMP PREEMPT_DYNAMIC Fri, 31 May 2024 15:14:45 +0000 x86_64 x86_64 x86_64 GNU/Linux
+#19 136.2                        Byte sex: little-endian
+#19 136.2              Installation point: /tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hdf5
+#19 136.2 
+#19 136.2 Compiling Options:
+#19 136.2 ------------------
+#19 136.2                      Build Mode: production
+#19 136.2               Debugging Symbols: no
+#19 136.2                         Asserts: no
+#19 136.2                       Profiling: no
+#19 136.2              Optimization Level: high
+#19 136.2 
+#19 136.2 Linking Options:
+#19 136.2 ----------------
+#19 136.2                       Libraries: static
+#19 136.2   Statically Linked Executables: 
+#19 136.2                         LDFLAGS: -L/usr/local/lib
+#19 136.2                      H5_LDFLAGS: 
+#19 136.2                      AM_LDFLAGS:  -L/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/lib
+#19 136.2                 Extra libraries: -lcrypto -lcurl -lsz -laec -lz -ldl -lm 
+#19 136.2                        Archiver: ar
+#19 136.2                        AR_FLAGS: cr
+#19 136.2                          Ranlib: ranlib
+#19 136.2 
+#19 136.2 Languages:
+#19 136.2 ----------
+#19 136.2                               C: yes
+#19 136.2                      C Compiler: /usr/bin/gcc
+#19 136.2                        CPPFLAGS: -I/usr/local/include
+#19 136.2                     H5_CPPFLAGS: -D_GNU_SOURCE -D_POSIX_C_SOURCE=200809L   -DNDEBUG -UH5_DEBUG_API
+#19 136.2                     AM_CPPFLAGS:  -I/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/libaec-1.0.4/build/szip/include
+#19 136.2                         C Flags: -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -w -fpic
+#19 136.2                      H5 C Flags:  -std=c99  -Wno-c++-compat -Wno-format-nonliteral -Wshadow -Wundef -Wwrite-strings -Wlarger-than=2560 -Wlogical-op -Wframe-larger-than=16384 -Wpacked-bitfield-compat -Wsync-nand -Wdouble-promotion -Wtrampolines -Wstack-usage=8192 -Wmaybe-uninitialized -Wdate-time -Warray-bounds=2 -Wc99-c11-compat -Wduplicated-cond -Whsa -Wnormalized -Wunused-const-variable -Walloca -Walloc-zero -Wduplicated-branches -Wimplicit-fallthrough=5 -Wrestrict -Wattribute-alias -Wshift-overflow=2 -Wattribute-alias=2 -Wmissing-profile -fstdarg-opt -s -Wno-aggregate-return -Wno-inline -Wno-missing-format-attribute -Wno-missing-noreturn -Wno-overlength-strings -Wno-jump-misses-init -Wno-suggest-attribute=const -Wno-suggest-attribute=noreturn -Wno-suggest-attribute=pure -Wno-suggest-attribute=format -Wno-suggest-attribute=cold -Wno-suggest-attribute=malloc -O3  -Werror=bad-function-cast -Werror=declaration-after-statement -Werror=implicit-function-declaration -Werror=missing-declarations -Werror=missing-prototypes -Werror=nested-externs -Werror=old-style-definition -Werror=packed -Werror=pointer-sign -Werror=pointer-to-int-cast -Werror=redundant-decls -Werror=strict-prototypes -Werror=switch -Wunused-function -Wformat -Werror=incompatible-pointer-types -Werror=shadow -Wcast-function-type -Wmaybe-uninitialized
+#19 136.2                      AM C Flags: 
+#19 136.2                Shared C Library: no
+#19 136.2                Static C Library: yes
+#19 136.2 
+#19 136.2 
+#19 136.2                         Fortran: no
+#19 136.2 
+#19 136.2                             C++: yes
+#19 136.2                    C++ Compiler: /usr/bin/g++ -std=gnu++17
+#19 136.2                       C++ Flags: -w -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic
+#19 136.2                    H5 C++ Flags:   -Wall -Wconversion -Wctor-dtor-privacy -Wextra -Wfloat-equal -Wformat=2 -Winit-self -Winvalid-pch -Wmissing-include-dirs -Wno-format-nonliteral -Wnon-virtual-dtor -Woverloaded-virtual -Wreorder -Wshadow -Wsign-promo -Wundef -Wwrite-strings -pedantic -Wlarger-than=2560 -Wlogical-op -Wframe-larger-than=16384 -Wpacked-bitfield-compat -Wsync-nand -Wdouble-promotion -Wtrampolines -Wstack-usage=8192 -Wmaybe-uninitialized -Wdate-time -Wopenmp-simd -Warray-bounds=2 -Wduplicated-cond -Whsa -Wnormalized -Wunused-const-variable -Walloca -Walloc-zero -Wduplicated-branches -Wimplicit-fallthrough=5 -Wrestrict -Wattribute-alias -Wshift-overflow=2 -Wattribute-alias=2 -Wmissing-profile -fstdarg-opt -s -O3  -Wcast-align -Wmissing-declarations -Werror=packed -Werror=redundant-decls -Werror=switch -Wunused-but-set-variable -Werror=unused-function -Werror=unused-variable -Wunused-parameter -Werror=shadow
+#19 136.2                    AM C++ Flags: 
+#19 136.2              Shared C++ Library: no
+#19 136.2              Static C++ Library: yes
+#19 136.2 
+#19 136.2                            Java: no
+#19 136.2 
+#19 136.2 
+#19 136.2 Features:
+#19 136.2 ---------
+#19 136.2                    Parallel HDF5: no
+#19 136.2 Parallel Filtered Dataset Writes: no
+#19 136.2               Large Parallel I/O: no
+#19 136.2               High-level library: yes
+#19 136.2                 Build HDF5 Tests: no
+#19 136.2                 Build HDF5 Tools: no
+#19 136.2                     Threadsafety: no
+#19 136.2              Default API mapping: v110
+#19 136.2   With deprecated public symbols: yes
+#19 136.2           I/O filters (external): deflate(zlib),szip(encoder)
+#19 136.2                              MPE: no
+#19 136.2                       Direct VFD: no
+#19 136.2                       Mirror VFD: no
+#19 136.2               (Read-Only) S3 VFD: yes
+#19 136.2             (Read-Only) HDFS VFD: no
+#19 136.2                          dmalloc: no
+#19 136.2   Packages w/ extra debug output: none
+#19 136.2                      API tracing: no
+#19 136.2             Using memory checker: no
+#19 136.2  Memory allocation sanity checks: no
+#19 136.2           Function stack tracing: no
+#19 136.2                 Use file locking: best-effort
+#19 136.2        Strict file format checks: no
+#19 136.2     Optimization instrumentation: no
+#19 136.3 make[1]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5'
+#19 136.3 for d in src . c++ hl; do                                \
+#19 136.3   if test $d != .; then                                        \
+#19 136.3    (cd $d && make  lib) || exit 1;            \
+#19 136.3   fi;                                                           \
+#19 136.3 done
+#19 136.3 make[2]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/src'
+#19 136.3 make[3]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/src'
+#19 136.3   CC       H5.lo
+#19 136.6   CC       H5checksum.lo
+#19 136.8   CC       H5dbg.lo
+#19 136.9   CC       H5system.lo
+#19 137.1   CC       H5timer.lo
+#19 137.3   CC       H5trace.lo
+#19 137.9   CC       H5A.lo
+#19 138.4   CC       H5Abtree2.lo
+#19 138.6   CC       H5Adense.lo
+#19 139.0   CC       H5Adeprec.lo
+#19 139.2   CC       H5Aint.lo
+#19 139.7   CC       H5Atest.lo
+#19 139.9   CC       H5AC.lo
+#19 140.3   CC       H5ACdbg.lo
+#19 140.4   CC       H5ACproxy_entry.lo
+#19 140.6   CC       H5B.lo
+#19 141.1   CC       H5Bcache.lo
+#19 141.2   CC       H5Bdbg.lo
+#19 141.4   CC       H5B2.lo
+#19 141.8   CC       H5B2cache.lo
+#19 142.1   CC       H5B2dbg.lo
+#19 142.3   CC       H5B2hdr.lo
+#19 142.5   CC       H5B2int.lo
+#19 143.0   CC       H5B2internal.lo
+#19 143.3   CC       H5B2leaf.lo
+#19 143.6   CC       H5B2stat.lo
+#19 143.8   CC       H5B2test.lo
+#19 144.0   CC       H5C.lo
+#19 145.1   CC       H5Cdbg.lo
+#19 145.2   CC       H5Cepoch.lo
+#19 145.4   CC       H5Cimage.lo
+#19 145.9   CC       H5Clog.lo
+#19 146.1   CC       H5Clog_json.lo
+#19 146.3   CC       H5Clog_trace.lo
+#19 146.6   CC       H5Cprefetched.lo
+#19 146.7   CC       H5Cquery.lo
+#19 146.9   CC       H5Ctag.lo
+#19 147.1   CC       H5Ctest.lo
+#19 147.3   CC       H5CS.lo
+#19 147.4   CC       H5CX.lo
+#19 147.8   CC       H5D.lo
+#19 148.2   CC       H5Dbtree.lo
+#19 148.5   CC       H5Dbtree2.lo
+#19 148.9   CC       H5Dchunk.lo
+#19 150.0   CC       H5Dcompact.lo
+#19 150.3   CC       H5Dcontig.lo
+#19 150.6   CC       H5Ddbg.lo
+#19 150.7   CC       H5Ddeprec.lo
+#19 150.9   CC       H5Dearray.lo
+#19 151.3   CC       H5Defl.lo
+#19 151.5   CC       H5Dfarray.lo
+#19 151.8   CC       H5Dfill.lo
+#19 152.1   CC       H5Dint.lo
+#19 152.9   CC       H5Dio.lo
+#19 153.2   CC       H5Dlayout.lo
+#19 153.4   CC       H5Dnone.lo
+#19 153.6   CC       H5Doh.lo
+#19 153.8   CC       H5Dscatgath.lo
+#19 154.2   CC       H5Dselect.lo
+#19 154.4   CC       H5Dsingle.lo
+#19 154.5   CC       H5Dtest.lo
+#19 154.7   CC       H5Dvirtual.lo
+#19 155.4   CC       H5E.lo
+#19 156.1   CC       H5Edeprec.lo
+#19 156.3   CC       H5Eint.lo
+#19 156.5   CC       H5EA.lo
+#19 156.8   CC       H5EAcache.lo
+#19 157.2   CC       H5EAdbg.lo
+#19 157.4   CC       H5EAdblkpage.lo
+#19 157.6   CC       H5EAdblock.lo
+#19 157.8   CC       H5EAhdr.lo
+#19 158.0   CC       H5EAiblock.lo
+#19 158.2   CC       H5EAint.lo
+#19 158.3   CC       H5EAsblock.lo
+#19 158.5   CC       H5EAstat.lo
+#19 158.6   CC       H5EAtest.lo
+#19 158.8   CC       H5F.lo
+#19 159.3   CC       H5Faccum.lo
+#19 159.6   CC       H5Fcwfs.lo
+#19 159.8   CC       H5Fdbg.lo
+#19 159.9   CC       H5Fdeprec.lo
+#19 160.1   CC       H5Fefc.lo
+#19 160.3   CC       H5Ffake.lo
+#19 160.5   CC       H5Fint.lo
+#19 161.1   CC       H5Fio.lo
+#19 161.3   CC       H5Fmount.lo
+#19 161.6   CC       H5Fquery.lo
+#19 161.7   CC       H5Fsfile.lo
+#19 161.9   CC       H5Fspace.lo
+#19 162.1   CC       H5Fsuper.lo
+#19 162.5   CC       H5Fsuper_cache.lo
+#19 162.7   CC       H5Ftest.lo
+#19 162.9   CC       H5FA.lo
+#19 163.1   CC       H5FAcache.lo
+#19 163.4   CC       H5FAdbg.lo
+#19 163.6   CC       H5FAdblock.lo
+#19 163.8   CC       H5FAdblkpage.lo
+#19 163.9   CC       H5FAhdr.lo
+#19 164.1   CC       H5FAint.lo
+#19 164.3   CC       H5FAstat.lo
+#19 164.4   CC       H5FAtest.lo
+#19 164.5   CC       H5FD.lo
+#19 165.0   CC       H5FDcore.lo
+#19 165.3   CC       H5FDfamily.lo
+#19 165.6   CC       H5FDhdfs.lo
+#19 165.8   CC       H5FDint.lo
+#19 165.9   CC       H5FDlog.lo
+#19 166.3   CC       H5FDmulti.lo
+#19 166.7   CC       H5FDsec2.lo
+#19 166.9   CC       H5FDspace.lo
+#19 167.1   CC       H5FDsplitter.lo
+#19 167.4   CC       H5FDstdio.lo
+#19 167.6   CC       H5FDtest.lo
+#19 167.7   CC       H5FL.lo
+#19 168.0   CC       H5FO.lo
+#19 168.2   CC       H5FS.lo
+#19 168.5   CC       H5FScache.lo
+#19 168.8   CC       H5FSdbg.lo
+#19 169.0   CC       H5FSint.lo
+#19 169.1   CC       H5FSsection.lo
+#19 169.6   CC       H5FSstat.lo
+#19 169.7   CC       H5FStest.lo
+#19 169.8   CC       H5G.lo
+#19 170.1   CC       H5Gbtree2.lo
+#19 170.3   CC       H5Gcache.lo
+#19 170.5   CC       H5Gcompact.lo
+#19 170.7   CC       H5Gdense.lo
+#19 171.0   CC       H5Gdeprec.lo
+#19 171.4   CC       H5Gent.lo
+#19 171.6   CC       H5Gint.lo
+#19 171.9   CC       H5Glink.lo
+#19 172.1   CC       H5Gloc.lo
+#19 172.4   CC       H5Gname.lo
+#19 172.6   CC       H5Gnode.lo
+#19 173.0   CC       H5Gobj.lo
+#19 173.3   CC       H5Goh.lo
+#19 173.5   CC       H5Groot.lo
+#19 173.7   CC       H5Gstab.lo
+#19 174.0   CC       H5Gtest.lo
+#19 174.2   CC       H5Gtraverse.lo
+#19 174.5   CC       H5HF.lo
+#19 174.7   CC       H5HFbtree2.lo
+#19 175.0   CC       H5HFcache.lo
+#19 175.5   CC       H5HFdbg.lo
+#19 175.8   CC       H5HFdblock.lo
+#19 176.0   CC       H5HFdtable.lo
+#19 176.2   CC       H5HFhdr.lo
+#19 176.5   CC       H5HFhuge.lo
+#19 176.8   CC       H5HFiblock.lo
+#19 177.2   CC       H5HFiter.lo
+#19 177.5   CC       H5HFman.lo
+#19 177.7   CC       H5HFsection.lo
+#19 178.3   CC       H5HFspace.lo
+#19 178.5   CC       H5HFstat.lo
+#19 178.6   CC       H5HFtest.lo
+#19 178.8   CC       H5HFtiny.lo
+#19 178.9   CC       H5HG.lo
+#19 179.2   CC       H5HGcache.lo
+#19 179.4   CC       H5HGdbg.lo
+#19 179.6   CC       H5HGquery.lo
+#19 179.7   CC       H5HL.lo
+#19 180.0   CC       H5HLcache.lo
+#19 180.3   CC       H5HLdbg.lo
+#19 180.4   CC       H5HLint.lo
+#19 180.6   CC       H5HLprfx.lo
+#19 180.7   CC       H5HLdblk.lo
+#19 180.9   CC       H5HP.lo
+#19 181.1   CC       H5I.lo
+#19 181.5   CC       H5Itest.lo
+#19 181.7   CC       H5L.lo
+#19 182.3   CC       H5Lexternal.lo
+#19 182.5   CC       H5make_libsettings.o
+#19 182.6   CCLD     H5make_libsettings
+#19 182.7 LD_LIBRARY_PATH="$LD_LIBRARY_PATH`echo -L/usr/local/lib |                  \
+#19 182.7 	sed -e 's/-L/:/g' -e 's/ //g'`"                               \
+#19 182.7  ./H5make_libsettings > H5lib_settings.c  ||                               \
+#19 182.7     (test $HDF5_Make_Ignore && echo "*** Error ignored") ||          \
+#19 182.7     (rm -f H5lib_settings.c ; exit 1)
+#19 182.7   CC       H5lib_settings.lo
+#19 182.8   CC       H5MF.lo
+#19 183.4   CC       H5MFaggr.lo
+#19 183.6   CC       H5MFdbg.lo
+#19 183.8   CC       H5MFsection.lo
+#19 184.0   CC       H5MM.lo
+#19 184.2   CC       H5MP.lo
+#19 184.3   CC       H5MPtest.lo
+#19 184.5   CC       H5O.lo
+#19 184.9   CC       H5Odeprec.lo
+#19 185.1   CC       H5Oainfo.lo
+#19 185.2   CC       H5Oalloc.lo
+#19 185.9   CC       H5Oattr.lo
+#19 186.2   CC       H5Oattribute.lo
+#19 186.6   CC       H5Obogus.lo
+#19 186.7   CC       H5Obtreek.lo
+#19 186.9   CC       H5Ocache.lo
+#19 187.2   CC       H5Ocache_image.lo
+#19 187.4   CC       H5Ochunk.lo
+#19 187.6   CC       H5Ocont.lo
+#19 187.8   CC       H5Ocopy.lo
+#19 188.2   CC       H5Odbg.lo
+#19 188.5   CC       H5Odrvinfo.lo
+#19 188.7   CC       H5Odtype.lo
+#19 189.1   CC       H5Oefl.lo
+#19 189.4   CC       H5Ofill.lo
+#19 189.7   CC       H5Oflush.lo
+#19 189.9   CC       H5Ofsinfo.lo
+#19 190.1   CC       H5Oginfo.lo
+#19 190.3   CC       H5Oint.lo
+#19 190.8   CC       H5Olayout.lo
+#19 191.2   CC       H5Olinfo.lo
+#19 191.4   CC       H5Olink.lo
+#19 191.6   CC       H5Omessage.lo
+#19 192.1   CC       H5Omtime.lo
+#19 192.3   CC       H5Oname.lo
+#19 192.5   CC       H5Onull.lo
+#19 192.6   CC       H5Opline.lo
+#19 192.9   CC       H5Orefcount.lo
+#19 193.1   CC       H5Osdspace.lo
+#19 193.3   CC       H5Oshared.lo
+#19 193.5   CC       H5Oshmesg.lo
+#19 193.7   CC       H5Ostab.lo
+#19 193.9   CC       H5Otest.lo
+#19 194.1   CC       H5Ounknown.lo
+#19 194.3   CC       H5P.lo
+#19 194.8   CC       H5Pacpl.lo
+#19 195.0   CC       H5Pdapl.lo
+#19 195.3   CC       H5Pdcpl.lo
+#19 196.1   CC       H5Pdeprec.lo
+#19 196.3   CC       H5Pdxpl.lo
+#19 196.7   CC       H5Pencdec.lo
+#19 197.0   CC       H5Pfapl.lo
+#19 197.9   CC       H5Pfcpl.lo
+#19 198.3   CC       H5Pfmpl.lo
+#19 198.4   CC       H5Pgcpl.lo
+#19 198.7   CC       H5Pint.lo
+#19 199.4   CC       H5Plapl.lo
+#19 199.7   CC       H5Plcpl.lo
+#19 199.9   CC       H5Pocpl.lo
+#19 200.4   CC       H5Pocpypl.lo
+#19 200.6   CC       H5Pstrcpl.lo
+#19 200.8   CC       H5Ptest.lo
+#19 201.0   CC       H5PB.lo
+#19 201.3   CC       H5PL.lo
+#19 201.6   CC       H5PLint.lo
+#19 201.7   CC       H5PLpath.lo
+#19 202.0   CC       H5PLplugin_cache.lo
+#19 202.1   CC       H5R.lo
+#19 202.4   CC       H5Rint.lo
+#19 202.6   CC       H5Rdeprec.lo
+#19 202.8   CC       H5UC.lo
+#19 202.9   CC       H5RS.lo
+#19 203.1   CC       H5S.lo
+#19 203.6   CC       H5Sall.lo
+#19 203.8   CC       H5Sdbg.lo
+#19 203.9   CC       H5Shyper.lo
+#19 205.8   CC       H5Snone.lo
+#19 206.0   CC       H5Spoint.lo
+#19 206.4   CC       H5Sselect.lo
+#19 207.0   CC       H5Stest.lo
+#19 207.2   CC       H5SL.lo
+#19 209.0   CC       H5SM.lo
+#19 209.6   CC       H5SMbtree2.lo
+#19 209.8   CC       H5SMcache.lo
+#19 210.0   CC       H5SMmessage.lo
+#19 210.2   CC       H5SMtest.lo
+#19 210.4   CC       H5ST.lo
+#19 210.6   CC       H5T.lo
+#19 211.8   CC       H5Tarray.lo
+#19 212.0   CC       H5Tbit.lo
+#19 212.2   CC       H5Tcommit.lo
+#19 212.6   CC       H5Tcompound.lo
+#19 212.8   CC       H5Tconv.lo
+#19 224.2   CC       H5Tcset.lo
+#19 224.3   CC       H5Tdbg.lo
+#19 224.6   CC       H5Tdeprec.lo
+#19 224.8   CC       H5Tenum.lo
+#19 225.0   CC       H5Tfields.lo
+#19 225.3   CC       H5Tfixed.lo
+#19 225.5   CC       H5Tfloat.lo
+#19 225.8   CC       H5detect.o
+#19 227.0   CCLD     H5detect
+#19 227.1 LD_LIBRARY_PATH="$LD_LIBRARY_PATH`echo -L/usr/local/lib |                  \
+#19 227.1 	sed -e 's/-L/:/g' -e 's/ //g'`"                               \
+#19 227.1  ./H5detect > H5Tinit.c  ||                               \
+#19 227.1     (test $HDF5_Make_Ignore && echo "*** Error ignored") ||          \
+#19 227.1     (rm -f H5Tinit.c ; exit 1)
+#19 227.1   CC       H5Tinit.lo
+#19 227.4   CC       H5Tnative.lo
+#19 227.8   CC       H5Toffset.lo
+#19 228.0   CC       H5Toh.lo
+#19 228.2   CC       H5Topaque.lo
+#19 228.4   CC       H5Torder.lo
+#19 228.6   CC       H5Tpad.lo
+#19 228.8   CC       H5Tprecis.lo
+#19 229.0   CC       H5Tstrpad.lo
+#19 229.2   CC       H5Tvisit.lo
+#19 229.4   CC       H5Tvlen.lo
+#19 229.7   CC       H5TS.lo
+#19 229.9   CC       H5VM.lo
+#19 230.3   CC       H5WB.lo
+#19 230.4   CC       H5Z.lo
+#19 231.0   CC       H5Zdeflate.lo
+#19 231.2   CC       H5Zfletcher32.lo
+#19 231.3   CC       H5Znbit.lo
+#19 231.8   CC       H5Zshuffle.lo
+#19 232.0   CC       H5Zscaleoffset.lo
+#19 233.1   CC       H5Zszip.lo
+#19 233.3   CC       H5Ztrans.lo
+#19 234.2   CC       H5FDros3.lo
+#19 234.5   CC       H5FDs3comms.lo
+#19 235.2   CCLD     libhdf5.la
+#19 235.9 make[3]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/src'
+#19 235.9 make[2]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/src'
+#19 235.9 make[2]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/c++'
+#19 235.9 make[3]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/c++'
+#19 235.9 make[3]: Nothing to be done for 'build-lib'.
+#19 235.9 make[3]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/c++'
+#19 235.9 + cd src
+#19 235.9 + make lib
+#19 235.9 make[3]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/c++/src'
+#19 235.9 make[4]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/c++/src'
+#19 235.9   CXX      H5Exception.lo
+#19 236.5   CXX      H5IdComponent.lo
+#19 237.0   CXX      H5DataSpace.lo
+#19 237.6   CXX      H5PropList.lo
+#19 238.3   CXX      H5Library.lo
+#19 238.7   CXX      H5FaccProp.lo
+#19 239.3   CXX      H5FcreatProp.lo
+#19 239.8   CXX      H5LcreatProp.lo
+#19 240.1   CXX      H5LaccProp.lo
+#19 240.5   CXX      H5DaccProp.lo
+#19 240.8   CXX      H5DxferProp.lo
+#19 241.4   CXX      H5DcreatProp.lo
+#19 241.9   CXX      H5Location.lo
+#19 243.3   CXX      H5AbstractDs.lo
+#19 243.8   CXX      H5Attribute.lo
+#19 244.5   CXX      H5Object.lo
+#19 245.1   CXX      H5OcreatProp.lo
+#19 245.5   CXX      H5DataType.lo
+#19 246.3   CXX      H5AtomType.lo
+#19 246.7   CXX      H5PredType.lo
+#19 247.3   CXX      H5EnumType.lo
+#19 247.8   CXX      H5IntType.lo
+#19 248.2   CXX      H5FloatType.lo
+#19 248.6   CXX      H5StrType.lo
+#19 248.9   CXX      H5ArrayType.lo
+#19 249.3   CXX      H5VarLenType.lo
+#19 249.6   CXX      H5CompType.lo
+#19 250.1   CXX      H5DataSet.lo
+#19 250.9   CXX      H5CommonFG.lo
+#19 251.4   CXX      H5Group.lo
+#19 251.9   CXX      H5File.lo
+#19 252.5   CXXLD    libhdf5_cpp.la
+#19 252.7 make[4]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/c++/src'
+#19 252.7 make[3]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/c++/src'
+#19 252.7 make[2]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/c++'
+#19 252.7 make[2]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl'
+#19 252.7 make[3]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl'
+#19 252.7 make[3]: Nothing to be done for 'build-lib'.
+#19 252.7 make[3]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl'
+#19 252.7 + cd src
+#19 252.7 + make lib
+#19 252.7 make[3]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl/src'
+#19 252.7 make[4]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl/src'
+#19 252.7   CC       H5DO.lo
+#19 252.9   CC       H5DS.lo
+#19 253.4   CC       H5IM.lo
+#19 253.6   CC       H5LT.lo
+#19 254.2   CC       H5LTanalyze.lo
+#19 254.5   CC       H5LTparse.lo
+#19 254.7   CC       H5PT.lo
+#19 255.0   CC       H5TB.lo
+#19 255.7   CC       H5LD.lo
+#19 255.9   CCLD     libhdf5_hl.la
+#19 256.1 make[4]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl/src'
+#19 256.1 make[3]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl/src'
+#19 256.1 + cd c++
+#19 256.1 + make lib
+#19 256.1 make[3]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl/c++'
+#19 256.1 make[4]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl/c++'
+#19 256.1 make[4]: Nothing to be done for 'build-lib'.
+#19 256.1 make[4]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl/c++'
+#19 256.1 + cd src
+#19 256.1 + make lib
+#19 256.1 make[4]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl/c++/src'
+#19 256.1 make[5]: Entering directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl/c++/src'
+#19 256.1   CXX      H5PacketTable.lo
+#19 256.5   CXXLD    libhdf5_hl_cpp.la
+#19 256.7 make[5]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl/c++/src'
+#19 256.7 make[4]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl/c++/src'
+#19 256.7 make[3]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl/c++'
+#19 256.7 make[2]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5/hl'
+#19 256.7 make[1]: Leaving directory '/tmp/RtmpixCHcd/R.INSTALL17880fb41f/Rhdf5lib/src/hdf5'
+#19 256.7 mkdir -p "/usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/include"
+#19 256.7 cp "hdf5/src"/*.h "/usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/include"
+#19 256.7 cp "hdf5/c++/src"/*.h "/usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/include"
+#19 256.7 cp "hdf5/hl/src"/*.h "/usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/include"
+#19 256.7 cp "hdf5/hl/c++/src"/*.h "/usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/include"
+#19 256.7 cp "hdf5/src"/libhdf5.settings "/usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/include"
+#19 256.7 mkdir -p "/usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/lib/"
+#19 256.7 cp "hdf5/src/.libs/libhdf5.a" "/usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/lib/"
+#19 256.7 cp "hdf5/c++/src/.libs/libhdf5_cpp.a" "/usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/lib/"
+#19 256.7 cp "hdf5/hl/src/.libs/libhdf5_hl.a" "/usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/lib/"
+#19 256.7 cp "hdf5/hl/c++/src/.libs/libhdf5_hl_cpp.a" "/usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/lib/"
+#19 256.7 cp hdf5/libaec-1.0.4/build/szip/lib/libsz.a "/usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/lib/"
+#19 256.7 cp hdf5/libaec-1.0.4/build/szip/lib/libaec.a "/usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/lib/"
+#19 256.8 gcc -I"/usr/local/lib/R/include" -DNDEBUG -I/usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/include   -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c Rhdf5lib.c -o Rhdf5lib.o
+#19 256.8 gcc -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o Rhdf5lib.so Rhdf5lib.o /usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/lib/libhdf5.a /usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/lib/libsz.a /usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/lib/libaec.a -lz -L/usr/local/lib/R/lib -lR
+#19 257.0 installing to /usr/local/lib/R/site-library/00LOCK-Rhdf5lib/00new/Rhdf5lib/libs
+#19 257.0 ** R
+#19 257.0 ** inst
+#19 257.0 ** byte-compile and prepare package for lazy loading
+#19 257.4 ** help
+#19 257.4 *** installing help indices
+#19 257.4 *** copying figures
+#19 257.4 ** building package indices
+#19 257.7 ** installing vignettes
+#19 257.8 ** testing if installed package can be loaded from temporary location
+#19 258.1 ** checking absolute paths in shared objects and dynamic libraries
+#19 258.1 ** testing if installed package can be loaded from final location
+#19 258.5 ** testing if installed package keeps a record of temporary installation path
+#19 258.5 * DONE (Rhdf5lib)
+#19 259.1 * installing *binary* package ‘vipor’ ...
+#19 259.1 * DONE (vipor)
+#19 259.5 * installing *binary* package ‘beeswarm’ ...
+#19 259.5 * DONE (beeswarm)
+#19 259.9 * installing *binary* package ‘RcppProgress’ ...
+#19 259.9 * DONE (RcppProgress)
+#19 260.4 * installing *binary* package ‘RSpectra’ ...
+#19 260.4 * DONE (RSpectra)
+#19 260.8 * installing *binary* package ‘RcppAnnoy’ ...
+#19 260.8 * DONE (RcppAnnoy)
+#19 261.2 * installing *binary* package ‘FNN’ ...
+#19 261.2 * DONE (FNN)
+#19 261.6 * installing *binary* package ‘deldir’ ...
+#19 261.6 * DONE (deldir)
+#19 262.0 * installing *binary* package ‘furrr’ ...
+#19 262.0 * DONE (furrr)
+#19 262.4 * installing *binary* package ‘plyr’ ...
+#19 262.4 * DONE (plyr)
+#19 262.9 * installing *binary* package ‘zoo’ ...
+#19 262.9 * DONE (zoo)
+#19 263.3 * installing *binary* package ‘png’ ...
+#19 263.3 * DONE (png)
+#19 263.7 * installing *binary* package ‘Cairo’ ...
+#19 263.7 * DONE (Cairo)
+#19 264.1 * installing *binary* package ‘slam’ ...
+#19 264.1 * DONE (slam)
+#19 264.5 * installing *binary* package ‘Rtsne’ ...
+#19 264.5 * DONE (Rtsne)
+#19 264.8 * installing *binary* package ‘RhpcBLASctl’ ...
+#19 264.8 * DONE (RhpcBLASctl)
+#19 265.2 * installing *binary* package ‘RANN’ ...
+#19 265.2 * DONE (RANN)
+#19 265.7 * installing *binary* package ‘pscl’ ...
+#19 265.7 * DONE (pscl)
+#19 266.1 * installing *binary* package ‘pheatmap’ ...
+#19 266.1 * DONE (pheatmap)
+#19 266.5 * installing *binary* package ‘pbmcapply’ ...
+#19 266.5 * DONE (pbmcapply)
+#19 266.9 * installing *binary* package ‘pbapply’ ...
+#19 266.9 * DONE (pbapply)
+#19 267.5 * installing *source* package ‘limma’ ...
+#19 267.5 ** using staged installation
+#19 267.5 ** libs
+#19 267.5 using C compiler: ‘gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+#19 267.5 gcc -I"/usr/local/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c init.c -o init.o
+#19 267.6 gcc -I"/usr/local/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c normexp.c -o normexp.o
+#19 267.7 gcc -I"/usr/local/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c weighted_lowess.c -o weighted_lowess.o
+#19 267.8 gcc -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o limma.so init.o normexp.o weighted_lowess.o -L/usr/local/lib/R/lib -lR
+#19 267.9 installing to /usr/local/lib/R/site-library/00LOCK-limma/00new/limma/libs
+#19 267.9 ** R
+#19 267.9 ** inst
+#19 267.9 ** byte-compile and prepare package for lazy loading
+#19 275.7 ** help
+#19 276.4 *** installing help indices
+#19 276.7 ** building package indices
+#19 277.4 ** installing vignettes
+#19 277.4 ** testing if installed package can be loaded from temporary location
+#19 277.9 ** checking absolute paths in shared objects and dynamic libraries
+#19 277.9 ** testing if installed package can be loaded from final location
+#19 278.5 ** testing if installed package keeps a record of temporary installation path
+#19 278.5 * DONE (limma)
+#19 279.0 * installing *binary* package ‘leidenbase’ ...
+#19 279.1 * DONE (leidenbase)
+#19 279.4 * installing *binary* package ‘grr’ ...
+#19 279.4 * DONE (grr)
+#19 279.8 * installing *binary* package ‘e1071’ ...
+#19 279.8 * DONE (e1071)
+#19 280.4 * installing *binary* package ‘s2’ ...
+#19 280.4 * DONE (s2)
+#19 281.0 * installing *source* package ‘rhdf5filters’ ...
+#19 281.0 ** using staged installation
+#19 281.8 configuring the BLOSC filter...
+#19 281.8 x86_CPU=true
+#19 281.8 checking for gcc... gcc
+#19 281.8 checking whether the C compiler works... yes
+#19 281.9 checking for C compiler default output file name... a.out
+#19 281.9 checking for suffix of executables... 
+#19 281.9 checking whether we are cross compiling... no
+#19 282.0 checking for suffix of object files... o
+#19 282.0 checking whether the compiler supports GNU C... yes
+#19 282.0 checking whether gcc accepts -g... yes
+#19 282.0 checking for gcc option to enable C11 features... none needed
+#19 282.1 checking whether C compiler accepts -msse2... yes
+#19 282.1 checking whether C compiler accepts -mavx2... yes
+#19 282.2 checking for gcc __builtin_cpu_init function... (cached) true
+#19 282.2 checking for x86 sse2 instruction support... yes
+#19 282.2 checking for x86 avx2 instruction support... yes
+#19 282.3 configure: creating ./config.status
+#19 282.3 config.status: creating src/blosc/lib/blosc-1.20.1/Makefile
+#19 282.4 config.status: creating src/blosc/Makefile
+#19 282.4 configure:    BZIP2_LIB=bzip2/libH5Zbz2.so
+#19 282.4 configure:    BLOSC_LIB=blosc/libH5Zblosc.so
+#19 282.4 configure:    LZF_LIB=lzf/libH5Zlzf.so
+#19 282.4 configure:    ZSTD_LIB=zstd/libH5Zzstd.so
+#19 282.4 configure: creating ./config.status
+#19 282.4 config.status: creating src/blosc/lib/blosc-1.20.1/Makefile
+#19 282.5 config.status: creating src/blosc/Makefile
+#19 282.5 config.status: creating src/Makevars
+#19 282.5 ** libs
+#19 282.5 using C compiler: ‘gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+#19 282.5 make -C zstd
+#19 282.5 make[1]: Entering directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/zstd'
+#19 282.5 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c common/debug.c -o common/debug.o
+#19 282.5 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c common/entropy_common.c -o common/entropy_common.o
+#19 282.7 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c common/error_private.c -o common/error_private.o
+#19 282.8 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c common/fse_decompress.c -o common/fse_decompress.o
+#19 283.1 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c common/pool.c -o common/pool.o -o common/pool.o
+#19 283.2 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c common/threading.c -o common/threading.o
+#19 283.2 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c common/xxhash.c -o common/xxhash.o
+#19 283.3 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c common/zstd_common.c -o common/zstd_common.o
+#19 283.3 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c compress/fse_compress.c -o compress/fse_compress.o
+#19 283.6 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c compress/hist.c -o compress/hist.o
+#19 283.7 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c compress/huf_compress.c -o compress/huf_compress.o
+#19 284.4 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c compress/zstd_compress.c -o compress/zstd_compress.o
+#19 286.1 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c compress/zstd_compress_literals.c -o compress/zstd_compress_literals.o
+#19 286.2 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c compress/zstd_compress_sequences.c -o compress/zstd_compress_sequences.o
+#19 286.4 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c compress/zstd_compress_superblock.c -o compress/zstd_compress_superblock.o
+#19 286.6 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c compress/zstd_double_fast.c -o compress/zstd_double_fast.o
+#19 288.2 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c compress/zstd_fast.c -o compress/zstd_fast.o
+#19 289.9 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c compress/zstd_lazy.c -o compress/zstd_lazy.o
+#19 298.0 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c compress/zstd_ldm.c -o compress/zstd_ldm.o
+#19 298.3 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c compress/zstd_opt.c -o compress/zstd_opt.o
+#19 300.0 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c compress/zstdmt_compress.c -o compress/zstdmt_compress.o
+#19 300.4 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c decompress/huf_decompress.c -o decompress/huf_decompress.o
+#19 302.2 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c decompress/zstd_ddict.c -o decompress/zstd_ddict.o
+#19 302.3 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c decompress/zstd_decompress.c -o decompress/zstd_decompress.o
+#19 302.8 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I. -I./common -DXXH_NAMESPACE=ZSTD_ -DZSTD_DISABLE_ASM -c decompress/zstd_decompress_block.c -o decompress/zstd_decompress_block.o
+#19 304.7 rm -f libzstd.a
+#19 304.7 ar cq libzstd.a common/debug.o common/entropy_common.o common/error_private.o common/fse_decompress.o common/pool.o common/threading.o common/xxhash.o common/zstd_common.o compress/fse_compress.o compress/hist.o compress/huf_compress.o compress/zstd_compress.o compress/zstd_compress_literals.o compress/zstd_compress_sequences.o compress/zstd_compress_superblock.o compress/zstd_double_fast.o compress/zstd_fast.o compress/zstd_lazy.o compress/zstd_ldm.o compress/zstd_opt.o compress/zstdmt_compress.o decompress/huf_decompress.o decompress/zstd_ddict.o decompress/zstd_decompress.o decompress/zstd_decompress_block.o
+#19 304.7 ranlib libzstd.a
+#19 304.7 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -shared H5Zzstd.c -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" \
+#19 304.7 libzstd.a -L/usr/local/lib -o libH5Zzstd.so
+#19 304.8 make[1]: Leaving directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/zstd'
+#19 304.8 make -C blosc
+#19 304.8 make[1]: Entering directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/blosc'
+#19 304.8 make -C lib/snappy-1.1.1
+#19 304.8 make[2]: Entering directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/blosc/lib/snappy-1.1.1'
+#19 304.8 g++ -std=gnu++17 -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -c snappy.cc
+#19 305.6 g++ -std=gnu++17 -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -c snappy-c.cc
+#19 305.8 g++ -std=gnu++17 -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -c snappy-sinksource.cc
+#19 305.8 g++ -std=gnu++17 -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -c snappy-stubs-internal.cc
+#19 306.1 make[2]: Leaving directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/blosc/lib/snappy-1.1.1'
+#19 306.1 make -C lib/lz4-1.9.4
+#19 306.1 make[2]: Entering directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/blosc/lib/lz4-1.9.4'
+#19 306.1 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -c lz4.c
+#19 308.7 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -c lz4hc.c
+#19 311.2 make[2]: Leaving directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/blosc/lib/lz4-1.9.4'
+#19 311.2 make -C lib/blosc-1.20.1 all
+#19 311.2 make[2]: Entering directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/blosc/lib/blosc-1.20.1'
+#19 311.2 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -I../lz4-1.9.4 -I../snappy-1.1.1 -I../../../zstd -msse2 -mavx2 -c bitshuffle-avx2.c
+#19 311.6 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -I../lz4-1.9.4 -I../snappy-1.1.1 -I../../../zstd -msse2 -mavx2 -c shuffle-avx2.c
+#19 312.1 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -I../lz4-1.9.4 -I../snappy-1.1.1 -I../../../zstd -msse2 -mavx2 -c bitshuffle-sse2.c
+#19 312.4 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -I../lz4-1.9.4 -I../snappy-1.1.1 -I../../../zstd -msse2 -mavx2 -c shuffle-sse2.c
+#19 312.9 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -I../lz4-1.9.4 -I../snappy-1.1.1 -I../../../zstd -msse2 -mavx2 -c bitshuffle-generic.c
+#19 313.2 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -I../lz4-1.9.4 -I../snappy-1.1.1 -I../../../zstd -msse2 -mavx2 -c shuffle-generic.c
+#19 313.4 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -I../lz4-1.9.4 -I../snappy-1.1.1 -I../../../zstd -msse2 -mavx2 -DSHUFFLE_SSE2_ENABLED -DSHUFFLE_AVX2_ENABLED -c shuffle.c
+#19 313.7 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -I../lz4-1.9.4 -I../snappy-1.1.1 -I../../../zstd -msse2 -mavx2 -c blosclz.c
+#19 314.1 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -I../lz4-1.9.4 -I../snappy-1.1.1 -I../../../zstd -msse2 -mavx2 -c blosc.c
+#19 314.7 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -I../lz4-1.9.4 -I../snappy-1.1.1 -I../../../zstd -msse2 -mavx2 -c fastcopy.c
+#19 314.9 make[2]: Leaving directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/blosc/lib/blosc-1.20.1'
+#19 314.9 rm -f libblosc.a
+#19 314.9 ar cq libblosc.a lib/blosc-1.20.1/bitshuffle-avx2.o lib/blosc-1.20.1/blosc.o lib/blosc-1.20.1/shuffle-avx2.o lib/blosc-1.20.1/shuffle-sse2.o lib/blosc-1.20.1/bitshuffle-generic.o lib/blosc-1.20.1/blosclz.o lib/blosc-1.20.1/shuffle.o lib/blosc-1.20.1/bitshuffle-sse2.o lib/blosc-1.20.1/fastcopy.o lib/blosc-1.20.1/shuffle-generic.o lib/snappy-1.1.1/snappy.o lib/snappy-1.1.1/snappy-c.o lib/snappy-1.1.1/snappy-sinksource.o lib/snappy-1.1.1/snappy-stubs-internal.o lib/lz4-1.9.4/lz4.o lib/lz4-1.9.4/lz4hc.o 
+#19 314.9 ranlib libblosc.a
+#19 314.9 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -c -o H5Zblosc.o H5Zblosc.c \
+#19 314.9 -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -I./lib/blosc-1.20.1
+#19 315.0 g++ -std=gnu++17 -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -L/usr/local/lib -shared -o libH5Zblosc.so H5Zblosc.o \
+#19 315.0 libblosc.a ../zstd/libzstd.a -lz
+#19 315.1 make[1]: Leaving directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/blosc'
+#19 315.1 make -C bzip2
+#19 315.1 make[1]: Entering directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/bzip2'
+#19 315.1 make -C bzip2-1.0.8
+#19 315.1 make[2]: Entering directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/bzip2/bzip2-1.0.8'
+#19 315.1 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -D_FILE_OFFSET_BITS=64 -c blocksort.c
+#19 315.5 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -D_FILE_OFFSET_BITS=64 -c huffman.c
+#19 315.6 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -D_FILE_OFFSET_BITS=64 -c crctable.c
+#19 315.7 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -D_FILE_OFFSET_BITS=64 -c randtable.c
+#19 315.7 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -D_FILE_OFFSET_BITS=64 -c compress.c
+#19 316.9 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -D_FILE_OFFSET_BITS=64 -c decompress.c
+#19 317.4 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -D_FILE_OFFSET_BITS=64 -c bzlib.c
+#19 317.8 rm -f libbz2.a
+#19 317.8 ar cq libbz2.a blocksort.o huffman.o crctable.o randtable.o compress.o decompress.o bzlib.o
+#19 317.8 ranlib libbz2.a
+#19 317.8 make[2]: Leaving directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/bzip2/bzip2-1.0.8'
+#19 317.8 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -shared H5Zbzip2.c -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" \
+#19 317.8 -I./bzip2-1.0.8/ ./bzip2-1.0.8/libbz2.a -L/usr/local/lib -o libH5Zbz2.so
+#19 317.9 make[1]: Leaving directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/bzip2'
+#19 317.9 make -C lzf
+#19 317.9 make[1]: Entering directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/lzf'
+#19 317.9 make -C lzf
+#19 317.9 make[2]: Entering directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/lzf/lzf'
+#19 317.9 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -c lzf_c.c
+#19 318.0 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -c lzf_d.c
+#19 318.0 rm -f liblzf.a
+#19 318.0 ar cq liblzf.a lzf_c.o lzf_d.o
+#19 318.0 ranlib liblzf.a
+#19 318.0 make[2]: Leaving directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/lzf/lzf'
+#19 318.0 gcc -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic -shared H5Zlzf.c -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" \
+#19 318.0 -I./lzf/ ./lzf/liblzf.a -L/usr/local/lib -o libH5Zlzf.so
+#19 318.1 make[1]: Leaving directory '/tmp/RtmpaVEIpO/R.INSTALL4bfd3f402798/rhdf5filters/src/lzf'
+#19 318.1 mkdir -p "/usr/local/lib/R/site-library/00LOCK-rhdf5filters/00new/rhdf5filters/lib/"
+#19 318.1 cp bzip2/libH5Zbz2.so "/usr/local/lib/R/site-library/00LOCK-rhdf5filters/00new/rhdf5filters/lib/"
+#19 318.1 cp blosc/libH5Zblosc.so "/usr/local/lib/R/site-library/00LOCK-rhdf5filters/00new/rhdf5filters/lib/"
+#19 318.1 cp lzf/libH5Zlzf.so "/usr/local/lib/R/site-library/00LOCK-rhdf5filters/00new/rhdf5filters/lib/"
+#19 318.1 cp zstd/libH5Zzstd.so "/usr/local/lib/R/site-library/00LOCK-rhdf5filters/00new/rhdf5filters/lib/"
+#19 318.1 gcc -I"/usr/local/lib/R/include" -DNDEBUG -I/usr/local/include -I"/usr/local/lib/R/site-library/Rhdf5lib/include" -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include   -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c rhdf5filters.c -o rhdf5filters.o
+#19 318.1 gcc -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o rhdf5filters.so rhdf5filters.o -L/usr/local/lib/R/lib -lR
+#19 318.1 installing to /usr/local/lib/R/site-library/00LOCK-rhdf5filters/00new/rhdf5filters/libs
+#19 318.1 ** R
+#19 318.1 ** inst
+#19 318.1 ** byte-compile and prepare package for lazy loading
+#19 318.5 ** help
+#19 318.5 *** installing help indices
+#19 318.5 *** copying figures
+#19 318.5 ** building package indices
+#19 318.8 ** installing vignettes
+#19 318.8 ** testing if installed package can be loaded from temporary location
+#19 319.2 ** checking absolute paths in shared objects and dynamic libraries
+#19 319.3 ** testing if installed package can be loaded from final location
+#19 319.6 ** testing if installed package keeps a record of temporary installation path
+#19 319.6 * DONE (rhdf5filters)
+#19 320.0 * installing *binary* package ‘dqrng’ ...
+#19 320.0 * DONE (dqrng)
+#19 320.4 * installing *binary* package ‘biglm’ ...
+#19 320.4 * DONE (biglm)
+#19 321.0 * installing *binary* package ‘spData’ ...
+#19 321.0 * DONE (spData)
+#19 321.4 * installing *binary* package ‘slider’ ...
+#19 321.4 * DONE (slider)
+#19 321.9 * installing *binary* package ‘ggbeeswarm’ ...
+#19 321.9 * DONE (ggbeeswarm)
+#19 322.3 * installing *binary* package ‘reshape2’ ...
+#19 322.3 * DONE (reshape2)
+#19 322.7 * installing *binary* package ‘lmtest’ ...
+#19 322.7 * DONE (lmtest)
+#19 323.1 * installing *binary* package ‘classInt’ ...
+#19 323.1 * DONE (classInt)
+#19 323.8 * installing *source* package ‘rhdf5’ ...
+#19 323.8 ** using staged installation
+#19 324.3 configure: creating ./config.status
+#19 324.4 config.status: creating src/external_filters.h
+#19 324.5 ** libs
+#19 324.5 using C compiler: ‘gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+#19 324.5 using C++ compiler: ‘g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+#19 324.5 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5.c -o H5.o
+#19 324.6 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5A.c -o H5A.o
+#19 324.8 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5D.c -o H5D.o
+#19 325.3 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5E.c -o H5E.o
+#19 325.4 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5F.c -o H5F.o
+#19 325.5 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5G.c -o H5G.o
+#19 325.6 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5I.c -o H5I.o
+#19 325.6 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5L.c -o H5L.o
+#19 325.7 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5O.c -o H5O.o
+#19 325.8 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5P.c -o H5P.o
+#19 326.0 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5R.c -o H5R.o
+#19 326.1 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5S.c -o H5S.o
+#19 326.3 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5S_extras.c -o H5S_extras.o
+#19 326.3 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5T.c -o H5T.o
+#19 326.4 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5Z.c -o H5Z.o
+#19 326.5 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5constants.c -o H5constants.o
+#19 326.6 g++ -std=gnu++17 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c HandleList.cpp -o HandleList.o
+#19 327.1 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c HandleListWrap.c -o HandleListWrap.o
+#19 327.2 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c bit64conversion.c -o bit64conversion.o
+#19 327.3 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c external_filters.c -o external_filters.o
+#19 327.3 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c h5dump.c -o h5dump.o
+#19 327.4 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c h5ls.c -o h5ls.o
+#19 327.5 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c h5testLock.c -o h5testLock.o
+#19 327.6 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c h5writeDataFrame.c -o h5writeDataFrame.o
+#19 327.7 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c printdatatype.c -o printdatatype.o
+#19 327.8 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c utils.c -o utils.o
+#19 327.9 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c wrap.c -o wrap.o
+#19 328.6 g++ -std=gnu++17 -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o rhdf5.so H5.o H5A.o H5D.o H5E.o H5F.o H5G.o H5I.o H5L.o H5O.o H5P.o H5R.o H5S.o H5S_extras.o H5T.o H5Z.o H5constants.o HandleList.o HandleListWrap.o bit64conversion.o external_filters.o h5dump.o h5ls.o h5testLock.o h5writeDataFrame.o printdatatype.o utils.o wrap.o /usr/local/lib/R/site-library/Rhdf5lib/lib/libhdf5.a -L/usr/local/lib/R/site-library/Rhdf5lib/lib -lcrypto -lcurl -lsz -laec -lz -ldl -lm -L/usr/local/lib/R/lib -lR
+#19 328.9 installing to /usr/local/lib/R/site-library/00LOCK-rhdf5/00new/rhdf5/libs
+#19 328.9 ** R
+#19 328.9 ** inst
+#19 328.9 ** byte-compile and prepare package for lazy loading
+#19 330.8 ** help
+#19 331.0 *** installing help indices
+#19 331.2 *** copying figures
+#19 331.2 ** building package indices
+#19 331.6 ** installing vignettes
+#19 331.6 ** testing if installed package can be loaded from temporary location
+#19 332.0 ** checking absolute paths in shared objects and dynamic libraries
+#19 332.0 ** testing if installed package can be loaded from final location
+#19 332.4 ** testing if installed package keeps a record of temporary installation path
+#19 332.4 * DONE (rhdf5)
+#19 332.9 * installing *binary* package ‘uwot’ ...
+#19 332.9 * DONE (uwot)
+#19 333.3 * installing *binary* package ‘speedglm’ ...
+#19 333.3 * DONE (speedglm)
+#19 333.7 * installing *binary* package ‘rsample’ ...
+#19 333.7 * DONE (rsample)
+#19 334.2 * installing *binary* package ‘ggrastr’ ...
+#19 334.2 * DONE (ggrastr)
+#19 334.9 * installing *binary* package ‘sf’ ...
+#19 334.9 * DONE (sf)
+#19 335.6 * installing *source* package ‘HDF5Array’ ...
+#19 335.6 ** using staged installation
+#19 335.6 ** libs
+#19 335.6 using C compiler: ‘gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+#19 335.6 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/S4Vectors/include' -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c S4Vectors_stubs.c -o S4Vectors_stubs.o
+#19 336.0 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/S4Vectors/include' -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5File.c -o H5File.o
+#19 336.1 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/S4Vectors/include' -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c global_errmsg_buf.c -o global_errmsg_buf.o
+#19 336.1 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/S4Vectors/include' -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c H5DSetDescriptor.c -o H5DSetDescriptor.o
+#19 336.3 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/S4Vectors/include' -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c h5dimscales.c -o h5dimscales.o
+#19 336.5 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/S4Vectors/include' -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c uaselection.c -o uaselection.o
+#19 336.8 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/S4Vectors/include' -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c h5mread_helpers.c -o h5mread_helpers.o
+#19 336.9 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/S4Vectors/include' -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c h5mread_startscounts.c -o h5mread_startscounts.o
+#19 337.1 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/S4Vectors/include' -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c ChunkIterator.c -o ChunkIterator.o
+#19 337.2 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/S4Vectors/include' -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c h5mread_index.c -o h5mread_index.o
+#19 337.5 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/S4Vectors/include' -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c h5mread_sparse.c -o h5mread_sparse.o
+#19 338.2 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/S4Vectors/include' -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c h5mread.c -o h5mread.o
+#19 338.3 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/S4Vectors/include' -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c h5summarize.c -o h5summarize.o
+#19 338.5 gcc -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/S4Vectors/include' -I'/usr/local/lib/R/site-library/Rhdf5lib/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c R_init_HDF5Array.c -o R_init_HDF5Array.o
+#19 339.2 gcc -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o HDF5Array.so S4Vectors_stubs.o H5File.o global_errmsg_buf.o H5DSetDescriptor.o h5dimscales.o uaselection.o h5mread_helpers.o h5mread_startscounts.o ChunkIterator.o h5mread_index.o h5mread_sparse.o h5mread.o h5summarize.o R_init_HDF5Array.o /usr/local/lib/R/site-library/Rhdf5lib/lib/libhdf5_hl.a /usr/local/lib/R/site-library/Rhdf5lib/lib/libhdf5.a -L/usr/local/lib/R/site-library/Rhdf5lib/lib -lcrypto -lcurl -lsz -laec -lz -ldl -lm -L/usr/local/lib/R/lib -lR
+#19 339.4 installing to /usr/local/lib/R/site-library/00LOCK-HDF5Array/00new/HDF5Array/libs
+#19 339.5 ** R
+#19 339.5 ** inst
+#19 339.5 ** byte-compile and prepare package for lazy loading
+#19 346.0 ** help
+#19 346.1 *** installing help indices
+#19 346.2 ** building package indices
+#19 346.6 ** testing if installed package can be loaded from temporary location
+#19 350.2 ** checking absolute paths in shared objects and dynamic libraries
+#19 350.2 ** testing if installed package can be loaded from final location
+#19 354.2 ** testing if installed package keeps a record of temporary installation path
+#19 354.2 * DONE (HDF5Array)
+#19 354.8 * installing *binary* package ‘spdep’ ...
+#19 354.9 * DONE (spdep)
+#19 354.9 
+#19 354.9 The downloaded source packages are in
+#19 354.9 	‘/tmp/downloaded_packages’
+#19 355.0 ── R CMD build ─────────────────────────────────────────────────────────────────
+#19 355.3 * checking for file ‘/tmp/remotes75be80e54/cole-trapnell-lab-monocle3-98402ed/DESCRIPTION’ ... OK
+#19 355.3 * preparing ‘monocle3’:
+#19 355.3 * checking DESCRIPTION meta-information ... OK
+#19 355.3 * cleaning src
+#19 355.4 * checking for LF line-endings in source and make files and shell scripts
+#19 355.4 * checking for empty or unneeded directories
+#19 355.5 Omitted ‘LazyData’ from DESCRIPTION
+#19 355.5 * building ‘monocle3_1.3.7.tar.gz’
+#19 355.9 
+#19 355.9 Installing package into ‘/usr/local/lib/R/site-library’
+#19 355.9 (as ‘lib’ is unspecified)
+#19 356.5 * installing *source* package ‘monocle3’ ...
+#19 356.5 ** using staged installation
+#19 356.5 ** libs
+#19 356.5 using C++ compiler: ‘g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’
+#19 356.5 using C++11
+#19 356.5 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c RcppExports.cpp -o RcppExports.o
+#19 358.9 g++ -std=gnu++11 -I"/usr/local/lib/R/include" -DNDEBUG  -I'/usr/local/lib/R/site-library/Rcpp/include' -I/usr/local/include    -fpic  -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -g  -c clustering.cpp -o clustering.o
+#19 361.9 g++ -std=gnu++11 -shared -L/usr/local/lib/R/lib -L/usr/local/lib -o monocle3.so RcppExports.o clustering.o -L/usr/local/lib/R/lib -lR
+#19 361.9 installing to /usr/local/lib/R/site-library/00LOCK-monocle3/00new/monocle3/libs
+#19 361.9 ** R
+#19 362.0 ** inst
+#19 362.0 ** byte-compile and prepare package for lazy loading
+#19 372.1 ** help
+#19 372.3 *** installing help indices
+#19 372.4 ** building package indices
+#19 372.9 ** installing vignettes
+#19 372.9 ** testing if installed package can be loaded from temporary location
+#19 378.8 ** checking absolute paths in shared objects and dynamic libraries
+#19 378.8 ** testing if installed package can be loaded from final location
+#19 384.7 ** testing if installed package keeps a record of temporary installation path
+#19 384.7 * DONE (monocle3)
+#19 DONE 385.3s
+
+#20 [finalize finalize 5/8] WORKDIR scflowfinalize
+#20 DONE 0.4s
+
+#21 [finalize finalize 6/8] RUN --mount=type=bind,target=.,source=. Rscript -e "devtools::check(vignettes = FALSE)"
+#21 1.866 ══ Documenting ═════════════════════════════════════════════════════════════════
+#21 1.898 ℹ Updating scflowfinalize documentation
+#21 7.869 ℹ Loading scflowfinalize
+#21 8.497 Loading required package: htmltools
+#21 8.506 Loading required package: Hmisc
+#21 8.517 
+#21 8.517 Attaching package: ‘Hmisc’
+#21 8.517 
+#21 8.518 The following objects are masked from ‘package:base’:
+#21 8.518 
+#21 8.518     format.pval, units
+#21 8.518 
+#21 8.518 Loading required package: DT
+#21 8.527 Loading required package: knitr
+#21 8.536 Loading required package: plotly
+#21 8.538 Loading required package: ggplot2
+#21 8.567 
+#21 8.567 Attaching package: ‘plotly’
+#21 8.567 
+#21 8.568 The following object is masked from ‘package:ggplot2’:
+#21 8.568 
+#21 8.568     last_plot
+#21 8.568 
+#21 8.568 The following object is masked from ‘package:Hmisc’:
+#21 8.568 
+#21 8.568     subplot
+#21 8.568 
+#21 8.568 The following object is masked from ‘package:stats’:
+#21 8.568 
+#21 8.568     filter
+#21 8.568 
+#21 8.568 The following object is masked from ‘package:graphics’:
+#21 8.568 
+#21 8.568     layout
+#21 8.568 
+#21 9.403 
+#21 9.404 ══ Building ════════════════════════════════════════════════════════════════════
+#21 9.405 Setting env vars:
+#21 9.406 • CFLAGS    : -Wall -pedantic
+#21 9.406 • CXXFLAGS  : -Wall -pedantic
+#21 9.406 • CXX11FLAGS: -Wall -pedantic
+#21 9.406 • CXX14FLAGS: -Wall -pedantic
+#21 9.406 • CXX17FLAGS: -Wall -pedantic
+#21 9.406 • CXX20FLAGS: -Wall -pedantic
+#21 9.447 ── R CMD build ─────────────────────────────────────────────────────────────────
+#21 9.800 * checking for file ‘/scflowfinalize/DESCRIPTION’ ... OK
+#21 9.863 * preparing ‘scflowfinalize’:
+#21 9.863 * checking DESCRIPTION meta-information ... OK
+#21 9.900 * checking for LF line-endings in source and make files and shell scripts
+#21 9.901 * checking for empty or unneeded directories
+#21 9.907 Omitted ‘LazyData’ from DESCRIPTION
+#21 9.917 * building ‘scflowfinalize_0.1.0.tar.gz’
+#21 9.940 
+#21 9.954 ══ Checking ════════════════════════════════════════════════════════════════════
+#21 9.955 Setting env vars:
+#21 9.956 • _R_CHECK_CRAN_INCOMING_REMOTE_               : FALSE
+#21 9.956 • _R_CHECK_CRAN_INCOMING_                      : FALSE
+#21 9.956 • _R_CHECK_FORCE_SUGGESTS_                     : FALSE
+#21 9.956 • _R_CHECK_PACKAGES_USED_IGNORE_UNUSED_IMPORTS_: FALSE
+#21 9.956 • NOT_CRAN                                     : true
+#21 10.39 ── R CMD check ─────────────────────────────────────────────────────────────────
+#21 10.79 * using log directory ‘/tmp/RtmprQZgAI/file77a089747/scflowfinalize.Rcheck’
+#21 10.79 * using R version 4.3.3 (2024-02-29)
+#21 10.79 * using platform: x86_64-pc-linux-gnu (64-bit)
+#21 10.79 * R was compiled by
+#21 10.79     gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+#21 10.79     GNU Fortran (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+#21 10.79 * running under: Ubuntu 22.04.4 LTS
+#21 10.79 * using session charset: UTF-8
+#21 10.83 * using options ‘--no-manual --ignore-vignettes --as-cran’
+#21 10.83 * checking for file ‘scflowfinalize/DESCRIPTION’ ... OK
+#21 10.84 * checking extension type ... Package
+#21 10.84 * this is package ‘scflowfinalize’ version ‘0.1.0’
+#21 10.84 * package encoding: UTF-8
+#21 10.84 * checking package namespace information ... OK
+#21 10.84 * checking package dependencies ... OK
+#21 14.67 * checking if this is a source package ... OK
+#21 14.67 * checking if there is a namespace ... OK
+#21 14.67 * checking for executable files ... OK
+#21 14.85 * checking for hidden files and directories ... OK
+#21 14.85 * checking for portable file names ... OK
+#21 14.85 * checking for sufficient/correct file permissions ... OK
+#21 14.85 * checking serialization versions ... OK
+#21 14.85 * checking whether package ‘scflowfinalize’ can be installed ... [27s/21s] OK
+#21 35.48 * checking installed package size ... OK
+#21 35.60 * checking package directory ... OK
+#21 35.60 * checking for future file timestamps ... OK
+#21 35.82 * checking DESCRIPTION meta-information ... OK
+#21 36.21 * checking top-level files ... NOTE
+#21 36.21 Non-standard file/directory found at top level:
+#21 36.21   ‘Dockerfile’
+#21 36.22 * checking for left-over files ... OK
+#21 36.22 * checking index information ... OK
+#21 36.22 * checking package subdirectories ... OK
+#21 36.36 * checking R files for non-ASCII characters ... OK
+#21 36.50 * checking R files for syntax errors ... OK
+#21 36.67 * checking whether the package can be loaded ... OK
+#21 43.43 * checking whether the package can be loaded with stated dependencies ... OK
+#21 49.34 * checking whether the package can be unloaded cleanly ... OK
+#21 55.39 * checking whether the namespace can be loaded with stated dependencies ... OK
+#21 61.10 * checking whether the namespace can be unloaded cleanly ... OK
+#21 67.20 * checking loading without being on the library search path ... OK
+#21 79.78 * checking dependencies in R code ... NOTE
+#21 85.60 Packages in Depends field not imported from:
+#21 85.60   ‘DT’ ‘Hmisc’ ‘htmltools’ ‘knitr’ ‘plotly’
+#21 85.60   These packages need to be imported from (in the NAMESPACE file)
+#21 85.60   for when this namespace is loaded but not attached.
+#21 85.60 * checking S3 generic/method consistency ... OK
+#21 91.56 * checking replacement functions ... OK
+#21 97.46 * checking foreign function calls ... OK
+#21 103.1 * checking R code for possible problems ... [44s/27s] NOTE
+#21 130.5 .append_cell_metric_plots_sce: no visible binding for global variable
+#21 130.5   ‘celltype_var’
+#21 130.5 .append_cell_metric_plots_sce: no visible binding for global variable
+#21 130.5   ‘metric_var’
+#21 130.5 .append_cell_metric_plots_sce: no visible binding for global variable
+#21 130.5   ‘se’
+#21 130.5 .append_cell_prop_plots_sce: no visible binding for global variable
+#21 130.5   ‘group_by_var’
+#21 130.5 .append_cell_prop_plots_sce: no visible binding for global variable
+#21 130.5   ‘celltype_var’
+#21 130.5 .append_cell_prop_plots_sce: no visible binding for global variable ‘n’
+#21 130.5 .append_cell_prop_plots_sce: no visible binding for global variable
+#21 130.5   ‘total_cells’
+#21 130.5 .append_cell_prop_plots_sce: no visible binding for global variable
+#21 130.5   ‘pc’
+#21 130.5 .uniftest: no visible global function definition for ‘runif’
+#21 130.5 find_marker_genes: no visible binding for global variable ‘cell_group’
+#21 130.5 find_marker_genes: no visible binding for global variable ‘pseudo_R2’
+#21 130.5 find_marker_genes: no visible binding for global variable ‘gene_id’
+#21 130.5 plot_reduced_dim: no visible binding for global variable ‘dim1’
+#21 130.5 plot_reduced_dim: no visible binding for global variable ‘dim2’
+#21 130.5 plot_reduced_dim: no visible binding for global variable ‘mean_dim1’
+#21 130.5 plot_reduced_dim: no visible binding for global variable ‘mean_dim2’
+#21 130.5 read_celltype_mappings: no visible global function definition for
+#21 130.5   ‘read.delim’
+#21 130.5 read_sce: no visible global function definition for ‘read.delim’
+#21 130.5 read_sparse_matrix: no visible global function definition for
+#21 130.5   ‘read.csv’
+#21 130.5 read_sparse_matrix: no visible global function definition for
+#21 130.5   ‘read.delim’
+#21 130.5 write_sparse_matrix: no visible global function definition for ‘as’
+#21 130.5 Undefined global functions or variables:
+#21 130.5   as cell_group celltype_var dim1 dim2 gene_id group_by_var mean_dim1
+#21 130.5   mean_dim2 metric_var n pc pseudo_R2 read.csv read.delim runif se
+#21 130.5   total_cells
+#21 130.5 Consider adding
+#21 130.5   importFrom("methods", "as")
+#21 130.5   importFrom("stats", "runif")
+#21 130.5   importFrom("utils", "read.csv", "read.delim")
+#21 130.5 to your NAMESPACE file (and ensure that your DESCRIPTION Imports field
+#21 130.5 contains 'methods').
+#21 130.5 Found if() conditions comparing class() to string:
+#21 130.5 File ‘scflowfinalize/R/write_sce.R’: if (class(sce) != "SingleCellExperiment") ...
+#21 130.5 File ‘scflowfinalize/R/write_sparse_matrix.R’: if (class(mat) != "dgTMatrix") ...
+#21 130.5 Use inherits() (or maybe is()) instead.
+#21 130.5 * checking Rd files ... OK
+#21 131.0 * checking Rd metadata ... OK
+#21 131.1 * checking Rd line widths ... OK
+#21 131.3 * checking Rd cross-references ... OK
+#21 131.7 * checking for missing documentation entries ... OK
+#21 137.9 * checking for code/documentation mismatches ... OK
+#21 156.2 * checking Rd \usage sections ... OK
+#21 163.0 * checking Rd contents ... OK
+#21 163.2 * checking for unstated dependencies in examples ... OK
+#21 163.5 * checking examples ... NONE
+#21 163.8 * checking for non-standard things in the check directory ... OK
+#21 163.8 * checking for detritus in the temp directory ... OK
+#21 163.8 * DONE
+#21 163.8 
+#21 163.8 Status: 3 NOTEs
+#21 163.8 See
+#21 163.8   ‘/tmp/RtmprQZgAI/file77a089747/scflowfinalize.Rcheck/00check.log’
+#21 163.8 for details.
+#21 163.8 
+#21 164.3 ── R CMD check results ─────────────────────────────── scflowfinalize 0.1.0 ────
+#21 164.3 Duration: 2m 34s
+#21 164.3 
+#21 164.3 ❯ checking top-level files ... NOTE
+#21 164.3   Non-standard file/directory found at top level:
+#21 164.3     ‘Dockerfile’
+#21 164.3 
+#21 164.3 ❯ checking dependencies in R code ... NOTE
+#21 164.3   Packages in Depends field not imported from:
+#21 164.3     ‘DT’ ‘Hmisc’ ‘htmltools’ ‘knitr’ ‘plotly’
+#21 164.3     These packages need to be imported from (in the NAMESPACE file)
+#21 164.3     for when this namespace is loaded but not attached.
+#21 164.3 
+#21 164.3 ❯ checking R code for possible problems ... [44s/27s] NOTE
+#21 164.3   .append_cell_metric_plots_sce: no visible binding for global variable
+#21 164.3     ‘celltype_var’
+#21 164.3   .append_cell_metric_plots_sce: no visible binding for global variable
+#21 164.3     ‘metric_var’
+#21 164.3   .append_cell_metric_plots_sce: no visible binding for global variable
+#21 164.3     ‘se’
+#21 164.3   .append_cell_prop_plots_sce: no visible binding for global variable
+#21 164.3     ‘group_by_var’
+#21 164.3   .append_cell_prop_plots_sce: no visible binding for global variable
+#21 164.3     ‘celltype_var’
+#21 164.3   .append_cell_prop_plots_sce: no visible binding for global variable ‘n’
+#21 164.3   .append_cell_prop_plots_sce: no visible binding for global variable
+#21 164.3     ‘total_cells’
+#21 164.3   .append_cell_prop_plots_sce: no visible binding for global variable
+#21 164.3     ‘pc’
+#21 164.3   .uniftest: no visible global function definition for ‘runif’
+#21 164.3   find_marker_genes: no visible binding for global variable ‘cell_group’
+#21 164.3   find_marker_genes: no visible binding for global variable ‘pseudo_R2’
+#21 164.3   find_marker_genes: no visible binding for global variable ‘gene_id’
+#21 164.3   plot_reduced_dim: no visible binding for global variable ‘dim1’
+#21 164.3   plot_reduced_dim: no visible binding for global variable ‘dim2’
+#21 164.3   plot_reduced_dim: no visible binding for global variable ‘mean_dim1’
+#21 164.3   plot_reduced_dim: no visible binding for global variable ‘mean_dim2’
+#21 164.3   read_celltype_mappings: no visible global function definition for
+#21 164.3     ‘read.delim’
+#21 164.3   read_sce: no visible global function definition for ‘read.delim’
+#21 164.3   read_sparse_matrix: no visible global function definition for
+#21 164.3     ‘read.csv’
+#21 164.3   read_sparse_matrix: no visible global function definition for
+#21 164.3     ‘read.delim’
+#21 164.3   write_sparse_matrix: no visible global function definition for ‘as’
+#21 164.3   Undefined global functions or variables:
+#21 164.3     as cell_group celltype_var dim1 dim2 gene_id group_by_var mean_dim1
+#21 164.3     mean_dim2 metric_var n pc pseudo_R2 read.csv read.delim runif se
+#21 164.3     total_cells
+#21 164.3   Consider adding
+#21 164.3     importFrom("methods", "as")
+#21 164.3     importFrom("stats", "runif")
+#21 164.3     importFrom("utils", "read.csv", "read.delim")
+#21 164.3   to your NAMESPACE file (and ensure that your DESCRIPTION Imports field
+#21 164.3   contains 'methods').
+#21 164.3   
+#21 164.3   Found if() conditions comparing class() to string:
+#21 164.3   File ‘scflowfinalize/R/write_sce.R’: if (class(sce) != "SingleCellExperiment") ...
+#21 164.3   File ‘scflowfinalize/R/write_sparse_matrix.R’: if (class(mat) != "dgTMatrix") ...
+#21 164.3   Use inherits() (or maybe is()) instead.
+#21 164.3 
+#21 164.3 0 errors ✔ | 0 warnings ✔ | 3 notes ✖
+#21 DONE 164.4s
+
+#22 [finalize finalize 7/8] RUN --mount=type=bind,target=.,source=. Rscript -e 'remotes::install_local(upgrade = "never")'
+#22 7.796 ── R CMD build ─────────────────────────────────────────────────────────────────
+#22 8.076 * checking for file ‘/tmp/RtmpMeyD74/file7405f83bd/scflowfinalize/DESCRIPTION’ ... OK
+#22 8.082 * preparing ‘scflowfinalize’:
+#22 8.082 * checking DESCRIPTION meta-information ... OK
+#22 8.113 * checking for LF line-endings in source and make files and shell scripts
+#22 8.114 * checking for empty or unneeded directories
+#22 8.116 Omitted ‘LazyData’ from DESCRIPTION
+#22 8.125 * building ‘scflowfinalize_0.1.0.tar.gz’
+#22 8.143 
+#22 8.154 Installing package into ‘/usr/local/lib/R/site-library’
+#22 8.154 (as ‘lib’ is unspecified)
+#22 8.447 * installing *source* package ‘scflowfinalize’ ...
+#22 8.447 ** using staged installation
+#22 8.459 ** R
+#22 8.464 ** inst
+#22 8.466 ** byte-compile and prepare package for lazy loading
+#22 14.92 Note: ... may be used in an incorrect context 
+#22 14.92 Note: ... may be used in an incorrect context 
+#22 14.92 ** help
+#22 14.96 *** installing help indices
+#22 14.99 ** building package indices
+#22 15.33 ** testing if installed package can be loaded from temporary location
+#22 21.85 ** testing if installed package can be loaded from final location
+#22 28.33 ** testing if installed package keeps a record of temporary installation path
+#22 28.33 * DONE (scflowfinalize)
+#22 DONE 28.5s
+
+#23 [finalize] exporting to image
+#23 exporting layers
+#23 exporting layers 13.8s done
+#23 writing image sha256:d0921535c7a2b47024ca592c699b3fe91b1d44a3f7078afbd34a9916f74eef25 done
+#23 naming to docker.io/my_scflow/finalize 0.0s done
+#23 DONE 13.9s

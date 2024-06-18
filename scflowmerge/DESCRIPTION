@@ -11,7 +11,6 @@ Encoding: UTF-8
 LazyData: true
 Language: en-US
 Imports:
-    argparse,
     assertthat,
     biomaRt,
     cli,
@@ -24,7 +23,6 @@ Imports:
     ggplot2,
     ggpubr,
     grDevices,
-    htmltools,
     magrittr,
     Matrix,
     monocle3,
@@ -48,9 +46,10 @@ Imports:
     utils,
     uwot
 Depends:
-    plotly,
-    DT (>= 0.26),
-    knitr
+    DT,
+    htmltools,
+    knitr,
+    plotly
 Remotes:
     jlmelville/uwot,
     cole-trapnell-lab/monocle3

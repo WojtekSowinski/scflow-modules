@@ -19,7 +19,7 @@ Imports:
     purrr,
     qs,
     R.utils,
-    rliger,
+    rliger (< 1.99.0),
     SingleCellExperiment,
     SummarizedExperiment,
     tools,
