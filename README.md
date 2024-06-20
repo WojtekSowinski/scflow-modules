@@ -4,3 +4,5 @@ ScFlow Modules
 
 This repository contains packages I created in order to test the idea of splitting the ScFlow R package into smaller modules where each module handles a different stage of the ScFlow pipeline.
 The code published here informed chapters 5.2 and 6.1.1 of the project reoprt.
+
+The mapping-dependencies directory contains the data files and scripts used to isolate the R packages, source files and system dependencies needed for each module.
