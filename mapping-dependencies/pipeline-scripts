@@ -1,0 +1,15 @@
+check_inputs.r
+merge_tables.r
+scflow_cluster.r
+scflow_dge.r
+scflow_dirichlet.r
+scflow_finalize_sce.r
+scflow_integrate.r
+scflow_ipa.r
+scflow_map_celltypes.r
+scflow_merge.r
+scflow_plot_reddim_genes.r
+scflow_qc.r
+scflow_reduce_dims.r
+scflow_report_integrated.r
+scrape_software_versions.r
